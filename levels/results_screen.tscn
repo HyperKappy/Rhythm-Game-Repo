@@ -1,0 +1,177 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2mpo6a2mpgy"]
+
+[ext_resource type="Script" uid="uid://bpga4casjmfom" path="res://objects/results_screen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="2_8ysej"]
+[ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="3_ne1ru"]
+
+[node name="ResultsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -979.0
+offset_top = -554.0
+offset_right = -979.0
+offset_bottom = -554.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2823.0
+offset_top = -1985.0
+offset_right = 2902.0
+offset_bottom = 1788.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.85098)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -300.0
+offset_right = 450.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Results"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PerfectRow" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PerfectRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "PERFECT"
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/PerfectRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
+[node name="GoodRow" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GoodRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "GOOD"
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/GoodRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
+[node name="OkRow" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/OkRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "OK"
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/OkRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
+[node name="MissRow" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MissRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "MISS"
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/MissRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
+[node name="ComboRow" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ComboRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Combo"
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/ComboRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
+[node name="AccuracyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -809.0
+offset_top = -367.0
+offset_right = -536.0
+offset_bottom = -261.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "100.00%"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="GradeImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 752.0
+offset_top = 429.0
+offset_right = -715.0
+offset_bottom = -396.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 637.0
+offset_right = 959.0
+offset_bottom = 887.0
+texture_normal = ExtResource("2_8ysej")
+script = ExtResource("3_ne1ru")
+
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]

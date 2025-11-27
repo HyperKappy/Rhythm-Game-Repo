@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bghid1bcbbpt1"]
+
+[ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="1_spvsy"]
+[ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="2_gw1d4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 242.0
+offset_top = 146.0
+offset_right = 1729.0
+offset_bottom = 839.0
+theme_override_font_sizes/font_size = 40
+text = "Credits:
+
+Boss battle icon: Geometry Dash
+
+Guess mp3 and background: Pou
+
+GIVEN ENOUGH mp3: Nessa Barrett
+
+GIVEN ENOUGH icon and background: copyright free image from the internet
+
+Receptor assets: \"Wafles4 White Anas edit\" by Anas on Quaver
+"
+
+[node name="Back" type="TextureButton" parent="."]
+offset_left = -28.0
+offset_top = 846.0
+offset_right = 472.0
+offset_bottom = 1096.0
+texture_normal = ExtResource("1_spvsy")
+script = ExtResource("2_gw1d4")
+
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]

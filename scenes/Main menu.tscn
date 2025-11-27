@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7o4xbpoibyp5"]
+
+[ext_resource type="Texture2D" uid="uid://vawuo0trrhtr" path="res://Resources/images/playplaceholder.png" id="2_j7wrs"]
+[ext_resource type="Script" uid="uid://xrw4oj55j1ny" path="res://code/texture_button.gd" id="3_acqwh"]
+[ext_resource type="Texture2D" uid="uid://ckw3niyrbtung" path="res://Resources/images/settingsplaceholder.png" id="4_hh0fu"]
+[ext_resource type="Script" uid="uid://fyquy5ycgary" path="res://code/Settings_Button.gd" id="5_i3aa3"]
+[ext_resource type="Texture2D" uid="uid://dv04qlh2b3mg7" path="res://Resources/images/Credits.png" id="5_wca30"]
+[ext_resource type="Script" uid="uid://cf8sf0dslwiu2" path="res://code/Credits.gd" id="6_ns5u6"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Play_Button" type="TextureButton" parent="."]
+offset_left = 750.0
+offset_top = 103.0
+offset_right = 1150.0
+offset_bottom = 253.0
+texture_normal = ExtResource("2_j7wrs")
+script = ExtResource("3_acqwh")
+
+[node name="Settings_Button" type="TextureButton" parent="."]
+offset_left = 750.0
+offset_top = 279.0
+offset_right = 1150.0
+offset_bottom = 429.0
+texture_normal = ExtResource("4_hh0fu")
+script = ExtResource("5_i3aa3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 551.0
+offset_top = 674.0
+offset_right = 2076.0
+offset_bottom = 961.0
+theme_override_font_sizes/font_size = 40
+text = "Graphic Design is not definitive
+
+Please look at the Settings tab before starting
+
+To quit press the escape button"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 752.0
+offset_top = 469.0
+offset_right = 1152.0
+offset_bottom = 619.0
+texture_normal = ExtResource("5_wca30")
+script = ExtResource("6_ns5u6")
+
+[connection signal="pressed" from="Play_Button" to="Play_Button" method="pressed"]
+[connection signal="pressed" from="Settings_Button" to="Settings_Button" method="_on_pressed"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

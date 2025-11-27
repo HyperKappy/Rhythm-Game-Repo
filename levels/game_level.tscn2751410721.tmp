@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://cirfpuxgijlwp"]
+
+[ext_resource type="Texture2D" uid="uid://duws8cj8kyaof" path="res://objects/keylistener.webp" id="1_sklrn"]
+[ext_resource type="Script" uid="uid://dh022hdm80570" path="res://objects/key_listener.gd" id="2_d65c1"]
+[ext_resource type="Texture2D" uid="uid://b1bhvwwifa3cg" path="res://objects/falling_key.webp" id="3_d65c1"]
+[ext_resource type="Script" uid="uid://pqrtbogynd3e" path="res://objects/falling_key.gd" id="4_n0b0m"]
+[ext_resource type="Script" uid="uid://be512qqenckd2" path="res://objects/sprite_2d.gd" id="5_2i5ty"]
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Keylistener" type="Sprite2D" parent="."]
+position = Vector2(-150, 489)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_sklrn")
+script = ExtResource("2_d65c1")
+key_name = "button_d"
+
+[node name="Keylistener2" type="Sprite2D" parent="."]
+position = Vector2(-50, 489)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_sklrn")
+script = ExtResource("2_d65c1")
+key_name = "button_f"
+
+[node name="Keylistener3" type="Sprite2D" parent="."]
+position = Vector2(50, 489)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_sklrn")
+script = ExtResource("2_d65c1")
+key_name = "button_j"
+
+[node name="Keylistener4" type="Sprite2D" parent="."]
+position = Vector2(150, 489)
+rotation = 3.14159
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_sklrn")
+script = ExtResource("2_d65c1")
+key_name = "button_k"
+
+[node name="FallingKey" type="Sprite2D" parent="."]
+position = Vector2(-150, -566)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_d65c1")
+script = ExtResource("4_n0b0m")
+
+[node name="Judgement" type="Sprite2D" parent="FallingKey"]
+position = Vector2(500, 1886.67)
+scale = Vector2(3.33333, 3.33333)
+script = ExtResource("5_2i5ty")
+
+[node name="Timer" type="Timer" parent="FallingKey/Judgement"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="JudgementLabel" type="Label" parent="FallingKey/Judgement"]
+offset_left = -20.0
+offset_top = -11.001
+offset_right = 20.0
+offset_bottom = 11.999
+horizontal_alignment = 1

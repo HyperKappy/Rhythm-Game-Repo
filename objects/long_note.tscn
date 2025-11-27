@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn1ninewnq5tt"]
+
+[ext_resource type="Texture2D" uid="uid://43eq3dd8iqev" path="res://objects/note-holdhitobject-b.png" id="1_aybj1"]
+[ext_resource type="Script" uid="uid://v7oyg1gddf1l" path="res://objects/long_note.gd" id="2_83iqh"]
+[ext_resource type="Texture2D" uid="uid://ww0ccan20u3p" path="res://objects/note-holdbody-a.png" id="3_p1rvn"]
+[ext_resource type="Texture2D" uid="uid://vbj8kaxlptba" path="res://objects/note-holdend-b.png" id="4_aybj1"]
+
+[node name="LongNote" type="Sprite2D"]
+texture = ExtResource("1_aybj1")
+script = ExtResource("2_83iqh")
+
+[node name="HoldBody" type="Sprite2D" parent="."]
+texture = ExtResource("3_p1rvn")
+centered = false
+
+[node name="HoldEnd" type="Sprite2D" parent="."]
+texture = ExtResource("4_aybj1")
+centered = false

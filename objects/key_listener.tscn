@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b02csn2nu1bt0"]
+
+[ext_resource type="Script" uid="uid://dh022hdm80570" path="res://objects/key_listener.gd" id="1_181ek"]
+
+[node name="KeyListener" type="Sprite2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_181ek")

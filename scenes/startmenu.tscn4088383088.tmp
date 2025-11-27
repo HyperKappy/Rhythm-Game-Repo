@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2duvcd5xtvv2"]
+
+[ext_resource type="Script" uid="uid://d37he5dpdp6vn" path="res://scenes/startmenu.gd" id="1_lqn8n"]
+[ext_resource type="Script" uid="uid://dbxqx5qorks45" path="res://scenes/control.gd" id="2_t0y3k"]
+
+[node name="KeybindEditor" type="Control" groups=["Hotkey_Button"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqn8n")
+action_name = null
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Actie"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 200
+
+[node name="Button" type="Button" parent="HBoxContainer" groups=["Hotkey_Button"]]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+text = "Actie_Key
+"
+
+[node name="DebugCode" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_t0y3k")
+
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]

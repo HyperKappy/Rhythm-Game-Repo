@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk8v10241c0qd"]
+
+[ext_resource type="Script" uid="uid://dfet8i3a12m32" path="res://objects/falling_key_spawner.gd" id="1_4bsa8"]
+
+[node name="falling_key_spawner" type="Node2D"]
+script = ExtResource("1_4bsa8")
