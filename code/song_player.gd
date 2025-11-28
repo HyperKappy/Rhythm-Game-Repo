@@ -114,6 +114,19 @@ func _show_results_screen() -> void:
 	var screen := results_scene.instantiate()
 	add_child(screen)
 
+	# Levelnaam doorgeven (bijv. uit chart_path)
+	if screen.has_method("set_level_name"):
+		# alles na laatste / pakken:
+		var short_name := chart_path
+		var slash_idx := chart_path.rfind("/")
+		if slash_idx != -1 and slash_idx + 1 < chart_path.length():
+			short_name = chart_path.substr(slash_idx + 1, chart_path.length() - slash_idx - 1)
+		# .json eraf slopen
+		if short_name.ends_with(".json"):
+			short_name = short_name.substr(0, short_name.length() - 5)
+
+		screen.set_level_name(short_name)
+
 	# In-game Judgement HUD verbergen
 	if judgement != null and judgement.has_method("set_ui_visible"):
 		judgement.set_ui_visible(false)
@@ -121,6 +134,7 @@ func _show_results_screen() -> void:
 	# Statistieken doorgeven vanuit Judgement
 	if judgement != null and screen.has_method("set_results_from_judgement"):
 		screen.set_results_from_judgement(judgement)
+
 
 
 func _show_ready_go_intro() -> void:
