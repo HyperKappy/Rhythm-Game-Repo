@@ -11,6 +11,7 @@ var total_judgements: int = 0   # elke keypress OF auto-miss telt als judgement
 
 # afzonderlijke tellers per judgement type
 var perfect_count: int = 0
+var great_count: int = 0
 var good_count: int = 0
 var ok_count: int = 0
 var miss_count: int = 0
@@ -79,7 +80,6 @@ func _init_hit_lines() -> void:
 
 func _process(delta: float) -> void:
 	_check_auto_misses()
-	print("skibidi fortnite")
 
 
 func _input(event: InputEvent) -> void:
@@ -229,11 +229,16 @@ func _find_closest_note_in_lane(lane_idx: int) -> Sprite2D:
 	return best_note
 
 func _apply_time_diff_and_update_stats(time_diff: float) -> String:
-	if time_diff <= 0.043:
+	if time_diff <= 0.035:
 		acc_score += 300
 		hits += 1
 		perfect_count += 1
 		return "PERFECT"
+	elif time_diff <= 0.076:
+		acc_score += 250
+		hits += 1
+		great_count += 1
+		return "GREAT"
 	elif time_diff <= 0.106:
 		acc_score += 150
 		hits += 1
@@ -355,11 +360,13 @@ func show_judgement(result: String) -> void:
 
 	match result:
 		"PERFECT":
-			judgement_label.add_theme_color_override("font_color", Color(0.3, 1.0, 0.3))
+			judgement_label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
+		"GREAT":
+			judgement_label.add_theme_color_override("font_color", Color(0.468, 0.989, 1.0, 1.0))
 		"GOOD":
-			judgement_label.add_theme_color_override("font_color", Color(0.3, 0.7, 1.0))
+			judgement_label.add_theme_color_override("font_color", Color(0.3, 1.0, 0.3))
 		"OK":
-			judgement_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
+			judgement_label.add_theme_color_override("font_color", Color(0.838, 0.0, 0.763, 1.0))
 		"MISS":
 			judgement_label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 

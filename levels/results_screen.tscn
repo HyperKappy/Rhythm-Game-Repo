@@ -78,6 +78,20 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 2
 
+[node name="GreatRow" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GreatRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "GREAT"
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/GreatRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
 [node name="GoodRow" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 
@@ -126,7 +140,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ComboRow"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Combo"
+text = "Combo / Max Combo"
 
 [node name="Value" type="Label" parent="Panel/VBoxContainer/ComboRow"]
 layout_mode = 2
@@ -158,19 +172,22 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 752.0
-offset_top = 429.0
+offset_top = 368.0
 offset_right = -715.0
-offset_bottom = -396.0
+offset_bottom = -457.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 5
 
 [node name="Back" type="TextureButton" parent="."]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+self_modulate = Color(18.892002, 18.892002, 18.892002, 1)
 layout_mode = 0
-offset_left = 459.0
-offset_top = 637.0
-offset_right = 959.0
-offset_bottom = 887.0
+offset_left = 489.0
+offset_top = 688.0
+offset_right = 989.0
+offset_bottom = 938.0
+scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("2_8ysej")
 script = ExtResource("3_ne1ru")
 
