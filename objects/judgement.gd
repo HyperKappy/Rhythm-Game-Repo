@@ -79,7 +79,6 @@ func _init_hit_lines() -> void:
 
 func _process(delta: float) -> void:
 	_check_auto_misses()
-	print("skibidi fortnite")
 
 
 func _input(event: InputEvent) -> void:
