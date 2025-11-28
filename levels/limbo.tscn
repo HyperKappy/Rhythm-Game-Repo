@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsxkhk8fm1ul1"]
+
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_mnduo"]
+[ext_resource type="AudioStream" uid="uid://cwubxypyr0je0" path="res://Resources/audio/Limbo.mp3" id="2_mnduo"]
+[ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_vqoi0"]
+[ext_resource type="Texture2D" uid="uid://b45oxk7awa31a" path="res://Resources/art/limbobackground.jpg" id="4_mnduo"]
+
+[node name="SongPlayer" type="Node"]
+script = ExtResource("1_mnduo")
+chart_path = "res://charts/limbo.json"
+spawn_ahead_ms = 1057.0
+use_chart_audio_path = false
+audio_stream = ExtResource("2_mnduo")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
+[node name="GameLevel" parent="." instance=ExtResource("3_vqoi0")]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4096
+texture = ExtResource("4_mnduo")
