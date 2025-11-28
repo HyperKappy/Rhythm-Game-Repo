@@ -1,6 +1,6 @@
 extends Control
 
-@export var level_name: String = ""	# wordt gezet vanuit SongPlayer
+@export var level_name: String = "" #Komt vanuit SongPlayer
 
 @onready var title_label: Label = $Panel/VBoxContainer/Title
 @onready var perfect_row: HBoxContainer = $Panel/VBoxContainer/PerfectRow
@@ -17,7 +17,7 @@ func _ready() -> void:
 	_start_intro_animation()
 
 func _apply_colors() -> void:
-	# Titel wit
+	
 	title_label.add_theme_color_override("font_color", Color(1, 1, 1))
 
 	var perfect_value: Label = perfect_row.get_node("Value")
@@ -40,7 +40,6 @@ func _apply_colors() -> void:
 	miss_value.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 	miss_row.get_node("Label").add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 
-	# Combo en accuracy wit
 	var combo_value: Label = combo_row.get_node("Value")
 	combo_value.add_theme_color_override("font_color", Color(1, 1, 1))
 	combo_row.get_node("Label").add_theme_color_override("font_color", Color(1, 1, 1))
@@ -82,7 +81,6 @@ func _start_intro_animation() -> void:
 	var t4 = tween.parallel().tween_property(accuracy_label, "modulate:a", 1.0, 0.5)
 	t4.set_delay(0.2)
 
-	# Grade slidet bijvoorbeeld van boven naar zijn plek
 	var grade_orig: Vector2 = grade_image.position
 	grade_image.position.y = grade_orig.y - 120.0
 	grade_image.modulate.a = 0.0
@@ -93,7 +91,6 @@ func _start_intro_animation() -> void:
 	t6.set_delay(0.1)
 
 
-# Bepaalt alleen de letter (X, SS, S, A, B, C, D)
 func _get_grade_letter(acc: float) -> String:
 	if acc >= 100.0:
 		return "X"
@@ -144,7 +141,6 @@ func set_results_from_judgement(judgement: Node) -> void:
 	if judgement == null:
 		return
 	
-	# expliciete types
 	var acc: float = 0.0
 	var perfect: int = 0
 	var great: int = 0
@@ -154,10 +150,9 @@ func set_results_from_judgement(judgement: Node) -> void:
 	var max_combo: int = 0
 	var max_possible_combo: int = 0
 	
-	# waarden uit de Judgement-node halen
 	acc = float(judgement.accuracy)
 	perfect = int(judgement.perfect_count)
-	great = int(judgement.great_count)	# neem aan dat deze bestaat in judgement.gd
+	great = int(judgement.great_count)
 	good = int(judgement.good_count)
 	ok = int(judgement.ok_count)
 	miss = int(judgement.miss_count)
@@ -173,10 +168,8 @@ func set_results_from_judgement(judgement: Node) -> void:
 	
 	accuracy_label.text = "%.2f%%" % acc
 
-	# Grade-image updaten op basis van accuracy
 	_update_grade(acc)
 
-	# Grade-letter ophalen voor logging
 	var grade_letter: String = _get_grade_letter(acc)
 
 	# Resultaat loggen naar txt-bestand
@@ -213,14 +206,11 @@ func _log_results_to_file(
 		else:
 			lvl = "UnknownLevel"
 
-	# Timestamp
-	var timestamp: String = Time.get_datetime_string_from_system(false, true) # lokaal, met spatie
+	var timestamp: String = Time.get_datetime_string_from_system(false, true)
 	var safe_timestamp: String = timestamp.replace(":", "-")
 
-	# Pad naar map waar de .exe staat
 	var exe_dir: String = OS.get_executable_path().get_base_dir()
 
-	# logs-submap naast de exe
 	var logs_dir_path: String = exe_dir.path_join("logs")
 
 	# map (recursief) aanmaken als hij nog niet bestaat
@@ -229,7 +219,7 @@ func _log_results_to_file(
 		push_error("Kon logs directory niet aanmaken: %s" % err)
 		return
 
-	# Bestandsnaam
+
 	var filename: String = "result_%s_%s.txt" % [lvl, safe_timestamp]
 	filename = filename.replace(" ", "_")
 	var full_path: String = logs_dir_path.path_join(filename)
