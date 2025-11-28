@@ -23,23 +23,32 @@ var max_possible_combo: int = 0	# wordt later van buitenaf gezet (bijv. door Son
 var combo_base_position: Vector2
 var judgement_base_position: Vector2
 
-
-
 @onready var judgement_label: Label = $JudgementLabel
 @onready var accuracy_label: Label = $AccuracyLabel
 @onready var combo_label: Label = $ComboLabel
+
+# klein label voor EARLY/LATE
+@onready var timing_label: Label = null
 
 # voor animatie van de judgement-tekst
 var judgement_tween: Tween = null
 # voor animatie van de combo-tekst
 var combo_tween: Tween = null
+# voor animatie van EARLY/LATE
+var timing_tween: Tween = null
+
+var timing_base_position: Vector2
+
+# laatste timing info
+var last_signed_time_diff: float = 0.0
+var last_has_timing_info: bool = false
 
 # Lane → action mapping (van links naar rechts)
 const LANE_ACTIONS: Array[String] = [
 	"Left",  # lane 0
 	"Down",  # lane 1
-	"Up",  # lane 2
-	"Right"   # lane 3
+	"Up",    # lane 2
+	"Right"  # lane 3
 ]
 
 # Sleep hier in de inspector je 4 Keylistener sprites in, in volgorde van links naar rechts
@@ -52,7 +61,6 @@ var lane_hold_notes: Array[Sprite2D] = []  # per lane de long note die nu wordt 
 func _ready() -> void:
 	_init_hit_lines()
 	
-	# long note hold-state per lane klaarzetten
 	lane_hold_notes.resize(LANE_ACTIONS.size())
 	for i in range(lane_hold_notes.size()):
 		lane_hold_notes[i] = null
@@ -63,6 +71,20 @@ func _ready() -> void:
 
 	judgement_base_position = judgement_label.position
 
+	# TimingLabel zoeken of aanmaken
+	if has_node("TimingLabel"):
+		timing_label = $TimingLabel
+	else:
+		timing_label = Label.new()
+		timing_label.name = "TimingLabel"
+		timing_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		timing_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		timing_label.add_theme_font_size_override("font_size", 18)
+		add_child(timing_label)
+
+	timing_base_position = judgement_base_position + Vector2(0, -48)
+	timing_label.position = timing_base_position
+	timing_label.visible = false
 
 
 func _init_hit_lines() -> void:
@@ -78,6 +100,7 @@ func _init_hit_lines() -> void:
 	if lane_hit_y.is_empty():
 		push_warning("Geen lane_hit_y ingesteld! Vul key_listener_paths in de Inspector.")
 
+
 func _process(delta: float) -> void:
 	_check_auto_misses()
 
@@ -90,6 +113,7 @@ func _input(event: InputEvent) -> void:
 			handle_hit_for_lane(lane_idx)
 			show_accuracy()
 			show_judgement(result)
+			_show_timing_label(result)
 		elif event.is_action_released(action_name):
 			_handle_release_for_lane(lane_idx)
 
@@ -97,6 +121,7 @@ func _input(event: InputEvent) -> void:
 func handle_hit_for_lane(lane_idx: int) -> void:
 	# Elke keypress telt als judgement attempt
 	total_judgements += 1
+	last_has_timing_info = false
 
 	if lane_idx < 0 or lane_idx >= lane_hit_y.size():
 		result = "MISS"
@@ -113,9 +138,6 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 
 	# afstand in pixels tussen note en HIT-LIJN (y van de keylistener voor deze lane)
 	var hit_y: float = lane_hit_y[lane_idx]
-	var dy: float = abs(note.global_position.y - hit_y)
-
-	# tijdverschil = afstand / snelheid (in seconden)
 	var scroll_velocity: float = note.scroll_velocity
 	if scroll_velocity <= 0.0:
 		result = "MISS"
@@ -123,8 +145,14 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 		print("Judgement lane", lane_idx, "→ MISS (scroll_velocity <= 0)")
 		return
 
-	var time_diff: float = dy / scroll_velocity
+	# signed: note_y - hit_y > 0 → note onder hitlijn = LATE, < 0 = EARLY
+	var signed_time_diff: float = (note.global_position.y - hit_y) / scroll_velocity
+	var time_diff: float = abs(signed_time_diff)
+
 	result = _apply_time_diff_and_update_stats(time_diff)
+
+	last_signed_time_diff = signed_time_diff
+	last_has_timing_info = true
 
 	var is_long: bool = note.is_in_group("long_notes")
 
@@ -148,9 +176,6 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 
 	print("Judgement lane", lane_idx, "→", result, " time_diff=", time_diff)
 
-
-	print("Judgement lane", lane_idx, "→", result, " time_diff=", time_diff)
-	
 
 func _handle_release_for_lane(lane_idx: int) -> void:
 	if lane_idx < 0 or lane_idx >= lane_hold_notes.size():
@@ -176,17 +201,21 @@ func _handle_release_for_lane(lane_idx: int) -> void:
 		lane_hold_notes[lane_idx] = null
 		return
 
-	var dy: float = abs(tail_sprite.global_position.y - hit_y)
 	var scroll_velocity: float = note.scroll_velocity
 	if scroll_velocity <= 0.0:
 		lane_hold_notes[lane_idx] = null
 		return
 
-	var time_diff: float = dy / scroll_velocity
+	# signed: tail_y - hit_y > 0 → tail onder lijn = LATE
+	var signed_time_diff: float = (tail_sprite.global_position.y - hit_y) / scroll_velocity
+	var time_diff: float = abs(signed_time_diff)
 
 	# elke release op een actieve long note = 1 judgement
 	total_judgements += 1
 	var tail_result := _apply_time_diff_and_update_stats(time_diff)
+
+	last_signed_time_diff = signed_time_diff
+	last_has_timing_info = true
 
 	if note.has_method("mark_tail_result"):
 		note.mark_tail_result(tail_result)
@@ -202,6 +231,7 @@ func _handle_release_for_lane(lane_idx: int) -> void:
 	print("Tail release lane", lane_idx, "→", tail_result, " time_diff=", time_diff)
 	show_accuracy()
 	show_judgement(tail_result)
+	_show_timing_label(tail_result)
 
 	# in alle gevallen is deze long note klaar voor deze lane
 	lane_hold_notes[lane_idx] = null
@@ -228,6 +258,7 @@ func _find_closest_note_in_lane(lane_idx: int) -> Sprite2D:
 
 	return best_note
 
+
 func _apply_time_diff_and_update_stats(time_diff: float) -> String:
 	if time_diff <= 0.035:
 		acc_score += 300
@@ -235,7 +266,7 @@ func _apply_time_diff_and_update_stats(time_diff: float) -> String:
 		perfect_count += 1
 		return "PERFECT"
 	elif time_diff <= 0.076:
-		acc_score += 250
+		acc_score += 225
 		hits += 1
 		great_count += 1
 		return "GREAT"
@@ -260,10 +291,10 @@ func _check_auto_misses() -> void:
 
 	for n in get_tree().get_nodes_in_group("notes"):
 		var note := n as Sprite2D
-		if note.is_in_group("long_notes") and note.get("head_judged"):
+		if note == null:
 			continue
 
-		if note == null:
+		if note.is_in_group("long_notes") and note.get("head_judged"):
 			continue
 
 		var note_lane = note.get("lane_index")
@@ -291,6 +322,7 @@ func _check_auto_misses() -> void:
 		total_judgements += 1
 		result = "MISS"
 		miss_count += 1
+		last_has_timing_info = false  # geen EARLY/LATE bij auto-miss
 		_on_miss()
 
 		if note.is_in_group("long_notes") and note.has_method("mark_head_result"):
@@ -303,13 +335,14 @@ func _check_auto_misses() -> void:
 		print("Auto-MISS voor lane", note.get("lane_index"))
 
 
-
 func _on_miss() -> void:
 	# eerst visueel de oude combo laten aftellen naar 0
 	if combo > 0:
 		_animate_combo_reset(combo)
 	combo = 0
-
+	last_has_timing_info = false
+	if timing_label != null:
+		timing_label.visible = false
 
 
 func show_accuracy() -> void:
@@ -337,6 +370,7 @@ func show_accuracy() -> void:
 		_update_accuracy_label_from_value(accuracy_display)
 	)
 
+
 func _update_accuracy_value(value: float) -> void:
 	accuracy_display = value
 	_update_accuracy_label_from_value(value)
@@ -350,15 +384,15 @@ func _update_accuracy_label_from_value(value: float) -> void:
 		accuracy_label.text = "%.2f%%" % value
 
 
-func show_judgement(result: String) -> void:
+func show_judgement(judgement_result: String) -> void:
 	# stop vorige animatie als die nog bezig is
 	if judgement_tween != null and judgement_tween.is_running():
 		judgement_tween.kill()
 		judgement_tween = null
 
-	judgement_label.text = result
+	judgement_label.text = judgement_result
 
-	match result:
+	match judgement_result:
 		"PERFECT":
 			judgement_label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
 		"GREAT":
@@ -380,14 +414,58 @@ func show_judgement(result: String) -> void:
 
 	var target_pos := judgement_base_position + Vector2(0, 6)
 
-	# eerst 0.1s NIETS doen (label blijft gewoon staan en volledig zichtbaar)
+	# klein beetje tijd laten staan en dan faden + zakken
 	judgement_tween.tween_interval(0.1)
-
-	# daarna in 0.25s: naar beneden bewegen...
 	judgement_tween.tween_property(judgement_label, "position", target_pos, 0.5)
-	# ...en tegelijk uitfaden
 	judgement_tween.parallel().tween_property(judgement_label, "modulate:a", 0.0, 0.5)
 
+
+func _show_timing_label(judgement_result: String) -> void:
+	if timing_label == null:
+		return
+
+	# Geen EARLY/LATE bij PERFECT, MISS of als we geen signed_time_diff hebben
+	if judgement_result == "PERFECT" or judgement_result == "MISS" or not last_has_timing_info:
+		timing_label.visible = false
+		return
+
+	var text: String = ""
+	if last_signed_time_diff > 0.0:
+		text = "LATE"
+	elif last_signed_time_diff < 0.0:
+		text = "EARLY"
+	else:
+		timing_label.visible = false
+		return
+
+	timing_label.text = text
+
+	# zelfde kleur als judgement
+	var color := judgement_label.get_theme_color("font_color", "Label")
+	timing_label.add_theme_color_override("font_color", color)
+
+	# stop vorige animatie
+	if timing_tween != null and timing_tween.is_running():
+		timing_tween.kill()
+		timing_tween = null
+
+	# positie boven judgement
+	timing_label.position = timing_base_position
+	timing_label.modulate.a = 1.0
+	timing_label.visible = true
+
+	timing_tween = get_tree().create_tween()
+	timing_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	# zelfde animatie als judgement
+	var target_pos := timing_base_position + Vector2(0, 6)
+
+	timing_tween.tween_interval(0.1)
+	timing_tween.tween_property(timing_label, "position", target_pos, 0.5)
+	timing_tween.parallel().tween_property(timing_label, "modulate:a", 0.0, 0.5)
+
+	timing_tween.finished.connect(func():
+		timing_label.visible = false)
 
 
 
@@ -455,11 +533,13 @@ func _update_combo_label_value(value: float) -> void:
 	var v := int(round(value))
 	combo_label.text = str(v) + "x"
 
+
 func set_ui_visible(visible: bool) -> void:
-	# Pas deze paths aan naar jouw echte nodes
 	if has_node("ComboLabel"):
 		$ComboLabel.visible = visible
 	if has_node("AccuracyLabel"):
 		$AccuracyLabel.visible = visible
 	if has_node("JudgementLabel"):
 		$JudgementLabel.visible = visible
+	if timing_label != null:
+		timing_label.visible = visible
