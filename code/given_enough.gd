@@ -24,4 +24,3 @@ func _on_GE_Button_Exited():
 	if pressed_state == false:
 		$Low_Taper_Fade_GE.play("hover_out")
 		$GIVEN_ENOUGH_Preview.stop()
-		print('test')
