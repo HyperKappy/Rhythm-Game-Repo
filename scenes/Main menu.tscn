@@ -31,11 +31,11 @@ offset_top = 674.0
 offset_right = 2076.0
 offset_bottom = 961.0
 theme_override_font_sizes/font_size = 40
-text = "Graphic Design is not definitive
+text = "All design and gameplay subject to change
 
 Please look at the Settings tab before starting
 
-To quit press the escape button"
+To quit or exit a level, press the escape button"
 
 [node name="TextureButton" type="TextureButton" parent="."]
 offset_left = 752.0
