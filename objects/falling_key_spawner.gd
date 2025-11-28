@@ -3,13 +3,13 @@ extends Node2D
 @export var falling_key_scene: PackedScene = preload("res://objects/falling_key.tscn")
 @export var long_note_scene: PackedScene = preload("res://objects/long_note.tscn")
 
-# Sleep hier in de editor je Keylistener-nodes in volgorde van links naar rechts
+
 @export var key_listener_paths: Array[NodePath]
 
-# Hoeveel pixels bóven de bovenkant van het scherm de notes moeten spawnen
+
 @export var spawn_margin: float = 50.0
 
-# Schaal van de notes (zelfde als keylistener.webp)
+
 @export var note_scale: Vector2 = Vector2(1.4, 1.4)
 
 # Willekeurige auto-spawn interval (in seconden)
@@ -71,11 +71,11 @@ func _init_auto_spawn_timer() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# E: handmatig één note spawnen (zoals je al had)
+	
 	if event.is_action_pressed("spawn_note"):
 		spawn_random_note()
 
-	# T: auto-spawn togglen
+	
 	if event.is_action_pressed("toggle_auto_spawn"):
 		_toggle_auto_spawn()
 
@@ -161,7 +161,7 @@ func spawn_long_note(lane_index: int, duration_ms: float) -> void:
 	
 	note.global_position = Vector2(x, spawn_y)
 	note.scale = note_scale
-	note.rotation = 0.0	# GEEN lane-rotatie voor long notes
+	note.rotation = 0.0
 	
 	note.lane_index = lane_index
 	
