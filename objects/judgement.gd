@@ -1,15 +1,14 @@
 extends Sprite2D
 
 var accuracy: float = 0.0
-var hits: int = 0               # aantal 300/100/50 (geen MISS)
-var acc_score: int = 0          # totale score
+var hits: int = 0               
+var acc_score: int = 0          
 var result: String = ""
 var accuracy_display: float = 100.0
 var accuracy_tween: Tween = null
 
 var total_judgements: int = 0   # elke keypress OF auto-miss telt als judgement
 
-# afzonderlijke tellers per judgement type
 var perfect_count: int = 0
 var great_count: int = 0
 var good_count: int = 0
@@ -18,7 +17,7 @@ var miss_count: int = 0
 
 var combo: int = 0
 var max_combo: int = 0
-var max_possible_combo: int = 0	# wordt later van buitenaf gezet (bijv. door SongPlayer)
+var max_possible_combo: int = 0	
 
 var combo_base_position: Vector2
 var judgement_base_position: Vector2
@@ -30,11 +29,9 @@ var judgement_base_position: Vector2
 # klein label voor EARLY/LATE
 @onready var timing_label: Label = null
 
-# voor animatie van de judgement-tekst
+# voor animaties
 var judgement_tween: Tween = null
-# voor animatie van de combo-tekst
 var combo_tween: Tween = null
-# voor animatie van EARLY/LATE
 var timing_tween: Tween = null
 
 var timing_base_position: Vector2
@@ -43,7 +40,7 @@ var timing_base_position: Vector2
 var last_signed_time_diff: float = 0.0
 var last_has_timing_info: bool = false
 
-# Lane → action mapping (van links naar rechts)
+# Lane -> action mapping (van links naar rechts)
 const LANE_ACTIONS: Array[String] = [
 	"Left",  # lane 0
 	"Down",  # lane 1
@@ -51,7 +48,6 @@ const LANE_ACTIONS: Array[String] = [
 	"Right"  # lane 3
 ]
 
-# Sleep hier in de inspector je 4 Keylistener sprites in, in volgorde van links naar rechts
 @export var key_listener_paths: Array[NodePath]
 
 var lane_hit_y: Array[float] = []  # per lane de Y-positie waarop je wilt hitten
@@ -71,7 +67,6 @@ func _ready() -> void:
 
 	judgement_base_position = judgement_label.position
 
-	# TimingLabel zoeken of aanmaken
 	if has_node("TimingLabel"):
 		timing_label = $TimingLabel
 	else:
@@ -145,7 +140,7 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 		print("Judgement lane", lane_idx, "→ MISS (scroll_velocity <= 0)")
 		return
 
-	# signed: note_y - hit_y > 0 → note onder hitlijn = LATE, < 0 = EARLY
+	# signed: note_y - hit_y > 0 -> note onder hitlijn = LATE, < 0 = EARLY
 	var signed_time_diff: float = (note.global_position.y - hit_y) / scroll_velocity
 	var time_diff: float = abs(signed_time_diff)
 
@@ -168,7 +163,6 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 		_show_combo()
 
 		if is_long:
-			# head goed → vanaf nu moet je vasthouden tot de tail
 			lane_hold_notes[lane_idx] = note
 		else:
 			# normale note
@@ -206,7 +200,7 @@ func _handle_release_for_lane(lane_idx: int) -> void:
 		lane_hold_notes[lane_idx] = null
 		return
 
-	# signed: tail_y - hit_y > 0 → tail onder lijn = LATE
+	# signed: tail_y - hit_y > 0 -> tail onder lijn = LATE
 	var signed_time_diff: float = (tail_sprite.global_position.y - hit_y) / scroll_velocity
 	var time_diff: float = abs(signed_time_diff)
 
@@ -286,7 +280,7 @@ func _apply_time_diff_and_update_stats(time_diff: float) -> String:
 
 
 func _check_auto_misses() -> void:
-	# Auto-MISS voor notes die te laat zijn voor een 50
+	# Auto-MISS voor notes die te laat zijn voor een OK
 	var notes_to_miss: Array = []
 
 	for n in get_tree().get_nodes_in_group("notes"):
@@ -312,9 +306,9 @@ func _check_auto_misses() -> void:
 
 		# signed distance: positief = note is onder de hitlijn
 		var dy_signed: float = note.global_position.y - hit_y
-		var max_distance: float = scroll_velocity * 0.2  # zelfde 0.2s als 50-window
+		var max_distance: float = scroll_velocity * 0.2 
 
-		# Als de note verder dan 50-window onder de hitlijn is → auto MISS
+		
 		if dy_signed > max_distance:
 			notes_to_miss.append(note)
 
@@ -322,7 +316,7 @@ func _check_auto_misses() -> void:
 		total_judgements += 1
 		result = "MISS"
 		miss_count += 1
-		last_has_timing_info = false  # geen EARLY/LATE bij auto-miss
+		last_has_timing_info = false 
 		_on_miss()
 
 		if note.is_in_group("long_notes") and note.has_method("mark_head_result"):
@@ -336,7 +330,6 @@ func _check_auto_misses() -> void:
 
 
 func _on_miss() -> void:
-	# eerst visueel de oude combo laten aftellen naar 0
 	if combo > 0:
 		_animate_combo_reset(combo)
 	combo = 0
@@ -346,7 +339,6 @@ func _on_miss() -> void:
 
 
 func show_accuracy() -> void:
-	# herbereken de echte accuracy op basis van score en judgements
 	if total_judgements > 0:
 		accuracy = float(acc_score) / float(total_judgements * 300) * 100.0
 	else:
@@ -470,7 +462,7 @@ func _show_timing_label(judgement_result: String) -> void:
 
 
 func _show_combo() -> void:
-	# combo tonen vanaf 1x (dus 1x, 2x, 3x, ...)
+	# combo tonen vanaf 1x
 	if combo <= 0:
 		combo_label.visible = false
 		return
