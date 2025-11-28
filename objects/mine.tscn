@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ylirs8airt7"]
+
+[ext_resource type="Texture2D" uid="uid://bwqkmcjpe20br" path="res://Resources/art/mine.png" id="1_ny6u0"]
+[ext_resource type="Script" uid="uid://bdnffgrvev2l1" path="res://objects/mine.gd" id="2_iq137"]
+
+[node name="Mine" type="Sprite2D"]
+texture = ExtResource("1_ny6u0")
+script = ExtResource("2_iq137")
+scroll_velocity = 1000.0

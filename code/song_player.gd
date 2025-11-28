@@ -3,8 +3,13 @@ extends Node
 @export var chart_path: String = ""
 @export var spawn_ahead_ms: float = 0.0   # hoe ver van tevoren je notes wilt zien vallen
 
+@export var mines_chart_path: String = ""
+
 var notes: Array = []
 var note_index: int = 0
+
+var mines: Array = []
+var mine_index: int = 0
 
 var intro_label: Label = null
 var level_started: bool = false
@@ -23,6 +28,7 @@ var results_scene: PackedScene = preload("res://levels/results_screen.tscn")
 
 func _ready() -> void:
 	_load_chart()
+	_load_mines_chart()
 	_setup_audio()
 
 	_show_ready_go_intro()
@@ -61,6 +67,21 @@ func _process(delta: float) -> void:
 		else:
 			break
 
+	if not mines.is_empty():
+			while mine_index < mines.size():
+				var mine_data: Dictionary = mines[mine_index]
+				var mine_time_ms: float = float(mine_data.get("time", 0.0))
+
+				if mine_time_ms <= song_time_ms + spawn_ahead_ms:
+					var lane_1_based_mine: int = int(mine_data.get("lane", 1))
+					var mine_lane_index: int = lane_1_based_mine - 1  # 1..4 -> 0..3
+
+					if spawner.has_method("spawn_mine_in_lane"):
+						spawner.spawn_mine_in_lane(mine_lane_index)
+
+					mine_index += 1
+				else:
+					break
 
 func _load_chart() -> void:
 	var file: FileAccess = FileAccess.open(chart_path, FileAccess.READ)
@@ -87,6 +108,32 @@ func _load_chart() -> void:
 			audio_stream = stream
 		else:
 			push_warning("Kon audio niet laden uit chart: " + audio_path)
+
+func _load_mines_chart() -> void:
+	if mines_chart_path == "":
+		return
+
+	var file: FileAccess = FileAccess.open(mines_chart_path, FileAccess.READ)
+	if file == null:
+		push_warning("Kan mines-chart niet openen: " + mines_chart_path)
+		return
+
+	var text: String = file.get_as_text()
+	var data_var: Variant = JSON.parse_string(text)
+	if typeof(data_var) != TYPE_DICTIONARY:
+		push_warning("Ongeldige mines JSON: " + mines_chart_path)
+		return
+
+	var data: Dictionary = data_var as Dictionary
+
+	if data.has("mines"):
+		mines = data.get("mines", [])
+	else:
+		mines = data.get("notes", [])
+
+	mine_index = 0
+
+	print("Mines geladen:", mines.size(), "uit", mines_chart_path)
 
 
 func _setup_audio() -> void:

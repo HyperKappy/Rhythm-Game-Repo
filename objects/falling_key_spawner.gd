@@ -2,6 +2,7 @@ extends Node2D
 
 @export var falling_key_scene: PackedScene = preload("res://objects/falling_key.tscn")
 @export var long_note_scene: PackedScene = preload("res://objects/long_note.tscn")
+@export var mine_scene: PackedScene = preload("res://objects/mine.tscn")
 
 
 @export var key_listener_paths: Array[NodePath]
@@ -169,3 +170,29 @@ func spawn_long_note(lane_index: int, duration_ms: float) -> void:
 		note.setup(duration_ms)
 	
 	get_parent().add_child(note)
+	
+func spawn_mine_in_lane(lane_index: int) -> void:
+	if mine_scene == null:
+		push_warning("mine_scene niet ingesteld!")
+		return
+
+	if lane_index < 0 or lane_index >= lane_x_positions.size():
+		push_warning("Ongeldige lane_index voor mine: " + str(lane_index))
+		return
+
+	var mine := mine_scene.instantiate() as Sprite2D
+	if mine == null:
+		push_warning("mine_scene is geen Sprite2D.")
+		return
+
+	var x: float = lane_x_positions[lane_index]
+	var rot: float = lane_rotations[lane_index]
+
+	mine.global_position = Vector2(x, spawn_y)
+	mine.scale = note_scale
+	mine.global_rotation = rot
+
+
+	get_parent().add_child(mine)
+
+	print("Mine gespawned in lane", lane_index, "op x =", x, "y =", spawn_y)

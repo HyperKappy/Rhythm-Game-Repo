@@ -9,6 +9,7 @@
 script = ExtResource("1_mnduo")
 chart_path = "res://charts/limbo.json"
 spawn_ahead_ms = 1057.0
+mines_chart_path = "res://charts/limbo_mines.json"
 use_chart_audio_path = false
 audio_stream = ExtResource("2_mnduo")
 
