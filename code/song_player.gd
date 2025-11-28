@@ -217,3 +217,7 @@ func _on_intro_finished() -> void:
 
 func _start_level() -> void:
 	audio_player.play()
+	
+func _input(event):
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().change_scene_to_file("res://scenes/Main menu.tscn")
