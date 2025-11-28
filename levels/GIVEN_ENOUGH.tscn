@@ -13,7 +13,7 @@ use_chart_audio_path = false
 audio_stream = ExtResource("2_r3hgu")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -15.928
+volume_db = -20.0
 
 [node name="GameLevel" parent="." instance=ExtResource("3_n1ckq")]
 

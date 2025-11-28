@@ -371,9 +371,11 @@ text = "GIVEN ENOUGH - Nessa Barrett"
 
 [node name="Select_Sound" type="AudioStreamPlayer" parent="GIVEN_ENOUGH"]
 stream = ExtResource("7_14uf1")
+volume_db = -30.0
 
 [node name="GIVEN_ENOUGH_Preview" type="AudioStreamPlayer" parent="GIVEN_ENOUGH"]
 stream = ExtResource("10_glc18")
+volume_db = -30.0
 
 [node name="Low_Taper_Fade_GE" type="AnimationPlayer" parent="GIVEN_ENOUGH"]
 libraries = {
@@ -402,9 +404,11 @@ text = "Guess - Pou"
 
 [node name="Select_Sound" type="AudioStreamPlayer" parent="Pou"]
 stream = ExtResource("7_14uf1")
+volume_db = -30.0
 
 [node name="Guess_Preview" type="AudioStreamPlayer" parent="Pou"]
 stream = ExtResource("7_63rwx")
+volume_db = -30.0
 
 [node name="Low_Taper_Fade_GU" type="AnimationPlayer" parent="Pou"]
 root_node = NodePath("../..")
