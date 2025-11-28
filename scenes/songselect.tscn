@@ -570,4 +570,5 @@ libraries = {
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
 [connection signal="mouse_entered" from="Isolation" to="Isolation" method="_on_Limbo_Button_Hovered"]
 [connection signal="mouse_exited" from="Isolation" to="Isolation" method="_on_Limbo_Button_Exited"]
+[connection signal="pressed" from="Isolation" to="." method="_on_Limbo_Pressed_connect"]
 [connection signal="pressed" from="Isolation" to="Isolation" method="_on_Limbo_Pressed"]

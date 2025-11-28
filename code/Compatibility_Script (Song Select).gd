@@ -12,3 +12,7 @@ func _on_Pou_Pressed_connect() -> void:
 func _on_GE_Pressed_connect() -> void:
 	await get_tree().create_timer(1.0).timeout
 	$Fade_All.play("Fade_All")
+
+func _on_Limbo_Pressed_connect() -> void:
+	await get_tree().create_timer(1.0).timeout
+	$Fade_All.play("Fade_All")
