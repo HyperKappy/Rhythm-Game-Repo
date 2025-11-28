@@ -8,7 +8,7 @@
 [node name="SongPlayer" type="Node"]
 script = ExtResource("1_rt7qy")
 chart_path = "res://charts/guess.json"
-spawn_ahead_ms = 704.667
+spawn_ahead_ms = 1057.0
 use_chart_audio_path = false
 audio_stream = ExtResource("2_afw1l")
 
