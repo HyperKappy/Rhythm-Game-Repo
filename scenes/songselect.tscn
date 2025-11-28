@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=37 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -11,7 +11,10 @@
 [ext_resource type="Script" uid="uid://dn8ct6gjnwhrx" path="res://code/given_enough.gd" id="8_glc18"]
 [ext_resource type="AudioStream" uid="uid://dkxya64ogxo0g" path="res://Resources/audio/GIVEN_ENOUGH_Preview.mp3" id="10_glc18"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="12_gcj5u"]
+[ext_resource type="Texture2D" uid="uid://blqltsbcho20k" path="res://Resources/images/limbo_icon.jpg" id="13_gcj5u"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="13_ufb8k"]
+[ext_resource type="Script" uid="uid://coyv5jbp8tcwl" path="res://Limbo.gd" id="14_efvnr"]
+[ext_resource type="AudioStream" uid="uid://c4axmn3jwyo2g" path="res://Resources/audio/Limbo_Preview.mp3" id="14_ufb8k"]
 
 [sub_resource type="Animation" id="Animation_gcj5u"]
 resource_name = "Center_On_Press"
@@ -308,6 +311,101 @@ _data = {
 &"RESET": SubResource("Animation_vjksw")
 }
 
+[sub_resource type="Animation" id="Animation_do18t"]
+resource_name = "Center_On_Press"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(575, 420), Vector2(840, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_xtfyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(575, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_smsft"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_3be14"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqaag"]
+_data = {
+&"Center_On_Press": SubResource("Animation_do18t"),
+&"RESET": SubResource("Animation_xtfyt"),
+&"hover_in": SubResource("Animation_smsft"),
+&"hover_out": SubResource("Animation_3be14")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_il4ce")
 
@@ -429,6 +527,38 @@ offset_bottom = 1125.0
 texture_normal = ExtResource("12_gcj5u")
 script = ExtResource("13_ufb8k")
 
+[node name="Isolation" type="TextureButton" parent="."]
+offset_left = 575.0
+offset_top = 420.0
+offset_right = 815.0
+offset_bottom = 660.0
+pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("13_gcj5u")
+script = ExtResource("14_efvnr")
+
+[node name="Limbo_Preview" type="AudioStreamPlayer" parent="Isolation"]
+stream = ExtResource("14_ufb8k")
+
+[node name="Song_Name_5" type="Label" parent="Isolation"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 250.0
+offset_right = 239.0
+offset_bottom = 278.0
+pivot_offset = Vector2(55, 10)
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 20
+text = "Isolation - Nighthawk22"
+
+[node name="Select_Sound" type="AudioStreamPlayer" parent="Isolation"]
+stream = ExtResource("7_14uf1")
+volume_db = -30.0
+
+[node name="Low_Taper_Fade_LI" type="AnimationPlayer" parent="Isolation"]
+libraries = {
+&"": SubResource("AnimationLibrary_hqaag")
+}
+
 [connection signal="mouse_entered" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
 [connection signal="mouse_exited" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
 [connection signal="pressed" from="GIVEN_ENOUGH" to="." method="_on_GE_Pressed_connect"]
@@ -438,3 +568,6 @@ script = ExtResource("13_ufb8k")
 [connection signal="pressed" from="Pou" to="." method="_on_Pou_Pressed_connect"]
 [connection signal="pressed" from="Pou" to="Pou" method="_on_Pou_Pressed"]
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
+[connection signal="mouse_entered" from="Isolation" to="Isolation" method="_on_Limbo_Button_Hovered"]
+[connection signal="mouse_exited" from="Isolation" to="Isolation" method="_on_Limbo_Button_Exited"]
+[connection signal="pressed" from="Isolation" to="Isolation" method="_on_Limbo_Pressed"]
