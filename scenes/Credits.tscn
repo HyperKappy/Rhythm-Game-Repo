@@ -6,14 +6,12 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 242.0
-offset_top = 146.0
-offset_right = 1729.0
-offset_bottom = 839.0
+offset_left = 232.0
+offset_top = 184.0
+offset_right = 1719.0
+offset_bottom = 877.0
 theme_override_font_sizes/font_size = 40
 text = "Credits:
-
-Boss battle icon: Geometry Dash
 
 Guess mp3 and background: Pou
 
