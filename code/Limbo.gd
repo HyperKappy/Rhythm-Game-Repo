@@ -11,7 +11,7 @@ func _on_Limbo_Pressed():
 	$Limbo_Preview.stop()
 	pressed_state = true
 	await get_tree().create_timer(2.5).timeout
-	get_tree().change_scene_to_file("res://levels/Limbo.tscn")
+	get_tree().change_scene_to_file("res://levels/limbo.tscn")
 
 #Fade animations and previews are played by this
 func _on_Limbo_Button_Hovered():
