@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var scroll_velocity: float = 1500  # pixels per seconde
+@export var scroll_velocity: float = 1000  # pixels per seconde
 @export var lane_index: int = 0             # wordt door de spawner gezet
 
 func _ready() -> void:

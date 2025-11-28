@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var scroll_velocity: float = 1500.0
+@export var scroll_velocity: float = 1000.0
 @export var lane_index: int = 0
 
 @export var body_width_factor: float = 1.0	# 1.0 = volle breedte
