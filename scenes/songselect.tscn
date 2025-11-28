@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="12_gcj5u"]
 [ext_resource type="Texture2D" uid="uid://blqltsbcho20k" path="res://Resources/images/limbo_icon.jpg" id="13_gcj5u"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="13_ufb8k"]
-[ext_resource type="Script" uid="uid://coyv5jbp8tcwl" path="res://Limbo.gd" id="14_efvnr"]
+[ext_resource type="Script" path="res://Limbo.gd" id="14_efvnr"]
 [ext_resource type="AudioStream" uid="uid://c4axmn3jwyo2g" path="res://Resources/audio/Limbo_Preview.mp3" id="14_ufb8k"]
 
 [sub_resource type="Animation" id="Animation_gcj5u"]
@@ -538,6 +538,7 @@ script = ExtResource("14_efvnr")
 
 [node name="Limbo_Preview" type="AudioStreamPlayer" parent="Isolation"]
 stream = ExtResource("14_ufb8k")
+volume_db = -25.0
 
 [node name="Song_Name_5" type="Label" parent="Isolation"]
 layout_mode = 0
