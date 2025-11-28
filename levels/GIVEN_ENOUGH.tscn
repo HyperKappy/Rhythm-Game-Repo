@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://qao0to7yamhg"]
 
-[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://scripts/song_player.gd" id="1_r3hgu"]
-[ext_resource type="AudioStream" uid="uid://ke7fp5tusjq6" path="res://audio/Given_Enough.mp3" id="2_r3hgu"]
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_r3hgu"]
+[ext_resource type="AudioStream" uid="uid://ke7fp5tusjq6" path="res://Resources/audio/Given_Enough.mp3" id="2_r3hgu"]
 [ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_n1ckq"]
-[ext_resource type="Texture2D" uid="uid://cg6xyvucjakig" path="res://art/GIVEN_ENOUGH_Background.png" id="4_r3hgu"]
+[ext_resource type="Texture2D" uid="uid://cg6xyvucjakig" path="res://Resources/art/GIVEN_ENOUGH_Background.png" id="4_r3hgu"]
 
 [node name="SongPlayer" type="Node"]
 script = ExtResource("1_r3hgu")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy8njceqypwj5"]
 
-[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://scripts/song_player.gd" id="1_rt7qy"]
-[ext_resource type="AudioStream" uid="uid://chihkmmqnr1tf" path="res://audio/guess.mp3" id="2_afw1l"]
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_rt7qy"]
+[ext_resource type="AudioStream" uid="uid://chihkmmqnr1tf" path="res://Resources/audio/guess.mp3" id="2_afw1l"]
 [ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_vbbpw"]
-[ext_resource type="Texture2D" uid="uid://c5x2ojl5yw75p" path="res://art/Guess_Background.png" id="4_afw1l"]
+[ext_resource type="Texture2D" uid="uid://c5x2ojl5yw75p" path="res://Resources/art/Guess_Background.png" id="4_afw1l"]
 
 [node name="SongPlayer" type="Node"]
 script = ExtResource("1_rt7qy")

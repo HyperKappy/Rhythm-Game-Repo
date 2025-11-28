@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbqhupyrg7ypj"
-path="res://.godot/imported/note-holdhitobject-1.png-0063ee0cf8a2a03be5b62b2a40de2345.ctex"
+uid="uid://b1bhvwwifa3cg"
+path="res://.godot/imported/falling_key_old.webp-595ae78f13f12c1f332ed0b99c29f408.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/note-holdhitobject-1.png"
-dest_files=["res://.godot/imported/note-holdhitobject-1.png-0063ee0cf8a2a03be5b62b2a40de2345.ctex"]
+source_file="res://Resources/art/falling_key_old.webp"
+dest_files=["res://.godot/imported/falling_key_old.webp-595ae78f13f12c1f332ed0b99c29f408.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl7abm7mlfbo3"
-path="res://.godot/imported/note-holdhitobject-a.png-7f28b7b0c43056af6fbcdd7291ee81d8.ctex"
+uid="uid://5dcukvlp0afe"
+path="res://.godot/imported/stage_background.png-5f1797959d7e7f623ec76c4d39f2f2f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/note-holdhitobject-a.png"
-dest_files=["res://.godot/imported/note-holdhitobject-a.png-7f28b7b0c43056af6fbcdd7291ee81d8.ctex"]
+source_file="res://Resources/art/stage_background.png"
+dest_files=["res://.godot/imported/stage_background.png-5f1797959d7e7f623ec76c4d39f2f2f6.ctex"]
 
 [params]
 

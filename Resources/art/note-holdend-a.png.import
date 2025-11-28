@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1bhvwwifa3cg"
-path="res://.godot/imported/falling_key_old.webp-78af84932f073c9604caac363014f985.ctex"
+uid="uid://dksm7ard62dne"
+path="res://.godot/imported/note-holdend-a.png-35f1014e298b3d04bf25cb99dd38b217.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/falling_key_old.webp"
-dest_files=["res://.godot/imported/falling_key_old.webp-78af84932f073c9604caac363014f985.ctex"]
+source_file="res://Resources/art/note-holdend-a.png"
+dest_files=["res://.godot/imported/note-holdend-a.png-35f1014e298b3d04bf25cb99dd38b217.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2mpo6a2mpgy"]
 
-[ext_resource type="Script" uid="uid://bpga4casjmfom" path="res://objects/results_screen.gd" id="1"]
+[ext_resource type="Script" uid="uid://bpga4casjmfom" path="res://code/results_screen.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="2_8ysej"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="3_ne1ru"]
 

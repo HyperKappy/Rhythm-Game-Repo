@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5dcukvlp0afe"
-path="res://.godot/imported/stage_background.png-6f8f4856b55303258cd23c09bbaa8173.ctex"
+uid="uid://cg6xyvucjakig"
+path="res://.godot/imported/GIVEN_ENOUGH_Background.png-71e102cd424df8999d9cee802ae09d7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/stage_background.png"
-dest_files=["res://.godot/imported/stage_background.png-6f8f4856b55303258cd23c09bbaa8173.ctex"]
+source_file="res://Resources/art/GIVEN_ENOUGH_Background.png"
+dest_files=["res://.godot/imported/GIVEN_ENOUGH_Background.png-71e102cd424df8999d9cee802ae09d7f.ctex"]
 
 [params]
 

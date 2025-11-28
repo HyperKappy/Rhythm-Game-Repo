@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dksm7ard62dne"
-path="res://.godot/imported/note-holdend-a.png-ffe091f34d3a38e55112a381a1afd517.ctex"
+uid="uid://ck7ie7t7eamll"
+path="res://.godot/imported/note-holdbody-1.png-0a883530f2ea0351af8f341795a57497.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/note-holdend-a.png"
-dest_files=["res://.godot/imported/note-holdend-a.png-ffe091f34d3a38e55112a381a1afd517.ctex"]
+source_file="res://Resources/art/note-holdbody-1.png"
+dest_files=["res://.godot/imported/note-holdbody-1.png-0a883530f2ea0351af8f341795a57497.ctex"]
 
 [params]
 

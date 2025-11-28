@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5x2ojl5yw75p"
-path="res://.godot/imported/Guess_Background.png-86569d54f3c31697d50a80160b85fbd9.ctex"
+uid="uid://cqkpw7pebjmil"
+path="res://.godot/imported/A.png-6f2ab8a781f71939993349c285e0f3d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Guess_Background.png"
-dest_files=["res://.godot/imported/Guess_Background.png-86569d54f3c31697d50a80160b85fbd9.ctex"]
+source_file="res://Resources/art/A.png"
+dest_files=["res://.godot/imported/A.png-6f2ab8a781f71939993349c285e0f3d9.ctex"]
 
 [params]
 
