@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqkas2gwcow6i"]
+[gd_scene load_steps=5 format=3 uid="uid://bqkas2gwcow6i"]
 
 [ext_resource type="PackedScene" uid="uid://c2duvcd5xtvv2" path="res://scenes/Should_Never_Be_Visible.tscn" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://coaw7xptpkxkq" path="res://code/audio_slider.gd" id="1_f4mfi"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="2_r6d6q"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="3_6wm04"]
 
@@ -16,11 +17,43 @@ offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 124.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 30
+text = "Volume"
+
+[node name="AudioSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004
+anchor_top = 0.059000004
+anchor_right = 0.004
+anchor_bottom = 0.059000004
+offset_left = 806.32
+offset_top = -11.720005
+offset_right = 1176.32
+offset_bottom = 36.279995
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_f4mfi")
+bus_name = "Master"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 3.0
-offset_bottom = 524.0
+offset_left = 7.0
+offset_top = -146.0
+offset_right = 81.0
+offset_bottom = 622.0
 theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Settings:"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
@@ -45,15 +78,6 @@ action_name = "Right"
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 214.0
-offset_top = -170.0
-offset_right = 803.0
-offset_bottom = -60.0
-theme_override_font_sizes/font_size = 80
-text = "Keybind editor:"
-
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = -425.0
@@ -63,4 +87,5 @@ offset_bottom = 830.0
 texture_normal = ExtResource("2_r6d6q")
 script = ExtResource("3_6wm04")
 
+[connection signal="value_changed" from="AudioSlider" to="AudioSlider" method="_on_value_changed"]
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
