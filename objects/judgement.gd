@@ -124,6 +124,7 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 
 	if lane_idx < 0 or lane_idx >= lane_hit_y.size():
 		result = "MISS"
+		miss_count += 1
 		_on_miss()
 		print("Judgement lane", lane_idx, "→ MISS (lane buiten bereik)")
 		return true
@@ -131,6 +132,7 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 	var note := _find_closest_note_in_lane(lane_idx)
 	if note == null:
 		result = "MISS"
+		miss_count += 1
 		_on_miss()
 		print("Judgement lane", lane_idx, "→ MISS (geen note in lane)")
 		return true
