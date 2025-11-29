@@ -102,16 +102,23 @@ func _input(event: InputEvent) -> void:
 		var action_name := LANE_ACTIONS[lane_idx]
 
 		if event.is_action_pressed(action_name):
-			handle_hit_for_lane(lane_idx)
-			show_accuracy()
-			show_judgement(result)
-			_show_timing_label(result)
+			var judged := handle_hit_for_lane(lane_idx)
+			if judged:
+				show_accuracy()
+				show_judgement(result)
+				_show_timing_label(result)
 		elif event.is_action_released(action_name):
 			_handle_release_for_lane(lane_idx)
 
 
-func handle_hit_for_lane(lane_idx: int) -> void:
-	# Elke keypress telt als judgement attempt
+
+func handle_hit_for_lane(lane_idx: int) -> bool:
+	var any_notes := not get_tree().get_nodes_in_group("notes").is_empty()
+	var any_mines := not get_tree().get_nodes_in_group("mines").is_empty()
+
+	if not any_notes and not any_mines:
+		return false
+
 	total_judgements += 1
 	last_has_timing_info = false
 
@@ -119,15 +126,14 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 		result = "MISS"
 		_on_miss()
 		print("Judgement lane", lane_idx, "→ MISS (lane buiten bereik)")
-		return
+		return true
 
 	var note := _find_closest_note_in_lane(lane_idx)
 	if note == null:
 		result = "MISS"
 		_on_miss()
 		print("Judgement lane", lane_idx, "→ MISS (geen note in lane)")
-		return
-
+		return true
 
 	var hit_y: float = lane_hit_y[lane_idx]
 	var scroll_velocity: float = note.scroll_velocity
@@ -135,9 +141,8 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 		result = "MISS"
 		_on_miss()
 		print("Judgement lane", lane_idx, "→ MISS (scroll_velocity <= 0)")
-		return
+		return true
 
-	# signed: note_y - hit_y > 0 -> note onder hitlijn = LATE, < 0 = EARLY
 	var signed_time_diff: float = (note.global_position.y - hit_y) / scroll_velocity
 	var time_diff: float = abs(signed_time_diff)
 
@@ -162,10 +167,11 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 		if is_long:
 			lane_hold_notes[lane_idx] = note
 		else:
-			# normale note
 			note.queue_free()
 
 	print("Judgement lane", lane_idx, "→", result, " time_diff=", time_diff)
+	return true
+
 
 
 func _handle_release_for_lane(lane_idx: int) -> void:

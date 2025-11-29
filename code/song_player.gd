@@ -17,6 +17,12 @@ var intro_label: Label = null
 var level_started: bool = false
 var intro_overlay: Control = null
 
+var first_note_time: float = -1
+var warn_shown: bool = false
+
+@onready var warning_flash := $GameLevel/WarningFlash
+
+
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer as AudioStreamPlayer
 @onready var spawner: Node = $GameLevel/falling_key_spawner
 @onready var judgement = $GameLevel/Judgement
@@ -34,7 +40,8 @@ func _ready() -> void:
 	_setup_audio()
 
 	_show_ready_go_intro()
-
+	_start_warning_timer()
+	
 	audio_player.finished.connect(_on_audio_finished)
 
 
@@ -44,6 +51,11 @@ func _process(delta: float) -> void:
 	
 	if notes.is_empty() or audio_player == null or not audio_player.playing:
 		return
+	
+	
+	if warn_shown and note_index == 0 and audio_player.get_playback_position() * 1000.0 >= first_note_time - spawn_ahead_ms:
+		warning_flash.stop_flashing()
+		warn_shown = false
 
 	
 	var song_time_ms: float = audio_player.get_playback_position() * 1000.0
@@ -110,6 +122,12 @@ func _load_chart() -> void:
 			audio_stream = stream
 		else:
 			push_warning("Kon audio niet laden uit chart: " + audio_path)
+			
+	# eerste note time bepalen
+	if notes.size() > 0:
+		notes.sort_custom(func(a, b): return a["time"] < b["time"])
+		first_note_time = float(notes[0]["time"])
+
 
 func _load_mines_chart() -> void:
 	if mines_chart_path == "":
@@ -297,3 +315,21 @@ func _show_pause_menu() -> void:
 	var root := get_tree().root
 	root.add_child(pause_menu_instance)
 	root.move_child(pause_menu_instance, root.get_child_count() - 1)
+
+func _start_warning_timer():
+	if first_note_time < 0:
+		return
+
+	var warning_start_ms = first_note_time - spawn_ahead_ms - 1000
+
+	if warning_start_ms <= 0:
+		# te vroeg? direct starten
+		warning_flash.start_flashing()
+		warn_shown = true
+		return
+
+	var timer = get_tree().create_timer(warning_start_ms / 1000.0)
+	timer.timeout.connect(func():
+		warning_flash.start_flashing()
+		warn_shown = true
+	)

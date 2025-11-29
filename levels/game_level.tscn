@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cirfpuxgijlwp"]
+[gd_scene load_steps=8 format=3 uid="uid://cirfpuxgijlwp"]
 
 [ext_resource type="Script" uid="uid://ra2gpxjg15vc" path="res://code/game_level.gd" id="1_2i5ty"]
 [ext_resource type="Texture2D" uid="uid://c32wdojp55x2i" path="res://objects/keylistener.png" id="2_2i5ty"]
@@ -6,9 +6,45 @@
 [ext_resource type="Script" uid="uid://be512qqenckd2" path="res://objects/judgement.gd" id="5_2i5ty"]
 [ext_resource type="Texture2D" uid="uid://5dcukvlp0afe" path="res://Resources/art/stage_background.png" id="6_smvv8"]
 [ext_resource type="PackedScene" uid="uid://dk8v10241c0qd" path="res://objects/falling_key_spawner.tscn" id="6_wtvao"]
+[ext_resource type="Script" uid="uid://b7i6jw6jickfu" path="res://code/warning_flash.gd" id="7_smvv8"]
 
 [node name="GameLevel" type="Node2D"]
 script = ExtResource("1_2i5ty")
+
+[node name="WarningFlash" type="Control" parent="."]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_smvv8")
+
+[node name="Ex1Label" type="Label" parent="WarningFlash"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = -90.0
+offset_right = 460.0
+offset_bottom = 85.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 160
+
+[node name="Ex2Label" type="Label" parent="WarningFlash"]
+layout_mode = 0
+offset_left = -440.0
+offset_top = -90.0
+offset_right = -400.0
+offset_bottom = 129.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 160
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 128
