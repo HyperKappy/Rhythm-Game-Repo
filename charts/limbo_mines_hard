@@ -1,0 +1,4502 @@
+[
+  {
+    "StartTime": 8522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 8822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 9122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 10322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 10472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 10622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 10772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 10922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 11222,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 11522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 11822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 12122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 13022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 13172,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 13322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 13622,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 14222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 14522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 14822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 15422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 15722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 16022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 16622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 16922,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 17222,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 17822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18122,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18197,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18347,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18497,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18647,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18797,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 18872,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19022,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19172,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19472,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19547,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19772,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19922,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 19997,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20072,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20747,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 20972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 21122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 21197,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 21272,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 21422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 21572,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 21872,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 21947,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22397,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22472,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22622,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 22922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23147,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23597,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23672,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 23972,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24272,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24347,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24422,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24572,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24797,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 24872,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 25022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 25172,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 25322,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 25472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 25547,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 25772,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 25997,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 26072,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 26297,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 26372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 26522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 26822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 26822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 26822,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27272,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27497,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27647,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 27722,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28622,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28847,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 28922,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29222,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29672,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 29972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30272,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30572,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 30872,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31022,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31172,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31772,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31922,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31922,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 31922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32222,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32522,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 32822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 33122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 33422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 33422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 33572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 33647,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 33722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34022,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34172,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34172,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34322,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34472,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34622,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34772,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 34922,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35222,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35372,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35522,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35672,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 35972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36422,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36572,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36722,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36872,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 36872,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37172,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37322,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37772,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 37922,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38222,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38672,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38747,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38822,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 38972,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 39122,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 39272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 39272,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 39422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 39422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 39572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 39722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40172,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40472,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40622,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40772,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 40922,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41072,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41222,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41372,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41597,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41747,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41897,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 41972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42047,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42197,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42347,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42497,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42647,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 42722,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 43022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 43322,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 43772,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 43922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44372,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44597,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44672,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44897,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 44972,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 45197,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 45272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 45497,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 45572,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 45722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 45872,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 46022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 46172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 46322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 46472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 46622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 46772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 48047,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 48122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 48572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 48722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 49172,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 49322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 50447,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 50972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 51272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 51422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 51572,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 51722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 52847,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 55247,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 55322,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 55922,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 55922,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56672,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56822,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 56972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 57122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 57272,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 57422,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 57572,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 57722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 57872,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58622,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58772,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 58922,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 59072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 59222,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 59372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 59522,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 59672,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 59822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 59972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60122,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60272,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60572,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60722,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 60872,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61472,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61622,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61772,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 61922,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62072,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62372,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62522,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62672,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62972,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 62972,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63422,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63572,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63572,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63872,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 63872,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64172,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64172,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64472,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64772,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64922,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 64922,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65522,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65672,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 65972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66197,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66347,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66497,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66647,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66797,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66872,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 66947,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67097,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67247,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67397,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67547,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67697,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67772,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67847,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 67997,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68147,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68297,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68447,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68597,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68747,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68897,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 68972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69047,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69197,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69347,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69497,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69647,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69797,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69872,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 69947,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70097,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70172,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70247,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70397,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70547,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70697,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70847,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 70997,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71072,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71147,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71297,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71447,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71597,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71672,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71747,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71897,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 71972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72047,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72197,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72347,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72497,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72647,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72797,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 72947,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73097,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73247,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73397,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73547,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73697,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73847,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 73997,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74147,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74297,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74447,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74597,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74672,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74747,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74897,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 74972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75047,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75197,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75347,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75497,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75572,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75647,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 75722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 84122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 84122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 84722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 84722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 84722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 85322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 85322,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 85322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 85622,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 85622,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 85922,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86222,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86447,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 86972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87572,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 87872,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88022,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88172,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88772,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88922,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 88922,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89222,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89672,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 89972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 90122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 90122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 90122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 90422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 90422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 90722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91247,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91622,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 91922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92072,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92222,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92822,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 92972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93272,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93422,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93572,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 93722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94397,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94622,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94622,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94772,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94922,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 94922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95072,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95222,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95222,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95372,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95522,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95672,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95672,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95822,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95822,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95972,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 95972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96272,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96422,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96572,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96572,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96872,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96872,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 96872,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97022,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97172,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97172,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97172,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97472,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97772,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97772,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97922,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 97922,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98072,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98222,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98372,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98372,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98522,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98522,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98672,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98672,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98822,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98972,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 98972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99122,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99272,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99422,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99572,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99572,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99722,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99872,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99872,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 99872,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100022,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100172,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100172,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100322,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100322,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100772,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100772,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100772,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100922,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 100922,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101072,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101072,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101072,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101222,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101222,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101372,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101372,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101372,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101522,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101522,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101672,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101672,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101672,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101822,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101822,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101972,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101972,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 101972,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102122,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102122,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102272,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102272,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102272,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102422,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102422,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102572,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102572,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102572,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102722,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102722,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102722,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102872,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102872,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102872,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 102872,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103022,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103022,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103022,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103172,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103172,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103172,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103322,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103472,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103472,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103472,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103622,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103622,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103622,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103809,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103847,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103884,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103959,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 103997,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104034,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104109,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104147,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104184,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104259,
+    "Lane": 1,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104297,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104334,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104409,
+    "Lane": 2,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104447,
+    "Lane": 3,
+    "KeySounds": [],
+    "EditorLayer": 1
+  },
+  {
+    "StartTime": 104484,
+    "Lane": 4,
+    "KeySounds": [],
+    "EditorLayer": 1
+  }
+]
