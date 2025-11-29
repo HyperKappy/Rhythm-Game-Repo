@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb0vg667vhgtt"]
+
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_1g2w8"]
+[ext_resource type="AudioStream" uid="uid://cr6tekjeajh6q" path="res://Resources/audio/temp3.mp3" id="2_1g2w8"]
+[ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_qjdo6"]
+[ext_resource type="Texture2D" uid="uid://c71p5tfyoh1fa" path="res://Resources/images/glamour.jpg" id="4_4i24m"]
+
+[node name="SongPlayer" type="Node"]
+script = ExtResource("1_1g2w8")
+chart_path = "res://charts/temp3.json"
+spawn_ahead_ms = 1057.0
+use_chart_audio_path = false
+audio_stream = ExtResource("2_1g2w8")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
+[node name="GameLevel" parent="." instance=ExtResource("3_qjdo6")]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(6.2223716, -3.5000525)
+scale = Vector2(1.5347222, 1.5347221)
+texture = ExtResource("4_4i24m")

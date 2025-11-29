@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkc8yyxwa3udy"]
+
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_gx2pt"]
+[ext_resource type="AudioStream" uid="uid://c1kxdbsu3jcp8" path="res://Resources/audio/temp2.mp3" id="2_gx2pt"]
+[ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_sg1t1"]
+[ext_resource type="Texture2D" uid="uid://foh0h0711n7r" path="res://Resources/images/spacething.png" id="4_6kaoy"]
+
+[node name="SongPlayer" type="Node"]
+script = ExtResource("1_gx2pt")
+chart_path = "res://charts/temp2.json"
+spawn_ahead_ms = 1057.0
+use_chart_audio_path = false
+audio_stream = ExtResource("2_gx2pt")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
+[node name="GameLevel" parent="." instance=ExtResource("3_sg1t1")]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(5.0000076, -2.0000038)
+scale = Vector2(1.0723623, 1.0723623)
+texture = ExtResource("4_6kaoy")

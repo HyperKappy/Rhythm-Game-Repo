@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhiod8o31xixn"]
+
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_eqsmt"]
+[ext_resource type="AudioStream" uid="uid://dxqelwyeo8ekk" path="res://Resources/audio/temp1.mp3" id="2_eqsmt"]
+[ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_kqxq1"]
+[ext_resource type="Texture2D" uid="uid://dw4yu1p3rf2xj" path="res://Resources/images/Princess of Winter.png" id="4_orcks"]
+
+[node name="SongPlayer" type="Node"]
+script = ExtResource("1_eqsmt")
+chart_path = "res://charts/temp1.json"
+spawn_ahead_ms = 1057.0
+use_chart_audio_path = false
+audio_stream = ExtResource("2_eqsmt")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
+[node name="GameLevel" parent="." instance=ExtResource("3_kqxq1")]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4096
+texture = ExtResource("4_orcks")
