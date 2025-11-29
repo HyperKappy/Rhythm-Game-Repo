@@ -3,7 +3,6 @@ extends TextureButton
 var pressed_state: bool = false
 
 
-#Change to actual song
 func _on_GE_pressed():
 	$Select_Sound.play()
 	$Low_Taper_Fade_GE.stop(true)
@@ -14,7 +13,6 @@ func _on_GE_pressed():
 	get_tree().change_scene_to_file("res://levels/GIVEN_ENOUGH.tscn")
 
 
-#Fade animations and previews are played by this
 func _on_GE_Button_Hovered():
 	if pressed_state == false:
 		$Low_Taper_Fade_GE.play("hover_in")

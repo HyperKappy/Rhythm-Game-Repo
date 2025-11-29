@@ -63,7 +63,6 @@ func _start_intro_animation() -> void:
 		combo_row
 	]
 
-	# Slide-in van links voor de panel-items
 	var delay: float = 0.0
 	var tween := create_tween()
 	for node in nodes:
@@ -78,7 +77,6 @@ func _start_intro_animation() -> void:
 
 		delay += 0.05
 
-	# Accuracy rechts onder slidet in van rechts
 	var acc_orig: Vector2 = accuracy_label.position
 	accuracy_label.position.x = acc_orig.x + 160.0
 	accuracy_label.modulate.a = 0.0
@@ -179,7 +177,6 @@ func set_results_from_judgement(judgement: Node) -> void:
 
 	var grade_letter: String = _get_grade_letter(acc)
 
-	# Resultaat loggen naar txt-bestand
 	_log_results_to_file(
 		acc,
 		grade_letter,
@@ -204,7 +201,7 @@ func _log_results_to_file(
 	max_combo: int,
 	max_possible_combo: int
 ) -> void:
-	# Level-naam bepalen
+
 	var lvl: String = level_name
 	if lvl == "":
 		var root := get_tree().current_scene
@@ -220,7 +217,6 @@ func _log_results_to_file(
 
 	var logs_dir_path: String = exe_dir.path_join("logs")
 
-	# map (recursief) aanmaken als hij nog niet bestaat
 	var err := DirAccess.make_dir_recursive_absolute(logs_dir_path)
 	if err != OK and err != ERR_ALREADY_EXISTS:
 		push_error("Kon logs directory niet aanmaken: %s" % err)

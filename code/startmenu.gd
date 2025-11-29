@@ -38,7 +38,7 @@ func _on_button_toggled(button_pressed) -> void:
 		set_process_unhandled_key_input(button_pressed)
 		
 		for i in get_tree().get_nodes_in_group("Hotkey_Button"):
-			var rebinder = i.get_parent()  # <-- Fix Option 3 applied
+			var rebinder = i.get_parent() 
 			if rebinder is Rebind and rebinder.action_name != self.action_name:
 				rebinder.button.toggle_mode = false
 				rebinder.set_process_unhandled_key_input(false)
@@ -50,11 +50,11 @@ func _unhandled_key_input(event):
 	button.button_pressed = false
 
 func rebind_action_key(event) -> void:
-	# FIX 1: Erase ALL old events properly
+
 	for old_event in InputMap.action_get_events(action_name):
 		InputMap.action_erase_event(action_name, old_event)
 
-	# FIX 2: "action" → "action_name"
+
 	InputMap.action_add_event(action_name, event)
 	
 	set_process_unhandled_key_input(false)
