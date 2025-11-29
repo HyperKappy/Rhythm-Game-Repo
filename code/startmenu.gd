@@ -34,7 +34,7 @@ func set_text_for_key() -> void:
 
 func _on_button_toggled(button_pressed) -> void:
 	if button_pressed:
-		button.text = "Druk op de gewenste knop.."
+		button.text = "Press a key..."
 		set_process_unhandled_key_input(button_pressed)
 		
 		for i in get_tree().get_nodes_in_group("Hotkey_Button"):
