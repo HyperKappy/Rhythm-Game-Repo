@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bghid1bcbbpt1"]
+[gd_scene load_steps=4 format=3 uid="uid://bghid1bcbbpt1"]
 
+[ext_resource type="Script" uid="uid://dgtshe4ppccgh" path="res://code/credits_tab.gd" id="1_gw1d4"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="1_spvsy"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="2_gw1d4"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_gw1d4")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 232.0
@@ -23,11 +25,21 @@ Receptor assets: \"Wafles4 White Anas edit\" by Anas on Quaver
 "
 
 [node name="Back" type="TextureButton" parent="."]
+visible = false
 offset_left = -28.0
 offset_top = 846.0
 offset_right = 472.0
 offset_bottom = 1096.0
 texture_normal = ExtResource("1_spvsy")
 script = ExtResource("2_gw1d4")
+
+[node name="BackButton" type="Button" parent="."]
+z_index = 6
+offset_left = 22.0
+offset_top = 912.0
+offset_right = 343.0
+offset_bottom = 1065.0
+theme_override_font_sizes/font_size = 80
+text = "BACK"
 
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
