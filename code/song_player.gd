@@ -3,7 +3,7 @@ extends Node
 @export var pause_menu_scene: PackedScene = preload("res://scenes/pause_menu.tscn")
 
 @export var chart_path: String = ""
-@export var spawn_ahead_ms: float = 0.0   # hoe ver van tevoren je notes wilt zien vallen
+@export var spawn_ahead_ms: float = 0.0  
 
 @export var mines_chart_path: String = ""
 
@@ -45,19 +45,19 @@ func _process(delta: float) -> void:
 	if notes.is_empty() or audio_player == null or not audio_player.playing:
 		return
 
-	# GEEN global_offset meer, gewoon rauwe song time
+	
 	var song_time_ms: float = audio_player.get_playback_position() * 1000.0
 
 	while note_index < notes.size():
 		var note_data: Dictionary = notes[note_index]
 		var note_time_ms: float = float(note_data.get("time", 0.0))
 
-		# zelfde logica als vroeger: spawn als de note-time binnen de "spawn-ahead window" valt
+		
 		if note_time_ms <= song_time_ms + spawn_ahead_ms:
 			var lane_1_based: int = int(note_data.get("lane", 1))
 			var lane_index: int = lane_1_based - 1  # 1..4 -> 0..3
 
-			# long note (heeft end_time) vs normale note
+			
 			if note_data.has("end_time"):
 				var end_time_ms: float = float(note_data.get("end_time", note_time_ms))
 				var duration_ms: float = max(0.0, end_time_ms - note_time_ms)
@@ -151,7 +151,7 @@ func _setup_audio() -> void:
 
 
 func _on_audio_finished() -> void:
-	# Wacht 0.5 seconde en toon dan het resultscherm
+
 	var timer := get_tree().create_timer(0.5)
 	timer.timeout.connect(_show_results_screen)
 
@@ -163,31 +163,31 @@ func _show_results_screen() -> void:
 	var screen := results_scene.instantiate()
 	add_child(screen)
 
-	# Levelnaam doorgeven (bijv. uit chart_path)
+
 	if screen.has_method("set_level_name"):
-		# alles na laatste / pakken:
+
 		var short_name := chart_path
 		var slash_idx := chart_path.rfind("/")
 		if slash_idx != -1 and slash_idx + 1 < chart_path.length():
 			short_name = chart_path.substr(slash_idx + 1, chart_path.length() - slash_idx - 1)
-		# .json eraf slopen
+
 		if short_name.ends_with(".json"):
 			short_name = short_name.substr(0, short_name.length() - 5)
 
 		screen.set_level_name(short_name)
 
-	# In-game Judgement HUD verbergen
+
 	if judgement != null and judgement.has_method("set_ui_visible"):
 		judgement.set_ui_visible(false)
 
-	# Statistieken doorgeven vanuit Judgement
+
 	if judgement != null and screen.has_method("set_results_from_judgement"):
 		screen.set_results_from_judgement(judgement)
 
 
 
 func _show_ready_go_intro() -> void:
-	# Zorg dat we een UI-layer hebben (fallback voor het geval hij ooit ontbreekt)
+
 	if ui_layer == null:
 		var found := get_node_or_null("UILayer")
 		if found != null:
@@ -197,7 +197,6 @@ func _show_ready_go_intro() -> void:
 			ui_layer.name = "UILayer"
 			add_child(ui_layer)
 
-	# Fullscreen UI-overlay als Control
 	intro_overlay = Control.new()
 	intro_overlay.anchor_left = 0.0
 	intro_overlay.anchor_top = 0.0
@@ -210,7 +209,7 @@ func _show_ready_go_intro() -> void:
 
 	ui_layer.add_child(intro_overlay)
 
-	# READY label in het midden van de overlay
+
 	intro_label = Label.new()
 	intro_label.text = "READY"
 	intro_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -232,7 +231,6 @@ func _show_ready_go_intro() -> void:
 
 	var tween := create_tween()
 
-	# READY fade-in
 	tween.tween_property(intro_label, "modulate:a", 1.0, 0.2)
 	tween.tween_interval(0.3)
 	tween.tween_property(intro_label, "modulate:a", 0.0, 0.5)

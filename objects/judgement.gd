@@ -7,7 +7,7 @@ var result: String = ""
 var accuracy_display: float = 100.0
 var accuracy_tween: Tween = null
 
-var total_judgements: int = 0   # elke keypress OF auto-miss telt als judgement
+var total_judgements: int = 0
 
 var perfect_count: int = 0
 var great_count: int = 0
@@ -26,7 +26,6 @@ var judgement_base_position: Vector2
 @onready var accuracy_label: Label = $AccuracyLabel
 @onready var combo_label: Label = $ComboLabel
 
-# klein label voor EARLY/LATE
 @onready var timing_label: Label = null
 
 # voor animaties
@@ -36,11 +35,9 @@ var timing_tween: Tween = null
 
 var timing_base_position: Vector2
 
-# laatste timing info
 var last_signed_time_diff: float = 0.0
 var last_has_timing_info: bool = false
 
-# Lane -> action mapping (van links naar rechts)
 const LANE_ACTIONS: Array[String] = [
 	"Left",  # lane 0
 	"Down",  # lane 1
@@ -50,8 +47,8 @@ const LANE_ACTIONS: Array[String] = [
 
 @export var key_listener_paths: Array[NodePath]
 
-var lane_hit_y: Array[float] = []  # per lane de Y-positie waarop je wilt hitten
-var lane_hold_notes: Array[Sprite2D] = []  # per lane de long note die nu wordt vastgehouden
+var lane_hit_y: Array[float] = []
+var lane_hold_notes: Array[Sprite2D] = []
 
 
 func _ready() -> void:
@@ -131,7 +128,7 @@ func handle_hit_for_lane(lane_idx: int) -> void:
 		print("Judgement lane", lane_idx, "→ MISS (geen note in lane)")
 		return
 
-	# afstand in pixels tussen note en HIT-LIJN (y van de keylistener voor deze lane)
+
 	var hit_y: float = lane_hit_y[lane_idx]
 	var scroll_velocity: float = note.scroll_velocity
 	if scroll_velocity <= 0.0:
@@ -240,7 +237,6 @@ func _find_closest_note_in_lane(lane_idx: int) -> Sprite2D:
 		if note == null:
 			continue
 
-		# lane_index veilig uitlezen
 		var note_lane = note.get("lane_index")
 		if typeof(note_lane) != TYPE_INT or note_lane != lane_idx:
 			continue
@@ -280,7 +276,6 @@ func _apply_time_diff_and_update_stats(time_diff: float) -> String:
 
 
 func _check_auto_misses() -> void:
-	# Auto-MISS voor notes die te laat zijn voor een OK
 	var notes_to_miss: Array = []
 
 	for n in get_tree().get_nodes_in_group("notes"):
@@ -369,7 +364,7 @@ func _update_accuracy_value(value: float) -> void:
 
 
 func _update_accuracy_label_from_value(value: float) -> void:
-	# Speciale case: EXACT 100%
+	# 100% laten zien i.p.v 100.00%
 	if abs(value - 100.0) < 0.0001:
 		accuracy_label.text = "100%"
 	else:
@@ -396,17 +391,15 @@ func show_judgement(judgement_result: String) -> void:
 		"MISS":
 			judgement_label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 
-	# begin altijd vanaf de basispositie
 	judgement_label.position = judgement_base_position
 	judgement_label.modulate.a = 1.0
-	judgement_label.scale = Vector2.ONE   # voor de zekerheid weer normaal
+	judgement_label.scale = Vector2.ONE
 
 	judgement_tween = get_tree().create_tween()
 	judgement_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 	var target_pos := judgement_base_position + Vector2(0, 6)
 
-	# klein beetje tijd laten staan en dan faden + zakken
 	judgement_tween.tween_interval(0.1)
 	judgement_tween.tween_property(judgement_label, "position", target_pos, 0.5)
 	judgement_tween.parallel().tween_property(judgement_label, "modulate:a", 0.0, 0.5)
@@ -416,7 +409,7 @@ func _show_timing_label(judgement_result: String) -> void:
 	if timing_label == null:
 		return
 
-	# Geen EARLY/LATE bij PERFECT, MISS of als we geen signed_time_diff hebben
+
 	if judgement_result == "PERFECT" or judgement_result == "MISS" or not last_has_timing_info:
 		timing_label.visible = false
 		return
@@ -462,7 +455,6 @@ func _show_timing_label(judgement_result: String) -> void:
 
 
 func _show_combo() -> void:
-	# combo tonen vanaf 1x
 	if combo <= 0:
 		combo_label.visible = false
 		return

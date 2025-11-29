@@ -10,7 +10,7 @@ var duration_ms: float = 0.0
 @onready var body_sprite: Sprite2D = $HoldBody
 @onready var end_sprite: Sprite2D = $HoldEnd
 
-# long note state
+
 var is_long_note: bool = true
 var head_judged: bool = false
 var head_hit_success: bool = false
@@ -18,18 +18,9 @@ var tail_judged: bool = false
 var is_broken: bool = false
 
 
-# We nemen de head (hitobject) als referentiepunt:
-# root texture = note-holdhitobject-a.png (driehoek naar beneden, H=64)
-# body = 128x32
-# end  = note-holdend-a.png (driehoek naar boven, H=64)
-#
-# Voor nu gaan we uit van:
-# - de "basis" van de head (waar de body aan vast moet zitten)
-#   ligt een klein stukje onder de top van de texture.
-const HEAD_BASE_OFFSET: float = 0.0	# pixels onder top van de head
-# - de "basis" van de tail (waar de body aan vast moet zitten)
-#   ligt een klein stukje boven de bottom van de texture.
-const TAIL_BASE_OFFSET_FROM_BOTTOM: float = 0.0	# pixels boven onderkant tail
+
+const HEAD_BASE_OFFSET: float = 0.0	
+const TAIL_BASE_OFFSET_FROM_BOTTOM: float = 0.0	
 
 func _ready() -> void:
 	add_to_group("notes")
@@ -73,24 +64,17 @@ func _update_length() -> void:
 	var end_w: float = float(end_sprite.texture.get_width())
 	var end_h: float = float(end_sprite.texture.get_height())
 
-	# ----------------------------------------------------
-	# 1. HEAD als uitgangspunt
-	# ----------------------------------------------------
-	# root is gecentreerd: loopt van -head_h/2 (top) tot +head_h/2 (bottom)
+
 	var head_top_y: float = -head_h * 0.5
 	var head_bottom_y: float = head_h * 0.5
 
-	# De basis van de head (waar body aan vast moet) ligt
-	# HEAD_BASE_OFFSET pixels onder de top.
+
 	var head_base_y: float = head_top_y + HEAD_BASE_OFFSET
 
-	# De totale afstand van head-basis naar tail-basis is distance_pixels:
-	# head_base_y (onder)  -------- distance_pixels --------  tail_base_y (boven)
+
 	var tail_base_y: float = head_base_y - distance_pixels
 
-	# ----------------------------------------------------
-	# 2. BODY exact tussen head-basis en tail-basis
-	# ----------------------------------------------------
+
 	var body_length: float = max(head_base_y - tail_base_y, 0.0)
 
 	if body_h > 0.0:
@@ -101,7 +85,6 @@ func _update_length() -> void:
 	body_sprite.scale.x = body_width_factor
 	var body_scaled_width: float = body_w * body_width_factor
 
-	# body loopt van tail_base_y (top) tot head_base_y (bottom)
 	var body_top_y: float = tail_base_y
 	var body_bottom_y: float = head_base_y
 
@@ -110,12 +93,8 @@ func _update_length() -> void:
 		body_top_y
 	)
 
-	# ----------------------------------------------------
-	# 3. TAIL zo plaatsen dat zijn "basis" op tail_base_y ligt
-	# ----------------------------------------------------
-	# Tail-texture loopt van 0 (top) tot end_h (bottom).
-	# We willen dat de basis een stukje bóven de onderkant ligt,
-	# dus: tail_base_y = tail_pos_y + end_h - TAIL_BASE_OFFSET_FROM_BOTTOM
+
+
 	var tail_pos_y: float = tail_base_y - end_h + TAIL_BASE_OFFSET_FROM_BOTTOM
 
 	end_sprite.position = Vector2(
@@ -142,7 +121,6 @@ func mark_tail_result(result: String) -> void:
 	if result == "MISS":
 		_break_long_note()
 	else:
-		# volledig goed gespeeld → visual mag weg
 		queue_free()
 
 
@@ -152,9 +130,6 @@ func _break_long_note() -> void:
 
 	is_broken = true
 
-	# opacity omlaag (geldt voor head, body en tail tegelijk)
 	modulate.a = 0.3
 
-	# tail mag niet meer gehit worden: haal uit "notes"-group,
-	# zodat _check_auto_misses & handle_hit_for_lane 'm negeren.
 	remove_from_group("notes")
