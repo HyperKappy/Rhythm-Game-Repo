@@ -320,7 +320,7 @@ func _start_warning_timer():
 	if first_note_time < 0:
 		return
 
-	var warning_start_ms = first_note_time - spawn_ahead_ms - 1000
+	var warning_start_ms = first_note_time - spawn_ahead_ms - 500
 
 	if warning_start_ms <= 0:
 		# te vroeg? direct starten
