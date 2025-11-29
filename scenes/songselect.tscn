@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="12_gcj5u"]
 [ext_resource type="Texture2D" uid="uid://blqltsbcho20k" path="res://Resources/images/limbo_icon.jpg" id="13_gcj5u"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="13_ufb8k"]
-[ext_resource type="Script" path="res://code/Limbo.gd" id="14_efvnr"]
+[ext_resource type="Script" uid="uid://coyv5jbp8tcwl" path="res://code/Limbo.gd" id="14_efvnr"]
 [ext_resource type="AudioStream" uid="uid://c4axmn3jwyo2g" path="res://Resources/audio/Limbo_Preview.mp3" id="14_ufb8k"]
 
 [sub_resource type="Animation" id="Animation_gcj5u"]
@@ -569,6 +569,21 @@ volume_db = -20.0
 libraries = {
 &"": SubResource("AnimationLibrary_hqaag")
 }
+
+[node name="Blocker" type="Control" parent="."]
+visible = false
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3985.0
+offset_top = -4292.0
+offset_right = 6014.0
+offset_bottom = 5707.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
 
 [connection signal="mouse_entered" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
 [connection signal="mouse_exited" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
