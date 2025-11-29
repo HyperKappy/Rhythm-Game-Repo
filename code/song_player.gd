@@ -1,5 +1,7 @@
 extends Node
 
+@export var pause_menu_scene: PackedScene = preload("res://scenes/pause_menu.tscn")
+
 @export var chart_path: String = ""
 @export var spawn_ahead_ms: float = 0.0   # hoe ver van tevoren je notes wilt zien vallen
 
@@ -265,6 +267,35 @@ func _on_intro_finished() -> void:
 func _start_level() -> void:
 	audio_player.play()
 	
-func _input(event):
-	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().change_scene_to_file("res://scenes/Main menu.tscn")
+
+var pause_menu_instance: Control = null
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_toggle_pause_menu()
+
+
+func _toggle_pause_menu() -> void:
+	if pause_menu_instance != null and is_instance_valid(pause_menu_instance):
+		return
+
+	_show_pause_menu()
+
+
+func _show_pause_menu() -> void:
+	if pause_menu_scene == null:
+		push_warning("pause_menu_scene is niet ingesteld op SongPlayer.")
+		return
+
+	get_tree().paused = true
+
+	pause_menu_instance = pause_menu_scene.instantiate() as Control
+	if pause_menu_instance == null:
+		push_warning("Kon pause_menu_scene niet instantieren.")
+		get_tree().paused = false
+		return
+
+	var root := get_tree().root
+	root.add_child(pause_menu_instance)
+	root.move_child(pause_menu_instance, root.get_child_count() - 1)

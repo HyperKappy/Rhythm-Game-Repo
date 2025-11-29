@@ -9,8 +9,6 @@ var required_keys = {
 }
 
 func _input(event: InputEvent):
-	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().change_scene_to_file("res://scenes/Main menu.tscn")
 	if event is InputEventKey:
 		if event.keycode in required_keys:
 			required_keys[event.keycode] = event.pressed

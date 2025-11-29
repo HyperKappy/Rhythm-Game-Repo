@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgiud57w3rmgq"]
+
+[ext_resource type="Script" uid="uid://c4rpwy0r1ws4" path="res://code/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Shader" uid="uid://cfblt4i8k43f7" path="res://shaders/pause_blur.gdshader" id="2_myx47"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kukqi"]
+shader = ExtResource("2_myx47")
+shader_parameter/blur_radius = 4.0
+shader_parameter/sample_count = 4
+shader_parameter/darken = 0.6
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 973.0
+offset_top = 543.0
+offset_right = 973.0
+offset_bottom = 543.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+main_menu_scene_path = "res://scenes/Main menu.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99999
+
+[node name="BlurOverlay" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+z_as_relative = false
+material = SubResource("ShaderMaterial_kukqi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+z_index = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.0
+offset_top = -284.5
+offset_right = 334.0
+offset_bottom = 284.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+z_index = 6
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "CONTINUE"
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+z_index = 6
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "RETRY"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+z_index = 6
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "BACK"
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -699.0
+offset_right = 699.0
+offset_bottom = 273.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 200
+text = "GAME PAUSED"
