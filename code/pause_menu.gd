@@ -20,24 +20,27 @@ func _ready() -> void:
 
 
 func _on_continue_pressed() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_tree().paused = false
 	queue_free()
 
 
 func _on_retry_pressed() -> void:
 	get_tree().paused = false
-	var tree := get_tree()
 	queue_free()
-	tree.reload_current_scene()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	get_tree().reload_current_scene()
 
 
 func _on_back_pressed() -> void:
 	get_tree().paused = false
 	var tree := get_tree()
 	queue_free()
-	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	if main_menu_scene_path != "":
 		tree.change_scene_to_file(main_menu_scene_path)
+
 
 
 func _unhandled_input(event: InputEvent) -> void:

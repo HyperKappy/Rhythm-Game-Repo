@@ -177,7 +177,9 @@ func _on_audio_finished() -> void:
 func _show_results_screen() -> void:
 	if results_scene == null:
 		return
-
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 	var screen := results_scene.instantiate()
 	add_child(screen)
 
@@ -205,6 +207,8 @@ func _show_results_screen() -> void:
 
 
 func _show_ready_go_intro() -> void:
+
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	if ui_layer == null:
 		var found := get_node_or_null("UILayer")
@@ -282,7 +286,7 @@ func _on_intro_finished() -> void:
 
 func _start_level() -> void:
 	audio_player.play()
-	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 var pause_menu_instance: Control = null
 
