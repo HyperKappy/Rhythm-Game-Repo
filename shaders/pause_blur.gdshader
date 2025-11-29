@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform float blur_radius = 4.0;
-uniform int sample_count = 4;
+uniform int sample_count = 8;
 uniform float darken = 0.6;
 
 uniform sampler2D screen_texture : hint_screen_texture;

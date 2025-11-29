@@ -16,12 +16,14 @@ layer = 128
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Keylistener" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(-210, 469)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("2_2i5ty")
 script = ExtResource("2_d65c1")
 
 [node name="Keylistener2" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(-75, 469)
 rotation = -1.5708
 scale = Vector2(1.4, 1.4)
@@ -30,6 +32,7 @@ script = ExtResource("2_d65c1")
 lane_index = 1
 
 [node name="Keylistener3" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(75, 469)
 rotation = 1.5708
 scale = Vector2(1.4, 1.4)
@@ -38,6 +41,7 @@ script = ExtResource("2_d65c1")
 lane_index = 2
 
 [node name="Keylistener4" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(210, 479)
 rotation = 3.14159
 scale = Vector2(1.4, 1.4)

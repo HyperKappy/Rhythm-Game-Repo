@@ -12,9 +12,16 @@ extends Control
 @onready var accuracy_label: Label = $AccuracyLabel
 @onready var grade_image: TextureRect = $GradeImage
 
+@onready var retry_button: Button = $RetryButton
+@onready var back_button: Button = $BackButton
+
+
 func _ready() -> void:
 	_apply_colors()
 	_start_intro_animation()
+	
+	retry_button.pressed.connect(_on_retry_pressed)
+	back_button.pressed.connect(_on_back_pressed)
 
 func _apply_colors() -> void:
 	
@@ -250,3 +257,12 @@ func _log_results_to_file(
 
 func set_level_name(name: String) -> void:
 	level_name = name
+
+func _on_retry_pressed() -> void:
+	get_tree().paused = false
+	var tree := get_tree()
+	queue_free()
+	tree.reload_current_scene()
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/Main menu.tscn")
