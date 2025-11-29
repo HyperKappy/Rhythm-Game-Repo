@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var back_button: Button = $BackButton
+
 var required_keys = {
 	KEY_L: false,
 	KEY_I: false,
@@ -7,6 +9,11 @@ var required_keys = {
 	KEY_B: false,
 	KEY_O: false,
 }
+
+
+func _ready() -> void:
+	back_button.pressed.connect(_on_back_pressed)
+	
 
 func _input(event: InputEvent):
 	if event is InputEventKey:
@@ -32,3 +39,6 @@ func _on_GE_Pressed_connect() -> void:
 func _on_Limbo_Pressed_connect() -> void:
 	await get_tree().create_timer(1.0).timeout
 	$Fade_All.play("Fade_All")
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/Main menu.tscn")
