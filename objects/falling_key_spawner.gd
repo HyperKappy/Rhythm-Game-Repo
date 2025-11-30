@@ -2,18 +2,15 @@ extends Node2D
 
 @export var falling_key_scene: PackedScene = preload("res://objects/falling_key.tscn")
 @export var long_note_scene: PackedScene = preload("res://objects/long_note.tscn")
-@export var mine_scene: PackedScene = preload("res://objects/mine.tscn")
 
+@export var scroll_velocity: float = 1000.0
 
 @export var key_listener_paths: Array[NodePath]
 
-
 @export var spawn_margin: float = 50.0
-
 
 @export var note_scale: Vector2 = Vector2(1.4, 1.4)
 
-# Willekeurige auto-spawn interval (in seconden)
 @export var auto_spawn_min_interval: float = 0.1
 @export var auto_spawn_max_interval: float = 0.5
 
@@ -40,7 +37,6 @@ func _calculate_spawn_y() -> void:
 		var top_screen_y := camera.global_position.y - viewport_rect.size.y * 0.5
 		spawn_y = top_screen_y - spawn_margin
 	else:
-		# fallback: gewoon net boven 0
 		spawn_y = -200.0
 
 	print("Spawn Y ingesteld op:", spawn_y)
@@ -72,11 +68,9 @@ func _init_auto_spawn_timer() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	
 	if event.is_action_pressed("spawn_note"):
 		spawn_random_note()
-
-	
+		
 	if event.is_action_pressed("toggle_auto_spawn"):
 		_toggle_auto_spawn()
 
@@ -141,12 +135,15 @@ func spawn_note_in_lane(lane_index: int) -> void:
 	note.scale = note_scale
 	note.global_rotation = rot
 
+	note.scroll_velocity = scroll_velocity
+
 	note.lane_index = lane_index
 
 	get_parent().add_child(note)
 
 	print("Note gespawned in lane", lane_index, "op x =", x, "y =", spawn_y, "rot =", rot)
-	
+
+
 func spawn_long_note(lane_index: int, duration_ms: float) -> void:
 	if long_note_scene == null:
 		return
@@ -164,35 +161,11 @@ func spawn_long_note(lane_index: int, duration_ms: float) -> void:
 	note.scale = note_scale
 	note.rotation = 0.0
 	
+	note.scroll_velocity = scroll_velocity
+	
 	note.lane_index = lane_index
 	
 	if note.has_method("setup"):
 		note.setup(duration_ms)
 	
 	get_parent().add_child(note)
-	
-func spawn_mine_in_lane(lane_index: int) -> void:
-	if mine_scene == null:
-		push_warning("mine_scene niet ingesteld!")
-		return
-
-	if lane_index < 0 or lane_index >= lane_x_positions.size():
-		push_warning("Ongeldige lane_index voor mine: " + str(lane_index))
-		return
-
-	var mine := mine_scene.instantiate() as Sprite2D
-	if mine == null:
-		push_warning("mine_scene is geen Sprite2D.")
-		return
-
-	var x: float = lane_x_positions[lane_index]
-	var rot: float = lane_rotations[lane_index]
-
-	mine.global_position = Vector2(x, spawn_y)
-	mine.scale = note_scale
-	mine.global_rotation = rot
-
-
-	get_parent().add_child(mine)
-
-	print("Mine gespawned in lane", lane_index, "op x =", x, "y =", spawn_y)

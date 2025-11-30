@@ -3,46 +3,46 @@ extends Sprite2D
 @export var scroll_velocity: float = 1000.0
 @export var lane_index: int = 0
 
-@export var body_width_factor: float = 1.0	# 1.0 = volle breedte
+# Kleine afstanden in pixels om de naden visueel mooi te maken
+@export var head_to_body_gap: float = 0.0   # afstand tussen head-apex en begin van de body (omhoog)
+@export var body_to_tail_gap: float = 0.0   # afstand tussen einde van de body en tail-apex (omhoog)
 
+# duur in milliseconden (wordt gezet vanuit SongPlayer via spawner)
 var duration_ms: float = 0.0
 
 @onready var body_sprite: Sprite2D = $HoldBody
 @onready var end_sprite: Sprite2D = $HoldEnd
 
-
-var is_long_note: bool = true
+# judgement-state
+var head_result: String = ""
+var tail_result: String = ""
 var head_judged: bool = false
-var head_hit_success: bool = false
 var tail_judged: bool = false
 var is_broken: bool = false
 
+var base_modulate: Color
 
-
-const HEAD_BASE_OFFSET: float = 0.0	
-const TAIL_BASE_OFFSET_FROM_BOTTOM: float = 0.0	
 
 func _ready() -> void:
 	add_to_group("notes")
 	add_to_group("long_notes")
-	centered = true
 
-	if body_sprite:
-		body_sprite.centered = false
-	if end_sprite:
-		end_sprite.centered = false
+	base_modulate = modulate
 
 	_update_length()
 
+
 func _process(delta: float) -> void:
 	position.y += scroll_velocity * delta
+
 
 func setup(duration: float) -> void:
 	duration_ms = max(duration, 0.0)
 	_update_length()
 
+
 func _update_length() -> void:
-	if texture == null or body_sprite == null or end_sprite == null:
+	if body_sprite == null or end_sprite == null:
 		return
 	if body_sprite.texture == null or end_sprite.texture == null:
 		return
@@ -55,81 +55,90 @@ func _update_length() -> void:
 	body_sprite.visible = true
 	end_sprite.visible = true
 
+	# 1) totale tijd → wereldafstand in pixels
 	var duration_s: float = duration_ms / 1000.0
-	var distance_pixels: float = scroll_velocity * duration_s
+	var distance_world: float = scroll_velocity * duration_s
 
-	var head_h: float = float(texture.get_height())
-	var body_w: float = float(body_sprite.texture.get_width())
-	var body_h: float = float(body_sprite.texture.get_height())
-	var end_w: float = float(end_sprite.texture.get_width())
-	var end_h: float = float(end_sprite.texture.get_height())
+	# 2) omrekenen naar lokale units (root is geschaald door note_scale.y)
+	var root_scale_y: float = scale.y
+	if root_scale_y == 0.0:
+		root_scale_y = 1.0
+	var distance_local: float = distance_world / root_scale_y
+
+	# 3) body-lengte in lokale ruimte
+	var body_tex_h: float = float(body_sprite.texture.get_height())
+	if body_tex_h <= 0.0:
+		body_tex_h = 1.0
+
+	var body_length: float = distance_local - head_to_body_gap - body_to_tail_gap
+	if body_length < 0.0:
+		body_length = 0.0
+
+	# Coordinate systeem:
+	# y neemt toe naar BENEDEN, maar we willen dat de hold OMHOOG groeit:
+	# head (0), body en tail op NEGATIEVE y-waardes.
+	var tail_top_y: float = -distance_local
+
+	# body loopt van body_top_y tot body_bottom_y
+	var body_top_y: float = tail_top_y + body_to_tail_gap
+	var body_bottom_y: float = -head_to_body_gap
+
+	# schalen zodat de body hoogte = body_length
+	body_sprite.scale.y = body_length / body_tex_h
+	body_sprite.position.y = body_top_y
+
+	# tail-top op tail_top_y
+	end_sprite.position.y = tail_top_y
+
+	# X centreren
+	var body_tex_w: float = float(body_sprite.texture.get_width())
+	var end_tex_w: float = float(end_sprite.texture.get_width())
+
+	body_sprite.position.x = -body_tex_w * 0.5
+	end_sprite.position.x = -end_tex_w * 0.5
 
 
-	var head_top_y: float = -head_h * 0.5
-	var head_bottom_y: float = head_h * 0.5
 
-
-	var head_base_y: float = head_top_y + HEAD_BASE_OFFSET
-
-
-	var tail_base_y: float = head_base_y - distance_pixels
-
-
-	var body_length: float = max(head_base_y - tail_base_y, 0.0)
-
-	if body_h > 0.0:
-		body_sprite.scale.y = body_length / body_h
-	else:
-		body_sprite.scale.y = 1.0
-
-	body_sprite.scale.x = body_width_factor
-	var body_scaled_width: float = body_w * body_width_factor
-
-	var body_top_y: float = tail_base_y
-	var body_bottom_y: float = head_base_y
-
-	body_sprite.position = Vector2(
-		-body_scaled_width * 0.5,
-		body_top_y
-	)
-
-
-
-	var tail_pos_y: float = tail_base_y - end_h + TAIL_BASE_OFFSET_FROM_BOTTOM
-
-	end_sprite.position = Vector2(
-		-end_w * 0.5,
-		tail_pos_y
-	)
-	end_sprite.scale = Vector2(1.0, 1.0)
-	
 func mark_head_result(result: String) -> void:
 	if head_judged:
 		return
+
 	head_judged = true
-	head_hit_success = (result != "MISS")
+	head_result = result
 
 	if result == "MISS":
-		_break_long_note()
+		_break_hold()
+		return
+	# goede head → speler moet vasthouden
 
 
 func mark_tail_result(result: String) -> void:
 	if tail_judged:
 		return
+
 	tail_judged = true
+	tail_result = result
+
+	if is_broken:
+		return
 
 	if result == "MISS":
-		_break_long_note()
+		_break_hold()
 	else:
 		queue_free()
 
 
-func _break_long_note() -> void:
+func _break_hold() -> void:
 	if is_broken:
 		return
 
 	is_broken = true
 
-	modulate.a = 0.3
+	var faded: Color = base_modulate
+	faded.a = 0.3
 
-	remove_from_group("notes")
+	modulate = faded
+	if body_sprite != null:
+		body_sprite.modulate = faded
+	if end_sprite != null:
+		end_sprite.modulate = faded

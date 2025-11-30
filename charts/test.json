@@ -1,7 +1,5 @@
 {
   "notes": [
 	{ "time": 1057, "end_time": 1914, "lane": 4 },
-	{ "time": 1057, "lane": 1 },
-	{ "time": 1914, "lane": 1 },
   ]
 }

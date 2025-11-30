@@ -22,6 +22,11 @@ var max_possible_combo: int = 0
 var combo_base_position: Vector2
 var judgement_base_position: Vector2
 
+var key_listener_sprites: Array[Sprite2D] = []
+var original_receptor_textures: Dictionary = {}
+var lane_hold_active: Array[bool] = []
+
+
 @onready var judgement_label: Label = $JudgementLabel
 @onready var accuracy_label: Label = $AccuracyLabel
 @onready var combo_label: Label = $ComboLabel
@@ -81,6 +86,8 @@ func _ready() -> void:
 
 func _init_hit_lines() -> void:
 	lane_hit_y.clear()
+	key_listener_sprites.clear()
+	original_receptor_textures.clear()  # dit is prima, gewoon leegmaken
 
 	for path in key_listener_paths:
 		var sprite := get_node(path) as Sprite2D
@@ -88,9 +95,17 @@ func _init_hit_lines() -> void:
 			push_warning("Keylistener niet gevonden voor pad: " + str(path))
 		else:
 			lane_hit_y.append(sprite.global_position.y)
+			key_listener_sprites.append(sprite)
+
 
 	if lane_hit_y.is_empty():
 		push_warning("Geen lane_hit_y ingesteld! Vul key_listener_paths in de Inspector.")
+
+	lane_hold_active.resize(lane_hit_y.size())
+	for i in range(lane_hold_active.size()):
+		lane_hold_active[i] = false
+
+
 
 
 func _process(delta: float) -> void:
@@ -168,8 +183,10 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 
 		if is_long:
 			lane_hold_notes[lane_idx] = note
+			_set_hold_visual_for_lane(lane_idx, note)
 		else:
 			note.queue_free()
+
 
 	print("Judgement lane", lane_idx, "→", result, " time_diff=", time_diff)
 	return true
@@ -231,6 +248,9 @@ func _handle_release_for_lane(lane_idx: int) -> void:
 	show_accuracy()
 	show_judgement(tail_result)
 	_show_timing_label(tail_result)
+
+	# visual van receptor resetten
+	_clear_hold_visual_for_lane(lane_idx)
 
 	# in alle gevallen is deze long note klaar voor deze lane
 	lane_hold_notes[lane_idx] = null
@@ -535,3 +555,47 @@ func set_ui_visible(visible: bool) -> void:
 		$JudgementLabel.visible = visible
 	if timing_label != null:
 		timing_label.visible = visible
+		
+func _get_receptor_for_lane(lane_idx: int) -> Sprite2D:
+	# Haal direct de node uit key_listener_paths
+	if lane_idx < 0 or lane_idx >= key_listener_paths.size():
+		return null
+
+	var path: NodePath = key_listener_paths[lane_idx]
+	var node := get_node_or_null(path) as Sprite2D
+	return node
+
+
+func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
+	var receptor := _get_receptor_for_lane(lane_idx)
+	if receptor == null:
+		return
+
+	# originele texture één keer onthouden
+	if not original_receptor_textures.has(lane_idx):
+		original_receptor_textures[lane_idx] = receptor.texture
+
+	# receptor altijd boven de notes tekenen
+	receptor.z_index = 10
+	receptor.z_as_relative = false
+
+	# receptor krijgt de head-texture van de long note (als die er is)
+	if note.texture != null:
+		receptor.texture = note.texture
+	else:
+		# als dit ooit gebeurt, willen we dat zien
+		print("LET OP: long note head texture is null in lane", lane_idx)
+
+	# de head van de long note zelf verbergen; body + tail blijven zichtbaar
+	note.visible = true     # whole node blijft
+	note.texture = null     # alleen de head-sprite (root texture) weg
+
+
+func _clear_hold_visual_for_lane(lane_idx: int) -> void:
+	var receptor := _get_receptor_for_lane(lane_idx)
+	if receptor == null:
+		return
+
+	# originele texture terugzetten als we die kennen
+	if original_receptor_textures.has(lane_idx):
+		receptor.texture = original_receptor_textures[lane_idx]

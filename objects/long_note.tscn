@@ -8,6 +8,8 @@
 [node name="LongNote" type="Sprite2D"]
 texture = ExtResource("1_aybj1")
 script = ExtResource("2_83iqh")
+head_to_body_gap = 26.0
+body_to_tail_gap = 54.0
 
 [node name="HoldBody" type="Sprite2D" parent="."]
 texture = ExtResource("3_p1rvn")
