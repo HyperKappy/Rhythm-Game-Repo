@@ -9,3 +9,12 @@ offset_top = -1.0
 offset_right = 1920.0
 offset_bottom = 1079.0
 texture = ExtResource("1_y1bbp")
+
+[node name="BackButton" type="Button" parent="."]
+z_index = 6
+offset_left = 13.0
+offset_top = 950.0
+offset_right = 265.0
+offset_bottom = 1068.0
+theme_override_font_sizes/font_size = 80
+text = "BACK"
