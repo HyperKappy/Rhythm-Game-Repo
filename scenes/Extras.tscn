@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpchktwi27dsc"]
+[gd_scene load_steps=3 format=3 uid="uid://cuqmcytn8x13b"]
 
 [ext_resource type="Texture2D" uid="uid://bat87ptx7ueql" path="res://Resources/images/Extras_Menu.png" id="1_y1bbp"]
+[ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="2_yobot"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,3 +19,4 @@ offset_right = 265.0
 offset_bottom = 1068.0
 theme_override_font_sizes/font_size = 80
 text = "BACK"
+script = ExtResource("2_yobot")

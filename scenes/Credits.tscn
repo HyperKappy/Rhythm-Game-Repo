@@ -1,11 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bghid1bcbbpt1"]
 
-[ext_resource type="Script" path="res://code/credits_tab.gd" id="1_gw1d4"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="1_spvsy"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="2_gw1d4"]
+[ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="3_gw1d4"]
 
 [node name="Node2D2" type="Node2D"]
-script = ExtResource("1_gw1d4")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 232.0
@@ -43,5 +42,7 @@ offset_right = 343.0
 offset_bottom = 1065.0
 theme_override_font_sizes/font_size = 80
 text = "BACK"
+script = ExtResource("3_gw1d4")
 
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]

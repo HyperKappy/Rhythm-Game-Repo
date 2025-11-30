@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgiud57w3rmgq"]
+[gd_scene load_steps=5 format=3 uid="uid://bgiud57w3rmgq"]
 
 [ext_resource type="Script" uid="uid://c4rpwy0r1ws4" path="res://code/pause_menu.gd" id="1_n87rw"]
 [ext_resource type="Shader" uid="uid://cfblt4i8k43f7" path="res://shaders/pause_blur.gdshader" id="2_myx47"]
+[ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="3_kukqi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kukqi"]
 shader = ExtResource("2_myx47")
@@ -78,6 +79,7 @@ z_index = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "BACK"
+script = ExtResource("3_kukqi")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 1
