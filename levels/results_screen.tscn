@@ -236,3 +236,29 @@ offset_right = 777.0
 offset_bottom = 993.0
 theme_override_font_sizes/font_size = 100
 text = "BACK"
+
+[node name="BestScoresPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1425.0
+offset_top = 240.0
+offset_right = 1698.0
+offset_bottom = 840.0
+
+[node name="ScoresList" type="VBoxContainer" parent="BestScoresPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 55.0
+offset_right = 48.0
+offset_bottom = 95.0
+alignment = 1
+
+[node name="Label" type="Label" parent="BestScoresPanel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 247.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "Personal bests"
+horizontal_alignment = 1
+vertical_alignment = 1
