@@ -575,9 +575,6 @@ func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
 	if not original_receptor_textures.has(lane_idx):
 		original_receptor_textures[lane_idx] = receptor.texture
 
-	# receptor altijd boven de notes tekenen
-	receptor.z_index = 10
-	receptor.z_as_relative = false
 
 	# receptor krijgt de head-texture van de long note (als die er is)
 	if note.texture != null:
