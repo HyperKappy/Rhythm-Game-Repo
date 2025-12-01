@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cirfpuxgijlwp"]
+[gd_scene load_steps=13 format=3 uid="uid://cirfpuxgijlwp"]
 
 [ext_resource type="Script" uid="uid://ra2gpxjg15vc" path="res://code/game_level.gd" id="1_2i5ty"]
-[ext_resource type="Texture2D" uid="uid://c32wdojp55x2i" path="res://objects/keylistener.png" id="2_2i5ty"]
 [ext_resource type="Script" uid="uid://dh022hdm80570" path="res://objects/key_listener.gd" id="2_d65c1"]
+[ext_resource type="Texture2D" uid="uid://cdqafbpb86lsw" path="res://Resources/art/receptor-up-1.png" id="3_o8r0f"]
 [ext_resource type="Script" uid="uid://be512qqenckd2" path="res://objects/judgement.gd" id="5_2i5ty"]
+[ext_resource type="Texture2D" uid="uid://b88ebvbtsc3ki" path="res://Resources/art/receptor-down-1.png" id="5_nwwuo"]
+[ext_resource type="Texture2D" uid="uid://d388ih5bgcn2j" path="res://Resources/art/receptor-up-2.png" id="6_n7yt8"]
 [ext_resource type="Texture2D" uid="uid://5dcukvlp0afe" path="res://Resources/art/stage_background.png" id="6_smvv8"]
 [ext_resource type="PackedScene" uid="uid://dk8v10241c0qd" path="res://objects/falling_key_spawner.tscn" id="6_wtvao"]
+[ext_resource type="Texture2D" uid="uid://cq37g30y4k4f6" path="res://Resources/art/receptor-down-2.png" id="7_jyjt4"]
 [ext_resource type="Script" uid="uid://b7i6jw6jickfu" path="res://code/warning_flash.gd" id="7_smvv8"]
+[ext_resource type="Texture2D" uid="uid://dgj4n1tr7dxef" path="res://Resources/art/receptor-up-3.png" id="8_gehph"]
+[ext_resource type="Texture2D" uid="uid://bj1vm6sjao5bn" path="res://Resources/art/receptor-down-3.png" id="9_qmvb7"]
 
 [node name="GameLevel" type="Node2D"]
 script = ExtResource("1_2i5ty")
@@ -55,35 +60,37 @@ layer = 128
 z_index = -1
 position = Vector2(-210, 469)
 scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_2i5ty")
+texture = ExtResource("3_o8r0f")
 script = ExtResource("2_d65c1")
+pressed_texture = ExtResource("5_nwwuo")
 
 [node name="Keylistener2" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(-75, 469)
-rotation = -1.5708
 scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_2i5ty")
+texture = ExtResource("6_n7yt8")
 script = ExtResource("2_d65c1")
 lane_index = 1
+pressed_texture = ExtResource("7_jyjt4")
 
 [node name="Keylistener3" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(75, 469)
-rotation = 1.5708
 scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_2i5ty")
+texture = ExtResource("8_gehph")
 script = ExtResource("2_d65c1")
 lane_index = 2
+pressed_texture = ExtResource("9_qmvb7")
 
 [node name="Keylistener4" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(210, 479)
-rotation = 3.14159
+position = Vector2(210, 469)
 scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_2i5ty")
+texture = ExtResource("3_o8r0f")
+flip_h = true
 script = ExtResource("2_d65c1")
 lane_index = 3
+pressed_texture = ExtResource("5_nwwuo")
 
 [node name="Judgement" type="Sprite2D" parent="."]
 position = Vector2(0, 0.0010376)

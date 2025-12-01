@@ -4,6 +4,8 @@ extends Node2D
 @export var long_note_scene: PackedScene = preload("res://objects/long_note.tscn")
 @export var mine_scene: PackedScene = preload("res://objects/mine.tscn")
 
+@export var mine_lane_offset: float = 4.0
+
 @export var scroll_velocity: float = 1000.0
 
 @export var key_listener_paths: Array[NodePath]
@@ -14,6 +16,15 @@ extends Node2D
 
 @export var auto_spawn_min_interval: float = 0.1
 @export var auto_spawn_max_interval: float = 0.5
+
+@export var lane_note_textures: Array[Texture2D] = []
+
+var mine_lane_rotations := {
+	0: deg_to_rad(0),     # lane 1
+	1: deg_to_rad(-90),   # lane 2
+	2: deg_to_rad(90),    # lane 3
+	3: deg_to_rad(180)    # lane 4
+}
 
 var lane_x_positions: Array[float] = []
 var lane_rotations: Array[float] = []
@@ -130,19 +141,21 @@ func spawn_note_in_lane(lane_index: int) -> void:
 		return
 
 	var x: float = lane_x_positions[lane_index]
-	var rot: float = lane_rotations[lane_index]
 
 	note.global_position = Vector2(x, spawn_y)
 	note.scale = note_scale
-	note.global_rotation = rot
+	note.rotation = 0.0
+
+	if lane_index < lane_note_textures.size() and lane_note_textures[lane_index] != null:
+		note.texture = lane_note_textures[lane_index]
 
 	note.scroll_velocity = scroll_velocity
-
 	note.lane_index = lane_index
 
 	get_parent().add_child(note)
 
-	print("Note gespawned in lane", lane_index, "op x =", x, "y =", spawn_y, "rot =", rot)
+	print("Note gespawned in lane", lane_index, "op x =", x, "y =", spawn_y)
+
 
 
 func spawn_long_note(lane_index: int, duration_ms: float) -> void:
@@ -185,14 +198,20 @@ func spawn_mine_in_lane(lane_index: int) -> void:
 		push_warning("mine_scene is geen Sprite2D.")
 		return
 
-	var x: float = lane_x_positions[lane_index]
-	var rot: float = lane_rotations[lane_index]
+	var base_x: float = lane_x_positions[lane_index]
+	var x_offset := 0.0
 
-	mine.global_position = Vector2(x, spawn_y)
+	if lane_index == 1:
+		x_offset = -mine_lane_offset
+	elif lane_index == 2:
+		x_offset = mine_lane_offset
+
+	mine.global_position = Vector2(base_x + x_offset, spawn_y)
 	mine.scale = note_scale
-	mine.global_rotation = rot
 
+	if mine_lane_rotations.has(lane_index):
+		mine.rotation = mine_lane_rotations[lane_index]
+	else:
+		mine.rotation = 0.0
 
 	get_parent().add_child(mine)
-
-	print("Mine gespawned in lane", lane_index, "op x =", x, "y =", spawn_y)

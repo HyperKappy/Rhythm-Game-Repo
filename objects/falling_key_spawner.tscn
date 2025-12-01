@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk8v10241c0qd"]
+[gd_scene load_steps=6 format=3 uid="uid://dk8v10241c0qd"]
 
 [ext_resource type="Script" uid="uid://dfet8i3a12m32" path="res://objects/falling_key_spawner.gd" id="1_4bsa8"]
+[ext_resource type="Texture2D" uid="uid://b88ebvbtsc3ki" path="res://Resources/art/receptor-down-1.png" id="2_igv22"]
+[ext_resource type="Texture2D" uid="uid://cq37g30y4k4f6" path="res://Resources/art/receptor-down-2.png" id="3_cr8no"]
+[ext_resource type="Texture2D" uid="uid://bj1vm6sjao5bn" path="res://Resources/art/receptor-down-3.png" id="4_fosux"]
+[ext_resource type="Texture2D" uid="uid://dfihiquegnr4w" path="res://Resources/art/receptor-down-4.png" id="5_abw11"]
 
 [node name="falling_key_spawner" type="Node2D"]
 script = ExtResource("1_4bsa8")
+lane_note_textures = Array[Texture2D]([ExtResource("2_igv22"), ExtResource("3_cr8no"), ExtResource("4_fosux"), ExtResource("5_abw11")])
