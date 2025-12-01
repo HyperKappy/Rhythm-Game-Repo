@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
 [ext_resource type="Texture2D" uid="uid://cqcukjavk7r4f" path="res://Resources/images/arrowscroll.png" id="2_vjksw"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
-[ext_resource type="Texture2D" uid="uid://djcxmiropdt8s" path="res://Resources/images/pou (1).png" id="4_jjpsb"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
 [ext_resource type="AudioStream" uid="uid://bjmfaqahsmtfw" path="res://Resources/audio/Guess_Preview.mp3" id="7_63rwx"]
 [ext_resource type="Texture2D" uid="uid://hgcovwkulpdo" path="res://Resources/images/GIVEN_ENOUGH_cropped.png" id="7_il4ce"]
 [ext_resource type="Script" uid="uid://dn8ct6gjnwhrx" path="res://code/given_enough.gd" id="8_glc18"]
+[ext_resource type="Texture2D" uid="uid://b17h2fmhxd6oh" path="res://Resources/images/pou_beter.png" id="9_vjksw"]
 [ext_resource type="AudioStream" uid="uid://dkxya64ogxo0g" path="res://Resources/audio/GIVEN_ENOUGH_Preview.mp3" id="10_glc18"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="12_gcj5u"]
 [ext_resource type="Texture2D" uid="uid://blqltsbcho20k" path="res://Resources/images/limbo_icon.jpg" id="13_gcj5u"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="13_ufb8k"]
 [ext_resource type="Script" uid="uid://coyv5jbp8tcwl" path="res://code/Limbo.gd" id="14_efvnr"]
 [ext_resource type="AudioStream" uid="uid://c4axmn3jwyo2g" path="res://Resources/audio/Limbo_Preview.mp3" id="14_ufb8k"]
-[ext_resource type="Texture2D" uid="uid://dojcooysi1kto" path="res://Resources/images/Extras_Animation.png" id="16_ra5o5"]
+[ext_resource type="Texture2D" uid="uid://cc2m08f4fcjmb" path="res://Resources/images/Extras_Animation_beter.png" id="17_do18t"]
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
 
@@ -540,7 +540,7 @@ offset_top = 90.0
 offset_right = 405.0
 offset_bottom = 330.0
 pivot_offset = Vector2(120, 120)
-texture_normal = ExtResource("4_jjpsb")
+texture_normal = ExtResource("9_vjksw")
 script = ExtResource("5_6h55s")
 
 [node name="Song_Name_1" type="Label" parent="Pou"]
@@ -617,7 +617,7 @@ libraries = {
 offset_top = 997.0
 offset_right = 1920.0
 offset_bottom = 2160.0
-texture_normal = ExtResource("16_ra5o5")
+texture_normal = ExtResource("17_do18t")
 script = ExtResource("17_twyjv")
 
 [node name="Click_Animation" type="AnimationPlayer" parent="Extras"]
