@@ -4,6 +4,7 @@ extends Control
 
 @onready var continue_button: Button = $CanvasLayer/Panel/VBoxContainer/ContinueButton
 @onready var retry_button: Button = $CanvasLayer/Panel/VBoxContainer/RetryButton
+@onready var back_button: Button = $CanvasLayer/Panel/VBoxContainer/BackButton
 
 func _ready() -> void:
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 
 	continue_button.pressed.connect(_on_continue_pressed)
 	retry_button.pressed.connect(_on_retry_pressed)
+	back_button.pressed.connect(_on_back_pressed)
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -28,6 +30,15 @@ func _on_retry_pressed() -> void:
 	queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_tree().reload_current_scene()
+
+func _on_back_pressed() -> void:
+	get_tree().paused = false
+	var tree := get_tree()
+	queue_free()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+	if main_menu_scene_path != "":
+		tree.change_scene_to_file(main_menu_scene_path)
 
 
 func _unhandled_input(event: InputEvent) -> void:
