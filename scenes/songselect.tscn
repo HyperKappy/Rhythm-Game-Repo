@@ -518,7 +518,6 @@ offset_top = 250.0
 offset_right = 263.0
 offset_bottom = 277.0
 pivot_offset = Vector2(143.5, 13.5)
-theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 theme_override_font_sizes/font_size = 19
 text = "GIVEN ENOUGH - Nessa Barrett"
 
@@ -551,7 +550,6 @@ offset_top = 250.0
 offset_right = 173.0
 offset_bottom = 278.0
 pivot_offset = Vector2(55, 10)
-theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 theme_override_font_sizes/font_size = 20
 text = "Guess - Pou"
 
@@ -603,7 +601,6 @@ offset_top = 250.0
 offset_right = 239.0
 offset_bottom = 278.0
 pivot_offset = Vector2(55, 10)
-theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 theme_override_font_sizes/font_size = 20
 text = "Isolation - Nighthawk22"
 
