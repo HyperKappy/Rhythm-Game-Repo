@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=44 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
-[ext_resource type="Texture2D" uid="uid://b4b5oxk641d0g" path="res://Resources/images/songselect_background.png" id="2_byusa"]
+[ext_resource type="Texture2D" uid="uid://cqcukjavk7r4f" path="res://Resources/images/arrowscroll.png" id="2_vjksw"]
+[ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
 [ext_resource type="Texture2D" uid="uid://djcxmiropdt8s" path="res://Resources/images/pou (1).png" id="4_jjpsb"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
@@ -448,10 +449,25 @@ _data = {
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_il4ce")
 
+[node name="Arrowscroll2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14117648)
+position = Vector2(-1364.9998, -785)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_vjksw")
+
+[node name="Scroll" type="AnimationPlayer" parent="Arrowscroll2"]
+
+[node name="Arrowscroll" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14117648)
+position = Vector2(3040, -760)
+texture = ExtResource("2_vjksw")
+
+[node name="Scroll" type="AnimationPlayer" parent="Arrowscroll"]
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_byusa")
+texture = ExtResource("3_do18t")
 
 [node name="Unfinished" type="Sprite2D" parent="."]
 position = Vector2(285, 870)
