@@ -58,7 +58,7 @@ layer = 128
 
 [node name="Keylistener" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-210, 469)
+position = Vector2(-210, 450)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("3_o8r0f")
 script = ExtResource("2_d65c1")
@@ -66,7 +66,7 @@ pressed_texture = ExtResource("5_nwwuo")
 
 [node name="Keylistener2" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-75, 469)
+position = Vector2(-75, 450)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("6_n7yt8")
 script = ExtResource("2_d65c1")
@@ -75,7 +75,7 @@ pressed_texture = ExtResource("7_jyjt4")
 
 [node name="Keylistener3" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(75, 469)
+position = Vector2(75, 450)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("8_gehph")
 script = ExtResource("2_d65c1")
@@ -84,7 +84,7 @@ pressed_texture = ExtResource("9_qmvb7")
 
 [node name="Keylistener4" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(210, 469)
+position = Vector2(210, 450)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("3_o8r0f")
 flip_h = true
