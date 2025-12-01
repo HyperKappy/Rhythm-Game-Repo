@@ -48,54 +48,55 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !level_started:
 		return
-	
-	if notes.is_empty() or audio_player == null or not audio_player.playing:
-		return
-	
-	
-	if warn_shown and note_index == 0 and audio_player.get_playback_position() * 1000.0 >= first_note_time - spawn_ahead_ms:
-		warning_flash.stop_flashing()
-		warn_shown = false
 
-	
+	if audio_player == null or not audio_player.playing:
+		return
+
 	var song_time_ms: float = audio_player.get_playback_position() * 1000.0
 
-	while note_index < notes.size():
-		var note_data: Dictionary = notes[note_index]
-		var note_time_ms: float = float(note_data.get("time", 0.0))
+	if warn_shown and note_index == 0 and first_note_time >= 0.0:
+		if song_time_ms >= first_note_time - spawn_ahead_ms:
+			warning_flash.stop_flashing()
+			warn_shown = false
 
-		
-		if note_time_ms <= song_time_ms + spawn_ahead_ms:
-			var lane_1_based: int = int(note_data.get("lane", 1))
-			var lane_index: int = lane_1_based - 1  # 1..4 -> 0..3
 
-			
-			if note_data.has("end_time"):
-				var end_time_ms: float = float(note_data.get("end_time", note_time_ms))
-				var duration_ms: float = max(0.0, end_time_ms - note_time_ms)
-				spawner.spawn_long_note(lane_index, duration_ms)
+	if not notes.is_empty():
+		while note_index < notes.size():
+			var note_data: Dictionary = notes[note_index]
+			var note_time_ms: float = float(note_data.get("time", 0.0))
+
+			if note_time_ms <= song_time_ms + spawn_ahead_ms:
+				var lane_1_based: int = int(note_data.get("lane", 1))
+				var lane_index: int = lane_1_based - 1  # 1..4 -> 0..3
+
+				if note_data.has("end_time"):
+					var end_time_ms: float = float(note_data.get("end_time", note_time_ms))
+					var duration_ms: float = max(0.0, end_time_ms - note_time_ms)
+					spawner.spawn_long_note(lane_index, duration_ms)
+				else:
+					spawner.spawn_note_in_lane(lane_index)
+
+				note_index += 1
 			else:
-				spawner.spawn_note_in_lane(lane_index)
+				break
 
-			note_index += 1
-		else:
-			break
 
 	if not mines.is_empty():
-			while mine_index < mines.size():
-				var mine_data: Dictionary = mines[mine_index]
-				var mine_time_ms: float = float(mine_data.get("time", 0.0))
+		while mine_index < mines.size():
+			var mine_data: Dictionary = mines[mine_index]
+			var mine_time_ms: float = float(mine_data.get("time", 0.0))
 
-				if mine_time_ms <= song_time_ms + spawn_ahead_ms:
-					var lane_1_based_mine: int = int(mine_data.get("lane", 1))
-					var mine_lane_index: int = lane_1_based_mine - 1  # 1..4 -> 0..3
+			if mine_time_ms <= song_time_ms + spawn_ahead_ms:
+				var lane_1_based_mine: int = int(mine_data.get("lane", 1))
+				var mine_lane_index: int = lane_1_based_mine - 1  # 1..4 -> 0..3
 
-					if spawner.has_method("spawn_mine_in_lane"):
-						spawner.spawn_mine_in_lane(mine_lane_index)
+				if spawner.has_method("spawn_mine_in_lane"):
+					spawner.spawn_mine_in_lane(mine_lane_index)
 
-					mine_index += 1
-				else:
-					break
+				mine_index += 1
+			else:
+				break
+
 
 func _load_chart() -> void:
 	var file: FileAccess = FileAccess.open(chart_path, FileAccess.READ)
