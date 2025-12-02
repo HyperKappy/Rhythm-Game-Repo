@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float alpha_cutoff = 0.9;
+uniform float alpha_cutoff = 0.2;
 
 void fragment() {
 	vec4 tex = texture(TEXTURE, UV);

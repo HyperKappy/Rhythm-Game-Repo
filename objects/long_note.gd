@@ -22,6 +22,9 @@ var base_modulate: Color
 var hold_visual_active: bool = false
 var hold_clip_y: float = 1000000.0
 
+var body_mat: ShaderMaterial = null
+var end_mat: ShaderMaterial = null
+
 
 func _ready() -> void:
 	add_to_group("notes")
@@ -29,7 +32,7 @@ func _ready() -> void:
 
 	base_modulate = modulate
 
-	_init_body_shader()
+	_init_shaders()
 	_update_length()
 
 
@@ -42,50 +45,52 @@ func setup(duration: float) -> void:
 	_update_length()
 
 
-func _init_body_shader() -> void:
-	if body_sprite == null:
-		return
-
+func _init_shaders() -> void:
 	var shader := Shader.new()
 	shader.code = """
-	shader_type canvas_item;
+		shader_type canvas_item;
 
-	// wereld-Y waar de body moet stoppen
-	uniform float cutoff_world_y = 1000000.0;
-	// hoe donker iets mag zijn voordat we het als "zwart / achtergrond" zien
-	uniform float alpha_cutoff = 0.1;
+		// wereld-Y waar body én tail moeten stoppen
+		uniform float cutoff_world_y = 1000000.0;
+		// hoe donker iets mag zijn voordat we het als "achtergrond" zien
+		uniform float alpha_cutoff = 0.1;
 
-	varying float world_y;
+		varying float world_y;
 
-	void vertex() {
-		vec4 wp = MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0);
-		world_y = wp.y;
-	}
-
-	void fragment() {
-		vec4 tex = texture(TEXTURE, UV);
-		// helderheid van deze pixel (0 = zwart, 1 = wit)
-		float brightness = (tex.r + tex.g + tex.b) / 3.0;
-
-		// 1) zwart / bijna zwart: weggooien
-		if (brightness <= alpha_cutoff) {
-			discard;
+		void vertex() {
+			// wereldpositie van deze vertex
+			vec4 wp = MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0);
+			world_y = wp.y;
 		}
 
-		// 2) onder de cutoff-lijn: ook weggooien
-		if (world_y > cutoff_world_y) {
-			discard;
+		void fragment() {
+			vec4 tex = texture(TEXTURE, UV);
+			float brightness = (tex.r + tex.g + tex.b) / 3.0;
+
+			// 1) zwarte / bijna zwarte pixels weggooien (achtergrond)
+			if (brightness <= alpha_cutoff) {
+				discard;
+			}
+
+			// 2) alles ONDER de cutoff (grotere y) weggooien
+			if (world_y > cutoff_world_y) {
+				discard;
+			}
+
+			// 3) witte vorm volledig opaak tekenen (met modulate-kleur)
+			COLOR = vec4(tex.rgb, 1.0) * COLOR;
 		}
+	"""
 
-		// 3) witvorm volledig opaak tekenen
-		COLOR = vec4(tex.rgb, 1.0) * COLOR;
-	}
-"""
+	if body_sprite != null:
+		body_mat = ShaderMaterial.new()
+		body_mat.shader = shader
+		body_sprite.material = body_mat
 
-
-	var mat := ShaderMaterial.new()
-	mat.shader = shader
-	body_sprite.material = mat
+	if end_sprite != null:
+		end_mat = ShaderMaterial.new()
+		end_mat.shader = shader
+		end_sprite.material = end_mat
 
 
 func _update_length() -> void:
@@ -118,12 +123,11 @@ func _update_length() -> void:
 	if body_length < 0.0:
 		body_length = 0.0
 
-	# y groeit naar beneden, maar de hold groeit OMHOOG
 	var tail_top_y: float = -distance_local
 
 	var body_top_y: float = tail_top_y + body_to_tail_gap
 	var body_bottom_y: float = -head_to_body_gap
-
+	
 	body_sprite.scale.y = body_length / body_tex_h
 	body_sprite.position.y = body_top_y
 
@@ -184,15 +188,22 @@ func start_hold_visual(hit_world_y: float) -> void:
 	hold_visual_active = true
 	hold_clip_y = hit_world_y
 
-	if body_sprite != null and body_sprite.material is ShaderMaterial:
-		var mat := body_sprite.material as ShaderMaterial
-		mat.set_shader_parameter("cutoff_world_y", hit_world_y)
+	if body_mat != null:
+		body_mat.set_shader_parameter("cutoff_world_y", hit_world_y)
+	if end_mat != null:
+		end_mat.set_shader_parameter("cutoff_world_y", hit_world_y)
 
 
 func stop_hold_visual() -> void:
 	hold_visual_active = false
 	hold_clip_y = 1000000.0
 
-	if body_sprite != null and body_sprite.material is ShaderMaterial:
-		var mat := body_sprite.material as ShaderMaterial
-		mat.set_shader_parameter("cutoff_world_y", 1000000.0)
+	if body_mat != null:
+		body_mat.set_shader_parameter("cutoff_world_y", 1000000.0)
+	if end_mat != null:
+		end_mat.set_shader_parameter("cutoff_world_y", 1000000.0)
+
+	if end_sprite != null:
+		end_sprite.visible = true
+	if body_sprite != null:
+		body_sprite.visible = true

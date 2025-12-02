@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vbj8kaxlptba"
-path="res://.godot/imported/note-holdend-b.png-3300c09c7bf2b48d1bc968e800ab7e84.ctex"
+uid="uid://bs2acj0n5e3vu"
+path="res://.godot/imported/receptor-ln-hold-2.png-5f083951e4bcb9aa1af27e15c55662a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/note-holdend-b.png"
-dest_files=["res://.godot/imported/note-holdend-b.png-3300c09c7bf2b48d1bc968e800ab7e84.ctex"]
+source_file="res://objects/receptor-ln-hold-2.png"
+dest_files=["res://.godot/imported/receptor-ln-hold-2.png-5f083951e4bcb9aa1af27e15c55662a8.ctex"]
 
 [params]
 

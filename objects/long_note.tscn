@@ -1,33 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn1ninewnq5tt"]
+[gd_scene load_steps=5 format=3 uid="uid://bn1ninewnq5tt"]
 
-[ext_resource type="Texture2D" uid="uid://t4e6txnnsmpc" path="res://objects/note-holdhitobject-2.png" id="1_aybj1"]
+[ext_resource type="Texture2D" uid="uid://04a1p7fm66g5" path="res://objects/note-holdhitobject-3.png" id="1_aybj1"]
 [ext_resource type="Script" uid="uid://v7oyg1gddf1l" path="res://objects/long_note.gd" id="2_83iqh"]
 [ext_resource type="Texture2D" uid="uid://ww0ccan20u3p" path="res://objects/note-holdbody-a.png" id="3_p1rvn"]
-[ext_resource type="Texture2D" uid="uid://cuo5le6i6shvy" path="res://objects/note-holdend-2.png" id="4_p1rvn"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aybj1"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p1rvn"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_np14u"]
-blend_mode = 1
+[ext_resource type="Texture2D" uid="uid://dgceqjxbxoeve" path="res://objects/note-holdend-3.png" id="4_p1rvn"]
 
 [node name="LongNote" type="Sprite2D"]
-material = SubResource("CanvasItemMaterial_aybj1")
 texture = ExtResource("1_aybj1")
 script = ExtResource("2_83iqh")
 head_to_body_gap = -1.5
-body_to_tail_gap = 16.0
+body_to_tail_gap = 15.5
 
 [node name="HoldBody" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_p1rvn")
 texture = ExtResource("3_p1rvn")
 centered = false
 
 [node name="HoldEnd" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_np14u")
 texture = ExtResource("4_p1rvn")
 centered = false
 offset = Vector2(0, -48)

@@ -1,8 +1,8 @@
 extends Sprite2D
 
 var accuracy: float = 0.0
-var hits: int = 0               
-var acc_score: int = 0          
+var hits: int = 0
+var acc_score: int = 0
 var result: String = ""
 var accuracy_display: float = 100.0
 var accuracy_tween: Tween = null
@@ -17,17 +17,21 @@ var miss_count: int = 0
 
 var combo: int = 0
 var max_combo: int = 0
-var max_possible_combo: int = 0	
+var max_possible_combo: int = 0
 
 var combo_base_position: Vector2
 var judgement_base_position: Vector2
 
+# keylistener / receptor info
 var key_listener_sprites: Array[Sprite2D] = []
 var original_receptor_textures := {}
 var lane_hold_active: Array[bool] = []
+var lane_hit_y: Array[float] = []
 
-@export var lane_receptor_hold_textures: Array[Texture2D] = []
-@export var lane_hit_y: Array[float] = []
+@export var key_listener_paths: Array[NodePath]
+
+# actieve long notes per lane
+var lane_hold_notes: Array[Sprite2D] = []
 
 @onready var judgement_label: Label = $JudgementLabel
 @onready var accuracy_label: Label = $AccuracyLabel
@@ -35,6 +39,7 @@ var lane_hold_active: Array[bool] = []
 
 @onready var timing_label: Label = null
 
+# animatie-tweens
 var judgement_tween: Tween = null
 var combo_tween: Tween = null
 var timing_tween: Tween = null
@@ -45,22 +50,20 @@ var last_signed_time_diff: float = 0.0
 var last_has_timing_info: bool = false
 
 const LANE_ACTIONS: Array[String] = [
-	"Left",  # lane 0
-	"Down",  # lane 1
-	"Up",    # lane 2
+	"Left",	 # lane 0
+	"Down",	 # lane 1
+	"Up",	 # lane 2
 	"Right"  # lane 3
 ]
-
-var lane_hold_notes: Array[Sprite2D] = []
 
 
 func _ready() -> void:
 	_init_hit_lines()
-	
+
 	lane_hold_notes.resize(LANE_ACTIONS.size())
 	for i in range(lane_hold_notes.size()):
 		lane_hold_notes[i] = null
-	
+
 	combo_label.visible = false
 	combo_label.text = "0x"
 	combo_base_position = combo_label.position
@@ -86,43 +89,49 @@ func _init_hit_lines() -> void:
 	lane_hit_y.clear()
 	key_listener_sprites.clear()
 	original_receptor_textures.clear()
+	lane_hold_active.clear()
+	lane_hold_notes.clear()
 
-	var parent := get_parent()
-	if parent == null:
-		push_warning("Judgement heeft geen parent, kan keylisteners niet vinden.")
-		return
-
-	var names := [
-		"Keylistener",
-		"Keylistener2",
-		"Keylistener3",
-		"Keylistener4"
-	]
-
-	for name in names:
-		if not parent.has_node(name):
-			push_warning("Keylistener node niet gevonden: %s" % name)
-			continue
-
-		var sprite := parent.get_node(name) as Sprite2D
+	for path in key_listener_paths:
+		var sprite := get_node(path) as Sprite2D
 		if sprite == null:
-			push_warning("Node '%s' is geen Sprite2D." % name)
-			continue
-
-		lane_hit_y.append(sprite.global_position.y)
-		key_listener_sprites.append(sprite)
-		print("Hit line voor", name, "=", sprite.global_position.y)
+			push_warning("Keylistener niet gevonden voor pad: " + str(path))
+		else:
+			lane_hit_y.append(sprite.global_position.y)
+			key_listener_sprites.append(sprite)
 
 	if lane_hit_y.is_empty():
-		push_warning("Geen lane_hit_y ingesteld! Controleer of Keylistener, Keylistener2, Keylistener3, Keylistener4 bestaan.")
+		push_warning("Geen lane_hit_y ingesteld! Vul key_listener_paths in de Inspector.")
 
 	lane_hold_active.resize(lane_hit_y.size())
 	for i in range(lane_hold_active.size()):
 		lane_hold_active[i] = false
 
+	lane_hold_notes.resize(lane_hit_y.size())
+	for i in range(lane_hold_notes.size()):
+		lane_hold_notes[i] = null
+
 
 func _process(delta: float) -> void:
 	_check_auto_misses()
+	_force_hide_receptors_during_hold()
+
+
+func _force_hide_receptors_during_hold() -> void:
+	# Zolang er een long-note hold actief is in een lane,
+	# dwingen we de receptor-texture elke frame naar null.
+	for lane_idx in range(lane_hold_active.size()):
+		if not lane_hold_active[lane_idx]:
+			continue
+
+		var receptor := _get_receptor_for_lane(lane_idx)
+		if receptor == null:
+			continue
+
+		if not original_receptor_textures.has(lane_idx):
+			original_receptor_textures[lane_idx] = receptor.texture
+
+		receptor.texture = null
 
 
 func _input(event: InputEvent) -> void:
@@ -194,7 +203,8 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 		_show_combo()
 
 		if is_long:
-			lane_hold_notes[lane_idx] = note
+			if lane_idx >= 0 and lane_idx < lane_hold_notes.size():
+				lane_hold_notes[lane_idx] = note
 			_set_hold_visual_for_lane(lane_idx, note)
 		else:
 			note.queue_free()
@@ -333,7 +343,7 @@ func _check_auto_misses() -> void:
 			continue
 
 		var dy_signed: float = note.global_position.y - hit_y
-		var max_distance: float = scroll_velocity * 0.2 
+		var max_distance: float = scroll_velocity * 0.2
 
 		if dy_signed > max_distance:
 			notes_to_miss.append(note)
@@ -342,7 +352,7 @@ func _check_auto_misses() -> void:
 		total_judgements += 1
 		result = "MISS"
 		miss_count += 1
-		last_has_timing_info = false 
+		last_has_timing_info = false
 		_on_miss()
 
 		if note.is_in_group("long_notes") and note.has_method("mark_head_result"):
@@ -566,6 +576,9 @@ func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
 		print("Geen receptor gevonden voor lane ", lane_idx)
 		return
 
+	if lane_idx >= 0 and lane_idx < lane_hold_active.size():
+		lane_hold_active[lane_idx] = true
+
 	if not original_receptor_textures.has(lane_idx):
 		original_receptor_textures[lane_idx] = receptor.texture
 	receptor.texture = null
@@ -576,9 +589,12 @@ func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
 	if overlay != null:
 		overlay.visible = true
 		cutoff_y = overlay.global_position.y
-		print("Hold overlay AAN lane ", lane_idx, " cutoff_y=", cutoff_y)
+		print("HoldOverlay AAN voor lane ", lane_idx, " cutoff_y = ", cutoff_y)
 	else:
-		cutoff_y = lane_hit_y[lane_idx]
+		if lane_idx >= 0 and lane_idx < lane_hit_y.size():
+			cutoff_y = lane_hit_y[lane_idx]
+		else:
+			cutoff_y = 1000000.0
 		print("GEEN HoldOverlay, gebruik hitlijn voor lane ", lane_idx)
 
 	note.texture = null
@@ -588,6 +604,9 @@ func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
 
 
 func _clear_hold_visual_for_lane(lane_idx: int, note: Node = null) -> void:
+	if lane_idx >= 0 and lane_idx < lane_hold_active.size():
+		lane_hold_active[lane_idx] = false
+
 	var receptor := _get_receptor_for_lane(lane_idx)
 	if receptor != null and original_receptor_textures.has(lane_idx):
 		receptor.texture = original_receptor_textures[lane_idx]
