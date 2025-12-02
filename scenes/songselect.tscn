@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
 [ext_resource type="Texture2D" uid="uid://cqcukjavk7r4f" path="res://Resources/images/arrowscroll.png" id="2_vjksw"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
-[ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://scenes/arrowscroll.gd" id="3_xtfyt"]
+[ext_resource type="Script" path="res://scenes/arrowscroll.gd" id="3_xtfyt"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
 [ext_resource type="AudioStream" uid="uid://bjmfaqahsmtfw" path="res://Resources/audio/Guess_Preview.mp3" id="7_63rwx"]
@@ -21,6 +21,21 @@
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
 
+[sub_resource type="Animation" id="Animation_w6vh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2179, -120.99988)]
+}
+
 [sub_resource type="Animation" id="Animation_dpfpd"]
 resource_name = "Scroll"
 length = 10.0
@@ -36,21 +51,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1648, -728), Vector2(550, 2130)]
-}
-
-[sub_resource type="Animation" id="Animation_w6vh0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2179, -120.99988)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iamcd"]
@@ -506,9 +506,23 @@ position = Vector2(2179, -120.99988)
 rotation = 0.42062435
 skew = 0.27227136
 texture = ExtResource("2_vjksw")
+offset = Vector2(-659, 922)
 script = ExtResource("3_xtfyt")
 
 [node name="Scroll" type="AnimationPlayer" parent="Arrowscroll"]
+libraries = {
+&"": SubResource("AnimationLibrary_iamcd")
+}
+
+[node name="Arrowscroll2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14117648)
+position = Vector2(2179, -120.99988)
+rotation = 0.42062438
+skew = 0.27227128
+texture = ExtResource("2_vjksw")
+script = ExtResource("3_xtfyt")
+
+[node name="Scroll" type="AnimationPlayer" parent="Arrowscroll2"]
 libraries = {
 &"": SubResource("AnimationLibrary_iamcd")
 }
@@ -519,34 +533,42 @@ offset_bottom = 40.0
 texture = ExtResource("3_do18t")
 
 [node name="Unfinished" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(285, 870)
 texture = ExtResource("2_14uf1")
 
 [node name="Unfinished2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(695, 870)
 texture = ExtResource("2_14uf1")
 
 [node name="Unfinished3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(695, 540)
 texture = ExtResource("2_14uf1")
 
 [node name="Unfinished4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(285, 540)
 texture = ExtResource("2_14uf1")
 
 [node name="Unfinished5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(695, 210)
 texture = ExtResource("2_14uf1")
 
 [node name="Unfinished6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1105, 540)
 texture = ExtResource("2_14uf1")
 
 [node name="Unfinished7" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1106, 210)
 texture = ExtResource("2_14uf1")
 
 [node name="Unfinished8" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1587, 529)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("2_14uf1")
