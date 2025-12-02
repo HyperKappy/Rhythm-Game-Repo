@@ -8,4 +8,5 @@
 
 [node name="falling_key_spawner" type="Node2D"]
 script = ExtResource("1_4bsa8")
+key_listener_paths = Array[NodePath]([NodePath("res://levels/game_level/Keylistener"), NodePath(""), NodePath(""), NodePath("")])
 lane_note_textures = Array[Texture2D]([ExtResource("2_igv22"), ExtResource("3_cr8no"), ExtResource("4_fosux"), ExtResource("5_abw11")])

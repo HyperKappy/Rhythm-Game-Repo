@@ -23,9 +23,11 @@ var combo_base_position: Vector2
 var judgement_base_position: Vector2
 
 var key_listener_sprites: Array[Sprite2D] = []
-var original_receptor_textures: Dictionary = {}
+var original_receptor_textures := {}
 var lane_hold_active: Array[bool] = []
 
+@export var lane_receptor_hold_textures: Array[Texture2D] = []
+@export var lane_hit_y: Array[float] = []
 
 @onready var judgement_label: Label = $JudgementLabel
 @onready var accuracy_label: Label = $AccuracyLabel
@@ -33,7 +35,6 @@ var lane_hold_active: Array[bool] = []
 
 @onready var timing_label: Label = null
 
-# voor animaties
 var judgement_tween: Tween = null
 var combo_tween: Tween = null
 var timing_tween: Tween = null
@@ -50,9 +51,6 @@ const LANE_ACTIONS: Array[String] = [
 	"Right"  # lane 3
 ]
 
-@export var key_listener_paths: Array[NodePath]
-
-var lane_hit_y: Array[float] = []
 var lane_hold_notes: Array[Sprite2D] = []
 
 
@@ -87,25 +85,40 @@ func _ready() -> void:
 func _init_hit_lines() -> void:
 	lane_hit_y.clear()
 	key_listener_sprites.clear()
-	original_receptor_textures.clear()  # dit is prima, gewoon leegmaken
+	original_receptor_textures.clear()
 
-	for path in key_listener_paths:
-		var sprite := get_node(path) as Sprite2D
+	var parent := get_parent()
+	if parent == null:
+		push_warning("Judgement heeft geen parent, kan keylisteners niet vinden.")
+		return
+
+	var names := [
+		"Keylistener",
+		"Keylistener2",
+		"Keylistener3",
+		"Keylistener4"
+	]
+
+	for name in names:
+		if not parent.has_node(name):
+			push_warning("Keylistener node niet gevonden: %s" % name)
+			continue
+
+		var sprite := parent.get_node(name) as Sprite2D
 		if sprite == null:
-			push_warning("Keylistener niet gevonden voor pad: " + str(path))
-		else:
-			lane_hit_y.append(sprite.global_position.y)
-			key_listener_sprites.append(sprite)
+			push_warning("Node '%s' is geen Sprite2D." % name)
+			continue
 
+		lane_hit_y.append(sprite.global_position.y)
+		key_listener_sprites.append(sprite)
+		print("Hit line voor", name, "=", sprite.global_position.y)
 
 	if lane_hit_y.is_empty():
-		push_warning("Geen lane_hit_y ingesteld! Vul key_listener_paths in de Inspector.")
+		push_warning("Geen lane_hit_y ingesteld! Controleer of Keylistener, Keylistener2, Keylistener3, Keylistener4 bestaan.")
 
 	lane_hold_active.resize(lane_hit_y.size())
 	for i in range(lane_hold_active.size()):
 		lane_hold_active[i] = false
-
-
 
 
 func _process(delta: float) -> void:
@@ -124,7 +137,6 @@ func _input(event: InputEvent) -> void:
 				_show_timing_label(result)
 		elif event.is_action_released(action_name):
 			_handle_release_for_lane(lane_idx)
-
 
 
 func handle_hit_for_lane(lane_idx: int) -> bool:
@@ -187,10 +199,8 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 		else:
 			note.queue_free()
 
-
 	print("Judgement lane", lane_idx, "→", result, " time_diff=", time_diff)
 	return true
-
 
 
 func _handle_release_for_lane(lane_idx: int) -> void:
@@ -222,11 +232,9 @@ func _handle_release_for_lane(lane_idx: int) -> void:
 		lane_hold_notes[lane_idx] = null
 		return
 
-	# signed: tail_y - hit_y > 0 -> tail onder lijn = LATE
 	var signed_time_diff: float = (tail_sprite.global_position.y - hit_y) / scroll_velocity
 	var time_diff: float = abs(signed_time_diff)
 
-	# elke release op een actieve long note = 1 judgement
 	total_judgements += 1
 	var tail_result := _apply_time_diff_and_update_stats(time_diff)
 
@@ -249,10 +257,7 @@ func _handle_release_for_lane(lane_idx: int) -> void:
 	show_judgement(tail_result)
 	_show_timing_label(tail_result)
 
-	# visual van receptor resetten
-	_clear_hold_visual_for_lane(lane_idx)
-
-	# in alle gevallen is deze long note klaar voor deze lane
+	_clear_hold_visual_for_lane(lane_idx, note)
 	lane_hold_notes[lane_idx] = null
 
 
@@ -327,11 +332,9 @@ func _check_auto_misses() -> void:
 		if scroll_velocity <= 0.0:
 			continue
 
-		# signed distance: positief = note is onder de hitlijn
 		var dy_signed: float = note.global_position.y - hit_y
 		var max_distance: float = scroll_velocity * 0.2 
 
-		
 		if dy_signed > max_distance:
 			notes_to_miss.append(note)
 
@@ -367,12 +370,10 @@ func show_accuracy() -> void:
 	else:
 		accuracy = 100.0
 
-	# stop oude tween als die nog bezig is
 	if accuracy_tween != null and accuracy_tween.is_running():
 		accuracy_tween.kill()
 		accuracy_tween = null
 
-	# start nieuwe tween van huidige display-waarde naar echte accuracy
 	var start_value := accuracy_display
 	var end_value := accuracy
 
@@ -392,7 +393,6 @@ func _update_accuracy_value(value: float) -> void:
 
 
 func _update_accuracy_label_from_value(value: float) -> void:
-	# 100% laten zien i.p.v 100.00%
 	if abs(value - 100.0) < 0.0001:
 		accuracy_label.text = "100%"
 	else:
@@ -400,7 +400,6 @@ func _update_accuracy_label_from_value(value: float) -> void:
 
 
 func show_judgement(judgement_result: String) -> void:
-	# stop vorige animatie als die nog bezig is
 	if judgement_tween != null and judgement_tween.is_running():
 		judgement_tween.kill()
 		judgement_tween = null
@@ -437,7 +436,6 @@ func _show_timing_label(judgement_result: String) -> void:
 	if timing_label == null:
 		return
 
-
 	if judgement_result == "PERFECT" or judgement_result == "MISS" or not last_has_timing_info:
 		timing_label.visible = false
 		return
@@ -453,16 +451,13 @@ func _show_timing_label(judgement_result: String) -> void:
 
 	timing_label.text = text
 
-	# zelfde kleur als judgement
 	var color := judgement_label.get_theme_color("font_color", "Label")
 	timing_label.add_theme_color_override("font_color", color)
 
-	# stop vorige animatie
 	if timing_tween != null and timing_tween.is_running():
 		timing_tween.kill()
 		timing_tween = null
 
-	# positie boven judgement
 	timing_label.position = timing_base_position
 	timing_label.modulate.a = 1.0
 	timing_label.visible = true
@@ -470,7 +465,6 @@ func _show_timing_label(judgement_result: String) -> void:
 	timing_tween = get_tree().create_tween()
 	timing_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	# zelfde animatie als judgement
 	var target_pos := timing_base_position + Vector2(0, 6)
 
 	timing_tween.tween_interval(0.1)
@@ -478,8 +472,8 @@ func _show_timing_label(judgement_result: String) -> void:
 	timing_tween.parallel().tween_property(timing_label, "modulate:a", 0.0, 0.5)
 
 	timing_tween.finished.connect(func():
-		timing_label.visible = false)
-
+		timing_label.visible = false
+	)
 
 
 func _show_combo() -> void:
@@ -490,25 +484,20 @@ func _show_combo() -> void:
 	combo_label.visible = true
 	combo_label.text = str(combo) + "x"
 
-	# stop eventuele vorige animatie (ook countdown)
 	if combo_tween != null and combo_tween.is_running():
 		combo_tween.kill()
 		combo_tween = null
 
-	# basisstaat
 	combo_label.position = combo_base_position
 	combo_label.scale = Vector2.ONE
 	combo_label.modulate.a = 1.0
 
-	# zachte pop naar rechts-boven
 	combo_tween = get_tree().create_tween()
 	combo_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
-	# eerste stuk: klein beetje groter + iets naar rechts-boven
 	combo_tween.tween_property(combo_label, "scale", Vector2(1.12, 1.12), 0.06)
 	combo_tween.parallel().tween_property(combo_label, "position", combo_base_position + Vector2(4, -4), 0.06)
 
-	# terug naar normaal en originele positie
 	combo_tween.tween_property(combo_label, "scale", Vector2.ONE, 0.08)
 	combo_tween.parallel().tween_property(combo_label, "position", combo_base_position, 0.08)
 
@@ -518,7 +507,6 @@ func _animate_combo_reset(start_combo: int) -> void:
 		combo_label.visible = false
 		return
 
-	# stop eventuele vorige animatie
 	if combo_tween != null and combo_tween.is_running():
 		combo_tween.kill()
 		combo_tween = null
@@ -531,9 +519,7 @@ func _animate_combo_reset(start_combo: int) -> void:
 	combo_tween = get_tree().create_tween()
 	combo_tween.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 
-	# laat het getal snel aftellen naar 0
 	combo_tween.tween_method(_update_combo_label_value, float(start_combo), 0.0, 0.25)
-	# en tegelijk wegfaden
 	combo_tween.parallel().tween_property(combo_label, "modulate:a", 0.0, 0.25)
 
 	combo_tween.finished.connect(func():
@@ -555,44 +541,60 @@ func set_ui_visible(visible: bool) -> void:
 		$JudgementLabel.visible = visible
 	if timing_label != null:
 		timing_label.visible = visible
-		
+
+
 func _get_receptor_for_lane(lane_idx: int) -> Sprite2D:
-	# Haal direct de node uit key_listener_paths
-	if lane_idx < 0 or lane_idx >= key_listener_paths.size():
+	if lane_idx < 0 or lane_idx >= key_listener_sprites.size():
+		return null
+	return key_listener_sprites[lane_idx]
+
+
+func _get_hold_overlay_for_lane(lane_idx: int) -> Sprite2D:
+	var receptor := _get_receptor_for_lane(lane_idx)
+	if receptor == null:
 		return null
 
-	var path: NodePath = key_listener_paths[lane_idx]
-	var node := get_node_or_null(path) as Sprite2D
-	return node
+	if receptor.has_node("HoldOverlay"):
+		return receptor.get_node("HoldOverlay") as Sprite2D
+
+	return null
 
 
 func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
 	var receptor := _get_receptor_for_lane(lane_idx)
 	if receptor == null:
+		print("Geen receptor gevonden voor lane ", lane_idx)
 		return
 
-	# originele texture één keer onthouden
 	if not original_receptor_textures.has(lane_idx):
 		original_receptor_textures[lane_idx] = receptor.texture
+	receptor.texture = null
 
+	var overlay := _get_hold_overlay_for_lane(lane_idx)
+	var cutoff_y: float
 
-	# receptor krijgt de head-texture van de long note (als die er is)
-	if note.texture != null:
-		receptor.texture = note.texture
+	if overlay != null:
+		overlay.visible = true
+		cutoff_y = overlay.global_position.y
+		print("Hold overlay AAN lane ", lane_idx, " cutoff_y=", cutoff_y)
 	else:
-		# als dit ooit gebeurt, willen we dat zien
-		print("LET OP: long note head texture is null in lane", lane_idx)
+		cutoff_y = lane_hit_y[lane_idx]
+		print("GEEN HoldOverlay, gebruik hitlijn voor lane ", lane_idx)
 
-	# de head van de long note zelf verbergen; body + tail blijven zichtbaar
-	note.visible = true     # whole node blijft
-	note.texture = null     # alleen de head-sprite (root texture) weg
+	note.texture = null
+
+	if note.has_method("start_hold_visual"):
+		note.start_hold_visual(cutoff_y)
 
 
-func _clear_hold_visual_for_lane(lane_idx: int) -> void:
+func _clear_hold_visual_for_lane(lane_idx: int, note: Node = null) -> void:
 	var receptor := _get_receptor_for_lane(lane_idx)
-	if receptor == null:
-		return
-
-	# originele texture terugzetten als we die kennen
-	if original_receptor_textures.has(lane_idx):
+	if receptor != null and original_receptor_textures.has(lane_idx):
 		receptor.texture = original_receptor_textures[lane_idx]
+
+	var overlay := _get_hold_overlay_for_lane(lane_idx)
+	if overlay != null:
+		overlay.visible = false
+
+	if note != null and note.has_method("stop_hold_visual"):
+		note.stop_hold_visual()

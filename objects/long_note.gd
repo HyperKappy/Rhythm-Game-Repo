@@ -3,17 +3,14 @@ extends Sprite2D
 @export var scroll_velocity: float = 1000.0
 @export var lane_index: int = 0
 
-# Kleine afstanden in pixels om de naden visueel mooi te maken
-@export var head_to_body_gap: float = 0.0   # afstand tussen head-apex en begin van de body (omhoog)
-@export var body_to_tail_gap: float = 0.0   # afstand tussen einde van de body en tail-apex (omhoog)
+@export var head_to_body_gap: float = 0.0
+@export var body_to_tail_gap: float = 0.0
 
-# duur in milliseconden (wordt gezet vanuit SongPlayer via spawner)
 var duration_ms: float = 0.0
 
 @onready var body_sprite: Sprite2D = $HoldBody
 @onready var end_sprite: Sprite2D = $HoldEnd
 
-# judgement-state
 var head_result: String = ""
 var tail_result: String = ""
 var head_judged: bool = false
@@ -22,6 +19,9 @@ var is_broken: bool = false
 
 var base_modulate: Color
 
+var hold_visual_active: bool = false
+var hold_clip_y: float = 1000000.0
+
 
 func _ready() -> void:
 	add_to_group("notes")
@@ -29,6 +29,7 @@ func _ready() -> void:
 
 	base_modulate = modulate
 
+	_init_body_shader()
 	_update_length()
 
 
@@ -39,6 +40,52 @@ func _process(delta: float) -> void:
 func setup(duration: float) -> void:
 	duration_ms = max(duration, 0.0)
 	_update_length()
+
+
+func _init_body_shader() -> void:
+	if body_sprite == null:
+		return
+
+	var shader := Shader.new()
+	shader.code = """
+	shader_type canvas_item;
+
+	// wereld-Y waar de body moet stoppen
+	uniform float cutoff_world_y = 1000000.0;
+	// hoe donker iets mag zijn voordat we het als "zwart / achtergrond" zien
+	uniform float alpha_cutoff = 0.1;
+
+	varying float world_y;
+
+	void vertex() {
+		vec4 wp = MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0);
+		world_y = wp.y;
+	}
+
+	void fragment() {
+		vec4 tex = texture(TEXTURE, UV);
+		// helderheid van deze pixel (0 = zwart, 1 = wit)
+		float brightness = (tex.r + tex.g + tex.b) / 3.0;
+
+		// 1) zwart / bijna zwart: weggooien
+		if (brightness <= alpha_cutoff) {
+			discard;
+		}
+
+		// 2) onder de cutoff-lijn: ook weggooien
+		if (world_y > cutoff_world_y) {
+			discard;
+		}
+
+		// 3) witvorm volledig opaak tekenen
+		COLOR = vec4(tex.rgb, 1.0) * COLOR;
+	}
+"""
+
+
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
+	body_sprite.material = mat
 
 
 func _update_length() -> void:
@@ -55,17 +102,14 @@ func _update_length() -> void:
 	body_sprite.visible = true
 	end_sprite.visible = true
 
-	# 1) totale tijd → wereldafstand in pixels
 	var duration_s: float = duration_ms / 1000.0
 	var distance_world: float = scroll_velocity * duration_s
 
-	# 2) omrekenen naar lokale units (root is geschaald door note_scale.y)
 	var root_scale_y: float = scale.y
 	if root_scale_y == 0.0:
 		root_scale_y = 1.0
 	var distance_local: float = distance_world / root_scale_y
 
-	# 3) body-lengte in lokale ruimte
 	var body_tex_h: float = float(body_sprite.texture.get_height())
 	if body_tex_h <= 0.0:
 		body_tex_h = 1.0
@@ -74,29 +118,22 @@ func _update_length() -> void:
 	if body_length < 0.0:
 		body_length = 0.0
 
-	# Coordinate systeem:
-	# y neemt toe naar BENEDEN, maar we willen dat de hold OMHOOG groeit:
-	# head (0), body en tail op NEGATIEVE y-waardes.
+	# y groeit naar beneden, maar de hold groeit OMHOOG
 	var tail_top_y: float = -distance_local
 
-	# body loopt van body_top_y tot body_bottom_y
 	var body_top_y: float = tail_top_y + body_to_tail_gap
 	var body_bottom_y: float = -head_to_body_gap
 
-	# schalen zodat de body hoogte = body_length
 	body_sprite.scale.y = body_length / body_tex_h
 	body_sprite.position.y = body_top_y
 
-	# tail-top op tail_top_y
 	end_sprite.position.y = tail_top_y
 
-	# X centreren
 	var body_tex_w: float = float(body_sprite.texture.get_width())
 	var end_tex_w: float = float(end_sprite.texture.get_width())
 
 	body_sprite.position.x = -body_tex_w * 0.5
 	end_sprite.position.x = -end_tex_w * 0.5
-
 
 
 func mark_head_result(result: String) -> void:
@@ -109,7 +146,6 @@ func mark_head_result(result: String) -> void:
 	if result == "MISS":
 		_break_hold()
 		return
-	# goede head → speler moet vasthouden
 
 
 func mark_tail_result(result: String) -> void:
@@ -142,3 +178,21 @@ func _break_hold() -> void:
 		body_sprite.modulate = faded
 	if end_sprite != null:
 		end_sprite.modulate = faded
+
+
+func start_hold_visual(hit_world_y: float) -> void:
+	hold_visual_active = true
+	hold_clip_y = hit_world_y
+
+	if body_sprite != null and body_sprite.material is ShaderMaterial:
+		var mat := body_sprite.material as ShaderMaterial
+		mat.set_shader_parameter("cutoff_world_y", hit_world_y)
+
+
+func stop_hold_visual() -> void:
+	hold_visual_active = false
+	hold_clip_y = 1000000.0
+
+	if body_sprite != null and body_sprite.material is ShaderMaterial:
+		var mat := body_sprite.material as ShaderMaterial
+		mat.set_shader_parameter("cutoff_world_y", 1000000.0)

@@ -23,7 +23,7 @@ offset_bottom = 543.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n87rw")
-main_menu_scene_path = "res://scenes/Main menu.tscn"
+main_menu_scene_path = "res://scenes/main_menu.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 99999

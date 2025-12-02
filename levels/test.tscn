@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtctp7og8i24t"]
+
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_r4e4k"]
+[ext_resource type="AudioStream" uid="uid://chihkmmqnr1tf" path="res://Resources/audio/guess.mp3" id="2_pnvjf"]
+[ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_6g8e2"]
+[ext_resource type="Texture2D" uid="uid://c5x2ojl5yw75p" path="res://Resources/art/Guess_Background.png" id="4_u45fp"]
+
+[node name="SongPlayer" type="Node"]
+script = ExtResource("1_r4e4k")
+chart_path = "res://charts/test.json"
+spawn_ahead_ms = 1057.0
+use_chart_audio_path = false
+audio_stream = ExtResource("2_pnvjf")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="GameLevel" parent="." instance=ExtResource("3_6g8e2")]
+
+[node name="GuessBackground" type="Sprite2D" parent="."]
+z_index = -4096
+texture = ExtResource("4_u45fp")
