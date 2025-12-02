@@ -506,23 +506,9 @@ position = Vector2(2179, -120.99988)
 rotation = 0.42062435
 skew = 0.27227136
 texture = ExtResource("2_vjksw")
-offset = Vector2(-659, 922)
 script = ExtResource("3_xtfyt")
 
 [node name="Scroll" type="AnimationPlayer" parent="Arrowscroll"]
-libraries = {
-&"": SubResource("AnimationLibrary_iamcd")
-}
-
-[node name="Arrowscroll2" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.14117648)
-position = Vector2(2179, -120.99988)
-rotation = 0.42062438
-skew = 0.27227128
-texture = ExtResource("2_vjksw")
-script = ExtResource("3_xtfyt")
-
-[node name="Scroll" type="AnimationPlayer" parent="Arrowscroll2"]
 libraries = {
 &"": SubResource("AnimationLibrary_iamcd")
 }

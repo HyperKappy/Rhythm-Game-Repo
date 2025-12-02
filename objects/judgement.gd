@@ -39,6 +39,12 @@ var lane_hold_notes: Array[Sprite2D] = []
 
 @onready var timing_label: Label = null
 
+@onready var grade_image: TextureRect = $GradeImage
+var current_grade_letter: String = ""
+var grade_tween: Tween = null
+var grade_base_position: Vector2
+var grade_position_initialized := false
+
 # animatie-tweens
 var judgement_tween: Tween = null
 var combo_tween: Tween = null
@@ -69,6 +75,8 @@ func _ready() -> void:
 	combo_base_position = combo_label.position
 
 	judgement_base_position = judgement_label.position
+	
+
 
 	if has_node("TimingLabel"):
 		timing_label = $TimingLabel
@@ -377,6 +385,7 @@ func _on_miss() -> void:
 func show_accuracy() -> void:
 	if total_judgements > 0:
 		accuracy = float(acc_score) / float(total_judgements * 300) * 100.0
+		_update_grade(accuracy)
 	else:
 		accuracy = 100.0
 
@@ -616,3 +625,81 @@ func _clear_hold_visual_for_lane(lane_idx: int, note: Node = null) -> void:
 
 	if note != null and note.has_method("stop_hold_visual"):
 		note.stop_hold_visual()
+
+func _get_grade_letter(accuracy: float) -> String:
+	if accuracy >= 100.0:
+		return "X"
+	elif accuracy >= 99.0:
+		return "S+"
+	elif accuracy >= 95.0:
+		return "S"
+	elif accuracy >= 90.0:
+		return "A"
+	elif accuracy >= 80.0:
+		return "B"
+	elif accuracy >= 72.7:
+		return "C"
+	else:
+		return "D"
+		
+func _update_grade(accuracy: float) -> void:
+	var new_grade_letter: String = _get_grade_letter(accuracy)
+
+	if new_grade_letter == current_grade_letter:
+		return
+
+	var img_path: String = ""
+	match new_grade_letter:
+		"X":
+			img_path = "res://Resources/art/X.png"
+		"S+":
+			img_path = "res://Resources/art/SS.png"
+		"S":
+			img_path = "res://Resources/art/S.png"
+		"A":
+			img_path = "res://Resources/art/A.png"
+		"B":
+			img_path = "res://Resources/art/B.png"
+		"C":
+			img_path = "res://Resources/art/C.png"
+		"D":
+			img_path = "res://Resources/art/D.png"
+		_:
+			img_path = ""
+
+	if img_path == "" or not ResourceLoader.exists(img_path):
+		push_warning("Grade image not found for grade: " + new_grade_letter + " (path: " + img_path + ")")
+		return
+
+	var new_tex := ResourceLoader.load(img_path) as Texture2D
+
+	if not grade_position_initialized:
+		grade_base_position = grade_image.position
+		grade_position_initialized = true
+
+	if grade_tween != null and grade_tween.is_running():
+		grade_tween.kill()
+		grade_tween = null
+
+	grade_tween = get_tree().create_tween()
+	grade_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	var target_pos := grade_base_position + Vector2(0, 6)
+
+	grade_image.position = grade_base_position
+	grade_image.modulate.a = 1.0
+
+	grade_tween.tween_property(grade_image, "position", target_pos, 0.25)
+	grade_tween.parallel().tween_property(grade_image, "modulate:a", 0.0, 0.25)
+
+	grade_tween.finished.connect(func():
+		grade_image.position = grade_base_position
+		grade_image.texture = new_tex
+		grade_image.modulate.a = 0.0
+
+		var tween_in := get_tree().create_tween()
+		tween_in.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween_in.tween_property(grade_image, "modulate:a", 1.0, 0.2)
+	)
+
+	current_grade_letter = new_grade_letter

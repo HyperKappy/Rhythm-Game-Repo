@@ -73,7 +73,7 @@ layer = 128
 
 [node name="Keylistener" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-210, 450)
+position = Vector2(-256.00003, 450.00003)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("3_o8r0f")
 script = ExtResource("2_d65c1")
@@ -86,7 +86,7 @@ texture = ExtResource("6_jkcp4")
 
 [node name="Keylistener2" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-75, 450)
+position = Vector2(-90, 450)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("6_n7yt8")
 script = ExtResource("2_d65c1")
@@ -100,7 +100,7 @@ texture = ExtResource("6_jkcp4")
 
 [node name="Keylistener3" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(75, 450)
+position = Vector2(90, 450)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("8_gehph")
 script = ExtResource("2_d65c1")
@@ -114,7 +114,7 @@ texture = ExtResource("6_jkcp4")
 
 [node name="Keylistener4" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(210, 450)
+position = Vector2(256, 450)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("3_o8r0f")
 flip_h = true
@@ -162,13 +162,13 @@ anchor_left = 2.99933
 anchor_top = -200.716
 anchor_right = 506.666
 anchor_bottom = 0.00158691
-offset_left = 695.001
-offset_top = -327.284
-offset_right = 444.334
-offset_bottom = -391.002
-grow_horizontal = 0
+offset_left = 362.00067
+offset_top = -319.284
+offset_right = 111.33377
+offset_bottom = -383.002
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.68235296)
 theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("12_nwwuo")
 theme_override_font_sizes/font_size = 75
 text = "100%"
 horizontal_alignment = 2
@@ -207,6 +207,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="GradeImage" type="TextureRect" parent="Judgement"]
+offset_left = -420.0
+offset_top = -500.0
+offset_right = -317.5
+offset_bottom = -411.5
+scale = Vector2(0.4, 0.4)
+stretch_mode = 5
+
 [node name="falling_key_spawner" parent="." instance=ExtResource("6_wtvao")]
 key_listener_paths = Array[NodePath]([NodePath("../Keylistener"), NodePath("../Keylistener2"), NodePath("../Keylistener3"), NodePath("../Keylistener4")])
 
@@ -214,5 +222,5 @@ key_listener_paths = Array[NodePath]([NodePath("../Keylistener"), NodePath("../K
 modulate = Color(1, 1, 1, 0.784314)
 self_modulate = Color(1, 1, 1, 0.784314)
 z_index = -999
-scale = Vector2(2.5, 4.542)
+scale = Vector2(2.938053, 4.542)
 texture = ExtResource("6_smvv8")
