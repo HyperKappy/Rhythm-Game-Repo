@@ -80,7 +80,7 @@ func _ready() -> void:
 		timing_label.add_theme_font_size_override("font_size", 18)
 		add_child(timing_label)
 
-	timing_base_position = judgement_base_position + Vector2(0, -48)
+	timing_base_position = judgement_base_position + Vector2(0, -30)
 	timing_label.position = timing_base_position
 	timing_label.visible = false
 
@@ -492,25 +492,24 @@ func _show_combo() -> void:
 		return
 
 	combo_label.visible = true
-	combo_label.text = str(combo) + "x"
+	combo_label.text = str(combo)
 
 	if combo_tween != null and combo_tween.is_running():
 		combo_tween.kill()
 		combo_tween = null
 
+	# tween direct gekopieerd uit judgement
+
 	combo_label.position = combo_base_position
 	combo_label.scale = Vector2.ONE
-	combo_label.modulate.a = 1.0
 
 	combo_tween = get_tree().create_tween()
-	combo_tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	combo_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	combo_tween.tween_property(combo_label, "scale", Vector2(1.12, 1.12), 0.06)
-	combo_tween.parallel().tween_property(combo_label, "position", combo_base_position + Vector2(4, -4), 0.06)
+	var target_pos := combo_base_position + Vector2(0, 2)
 
-	combo_tween.tween_property(combo_label, "scale", Vector2.ONE, 0.08)
-	combo_tween.parallel().tween_property(combo_label, "position", combo_base_position, 0.08)
-
+	combo_tween.tween_interval(0.025)
+	combo_tween.tween_property(combo_label, "position", target_pos, 0.25)
 
 func _animate_combo_reset(start_combo: int) -> void:
 	if start_combo <= 0:
@@ -539,7 +538,7 @@ func _animate_combo_reset(start_combo: int) -> void:
 
 func _update_combo_label_value(value: float) -> void:
 	var v := int(round(value))
-	combo_label.text = str(v) + "x"
+	combo_label.text = str(v)
 
 
 func set_ui_visible(visible: bool) -> void:

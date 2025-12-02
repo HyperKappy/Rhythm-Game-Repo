@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cirfpuxgijlwp"]
+[gd_scene load_steps=19 format=3 uid="uid://cirfpuxgijlwp"]
 
 [ext_resource type="Script" uid="uid://ra2gpxjg15vc" path="res://code/game_level.gd" id="1_2i5ty"]
 [ext_resource type="Script" uid="uid://dh022hdm80570" path="res://objects/key_listener.gd" id="2_d65c1"]
@@ -13,6 +13,20 @@
 [ext_resource type="Script" uid="uid://b7i6jw6jickfu" path="res://code/warning_flash.gd" id="7_smvv8"]
 [ext_resource type="Texture2D" uid="uid://dgj4n1tr7dxef" path="res://Resources/art/receptor-up-3.png" id="8_gehph"]
 [ext_resource type="Texture2D" uid="uid://bj1vm6sjao5bn" path="res://Resources/art/receptor-down-3.png" id="9_qmvb7"]
+[ext_resource type="FontFile" uid="uid://dppri8uujj86e" path="res://Resources/fonts/AGRESSIVE.otf" id="12_nwwuo"]
+[ext_resource type="FontFile" uid="uid://b2oitgd6fq157" path="res://Resources/fonts/Play Pretend.otf" id="12_o8r0f"]
+
+[sub_resource type="FontVariation" id="FontVariation_jkcp4"]
+fallbacks = Array[Font]([ExtResource("12_nwwuo")])
+base_font = ExtResource("12_nwwuo")
+
+[sub_resource type="FontVariation" id="FontVariation_nwwuo"]
+base_font = ExtResource("12_o8r0f")
+
+[sub_resource type="FontVariation" id="FontVariation_n7yt8"]
+base_font = ExtResource("12_nwwuo")
+variation_embolden = -0.3
+variation_transform = Transform2D(1, 0.3, 0, 0.8, 1.5, 1.5)
 
 [node name="GameLevel" type="Node2D"]
 script = ExtResource("1_2i5ty")
@@ -131,11 +145,12 @@ anchor_left = -505.0
 anchor_top = 0.00109863
 anchor_bottom = 325.001
 offset_left = 141.99997
-offset_top = -301.002
+offset_top = -335.00204
 offset_right = 362.99997
-offset_bottom = -164.00201
+offset_bottom = -198.00204
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.68235296)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = SubResource("FontVariation_jkcp4")
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -151,22 +166,27 @@ offset_top = -327.284
 offset_right = 444.334
 offset_bottom = -391.002
 grow_horizontal = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.68235296)
+theme_override_constants/shadow_outline_size = 4
 theme_override_font_sizes/font_size = 75
 text = "100%"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ComboLabel" type="Label" parent="Judgement"]
-offset_left = -906.0
-offset_top = 389.0
-offset_right = -651.0
-offset_bottom = 504.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 8
-theme_override_font_sizes/font_size = 100
-vertical_alignment = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.5
+offset_top = -317.99994
+offset_right = 127.5
+offset_bottom = -180.99994
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.68235296)
+theme_override_fonts/font = SubResource("FontVariation_nwwuo")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TimingLabel" type="Label" parent="Judgement"]
 z_index = 999
@@ -174,12 +194,13 @@ anchors_preset = -1
 anchor_left = -505.0
 anchor_top = 0.00109863
 anchor_bottom = 325.001
-offset_left = 141.9996
-offset_top = -373.00253
-offset_right = 362.9996
-offset_bottom = -236.00253
+offset_left = 141.99963
+offset_top = -306.0024
+offset_right = 362.99963
+offset_bottom = -169.00241
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.68235296)
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = SubResource("FontVariation_n7yt8")
+theme_override_font_sizes/font_size = 19
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
