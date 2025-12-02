@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=48 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
 [ext_resource type="Texture2D" uid="uid://cqcukjavk7r4f" path="res://Resources/images/arrowscroll.png" id="2_vjksw"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
+[ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://scenes/arrowscroll.gd" id="3_xtfyt"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
 [ext_resource type="AudioStream" uid="uid://bjmfaqahsmtfw" path="res://Resources/audio/Guess_Preview.mp3" id="7_63rwx"]
@@ -19,6 +20,44 @@
 [ext_resource type="Texture2D" uid="uid://cc2m08f4fcjmb" path="res://Resources/images/Extras_Animation_beter.png" id="17_do18t"]
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
+
+[sub_resource type="Animation" id="Animation_dpfpd"]
+resource_name = "Scroll"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1648, -728), Vector2(550, 2130)]
+}
+
+[sub_resource type="Animation" id="Animation_w6vh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2179, -120.99988)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iamcd"]
+_data = {
+&"RESET": SubResource("Animation_w6vh0"),
+&"Scroll": SubResource("Animation_dpfpd")
+}
 
 [sub_resource type="Animation" id="Animation_gcj5u"]
 resource_name = "Center_On_Press"
@@ -449,20 +488,18 @@ _data = {
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_il4ce")
 
-[node name="Arrowscroll2" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.14117648)
-position = Vector2(-1364.9998, -785)
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("2_vjksw")
-
-[node name="Scroll" type="AnimationPlayer" parent="Arrowscroll2"]
-
 [node name="Arrowscroll" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.14117648)
-position = Vector2(3040, -760)
+position = Vector2(2179, -120.99988)
+rotation = 0.42062435
+skew = 0.27227136
 texture = ExtResource("2_vjksw")
+script = ExtResource("3_xtfyt")
 
 [node name="Scroll" type="AnimationPlayer" parent="Arrowscroll"]
+libraries = {
+&"": SubResource("AnimationLibrary_iamcd")
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
