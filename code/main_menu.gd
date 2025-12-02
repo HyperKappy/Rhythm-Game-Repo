@@ -9,8 +9,8 @@ func _input(event: InputEvent) -> void:
 			_start_temp2()
 		if event.keycode == KEY_3:
 			_start_temp3()
-		if event.keycode == KEY_0:
-			_start_test()
+#		if event.keycode == KEY_0:
+#			_start_test()
 
 
 func _start_temp1() -> void:
