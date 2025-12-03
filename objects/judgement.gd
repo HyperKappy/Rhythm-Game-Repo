@@ -501,6 +501,7 @@ func _show_combo() -> void:
 		return
 
 	combo_label.visible = true
+	combo_label.modulate.a = 1.0
 	combo_label.text = str(combo)
 
 	if combo_tween != null and combo_tween.is_running():
