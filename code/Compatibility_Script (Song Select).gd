@@ -42,3 +42,9 @@ func _on_Limbo_Pressed_connect() -> void:
 	$Isolation.z_index = 100
 	await get_tree().create_timer(1.0).timeout
 	$Fade_All.play("Fade_All")
+	
+func _on_UNO_Pressed_connect() -> void:
+	$Blocker.visible = true
+	$UNO.z_index = 100
+	await get_tree().create_timer(1.0).timeout
+	$Fade_All.play("Fade_All")

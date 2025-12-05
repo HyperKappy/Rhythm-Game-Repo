@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=61 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -21,7 +21,25 @@
 [ext_resource type="Texture2D" uid="uid://cc2m08f4fcjmb" path="res://Resources/images/Extras_Animation_beter.png" id="17_do18t"]
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
+[ext_resource type="Texture2D" uid="uid://dbvdvdprloe8v" path="res://Resources/images/UNO.png" id="20_hqaag"]
+[ext_resource type="Script" uid="uid://ti0a5kjhs3i2" path="res://scenes/uno.gd" id="21_6k20e"]
 [ext_resource type="Script" uid="uid://dbp6gil3p5l15" path="res://scenes/arrowscroll_2.gd" id="21_xtfyt"]
+[ext_resource type="AudioStream" uid="uid://clempgmmxxc1f" path="res://Resources/audio/UNO_Preview.mp3" id="22_6k20e"]
+
+[sub_resource type="Animation" id="Animation_8upbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2179, -120.99988)]
+}
 
 [sub_resource type="Animation" id="Animation_iamcd"]
 resource_name = "Scroll"
@@ -38,21 +56,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1648, -728), Vector2(350, 2330)]
-}
-
-[sub_resource type="Animation" id="Animation_8upbw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2179, -120.99988)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vcser"]
@@ -124,7 +127,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.6, 1.6)]
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
 }
 
 [sub_resource type="Animation" id="Animation_twyjv"]
@@ -249,7 +252,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 2.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.6, 1.6), Vector2(1.6, 1.6)]
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6), Vector2(1.6, 1.6)]
 }
 
 [sub_resource type="Animation" id="Animation_il4ce"]
@@ -431,7 +434,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.6, 1.6)]
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
 }
 
 [sub_resource type="Animation" id="Animation_xtfyt"]
@@ -499,6 +502,101 @@ _data = {
 &"RESET": SubResource("Animation_xtfyt"),
 &"hover_in": SubResource("Animation_smsft"),
 &"hover_out": SubResource("Animation_3be14")
+}
+
+[sub_resource type="Animation" id="Animation_vcser"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_0crvl"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fsj8r"]
+resource_name = "Center_On_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.6, 1.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(575, 90), Vector2(840, 410)]
+}
+
+[sub_resource type="Animation" id="Animation_86o6b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(575, 90)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5mca"]
+_data = {
+&"Center_On_Press": SubResource("Animation_fsj8r"),
+&"RESET": SubResource("Animation_86o6b"),
+&"hover_in": SubResource("Animation_vcser"),
+&"hover_out": SubResource("Animation_0crvl")
 }
 
 [sub_resource type="Animation" id="Animation_6k20e"]
@@ -741,6 +839,36 @@ libraries = {
 &"": SubResource("AnimationLibrary_hqaag")
 }
 
+[node name="UNO" type="TextureButton" parent="."]
+offset_left = 575.0
+offset_top = 90.0
+offset_right = 815.0
+offset_bottom = 330.0
+pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("20_hqaag")
+script = ExtResource("21_6k20e")
+
+[node name="UNO_Preview" type="AudioStreamPlayer" parent="UNO"]
+stream = ExtResource("22_6k20e")
+volume_db = -15.0
+
+[node name="Song_Name_2" type="Label" parent="UNO"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 250.0
+offset_right = 204.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 20
+text = "UNO - LITTLE BIG"
+
+[node name="Select_Sound" type="AudioStreamPlayer" parent="UNO"]
+stream = ExtResource("7_14uf1")
+
+[node name="Low_Taper_Fade_UNO" type="AnimationPlayer" parent="UNO"]
+libraries = {
+&"": SubResource("AnimationLibrary_g5mca")
+}
+
 [node name="Extras" type="TextureButton" parent="."]
 offset_top = 997.0
 offset_right = 1920.0
@@ -782,13 +910,21 @@ script = ExtResource("18_fmtfg")
 [connection signal="mouse_exited" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
 [connection signal="pressed" from="GIVEN_ENOUGH" to="." method="_on_GE_Pressed_connect"]
 [connection signal="pressed" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_pressed"]
+[connection signal="finished" from="GIVEN_ENOUGH/GIVEN_ENOUGH_Preview" to="GIVEN_ENOUGH" method="_on_given_enough_preview_finished"]
 [connection signal="mouse_entered" from="Pou" to="Pou" method="_on_Pou_Button_Hovered"]
 [connection signal="mouse_exited" from="Pou" to="Pou" method="_on_Pou_Button_Exited"]
 [connection signal="pressed" from="Pou" to="." method="_on_Pou_Pressed_connect"]
 [connection signal="pressed" from="Pou" to="Pou" method="_on_Pou_Pressed"]
+[connection signal="finished" from="Pou/Guess_Preview" to="Pou" method="_on_guess_preview_finished"]
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
 [connection signal="mouse_entered" from="Isolation" to="Isolation" method="_on_Limbo_Button_Hovered"]
 [connection signal="mouse_exited" from="Isolation" to="Isolation" method="_on_Limbo_Button_Exited"]
 [connection signal="pressed" from="Isolation" to="." method="_on_Limbo_Pressed_connect"]
 [connection signal="pressed" from="Isolation" to="Isolation" method="_on_Limbo_Pressed"]
+[connection signal="finished" from="Isolation/Limbo_Preview" to="Isolation" method="_on_limbo_preview_finished"]
+[connection signal="mouse_entered" from="UNO" to="UNO" method="_on_UNO_Button_Hovered"]
+[connection signal="mouse_exited" from="UNO" to="UNO" method="_on_UNO_Button_Exited"]
+[connection signal="pressed" from="UNO" to="." method="_on_UNO_Pressed_connect"]
+[connection signal="pressed" from="UNO" to="UNO" method="_on_UNO_Pressed"]
+[connection signal="finished" from="UNO/UNO_Preview" to="UNO" method="_on_uno_preview_finished"]
 [connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]

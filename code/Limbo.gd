@@ -21,3 +21,8 @@ func _on_Limbo_Button_Exited():
 	if pressed_state == false:
 		$Low_Taper_Fade_LI.play("hover_out")
 		$Limbo_Preview.stop()
+
+
+func _on_limbo_preview_finished() -> void:
+	if pressed_state == false:
+		$Limbo_Preview.play()

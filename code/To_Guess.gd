@@ -23,3 +23,8 @@ func _on_Pou_Button_Exited():
 	if pressed_state == false:
 		$Low_Taper_Fade_GU.play("hover_out")
 		$Guess_Preview.stop()
+
+
+func _on_guess_preview_finished() -> void:
+	if pressed_state == false:
+		$Guess_Preview.play()
