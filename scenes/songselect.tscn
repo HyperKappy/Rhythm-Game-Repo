@@ -1,11 +1,13 @@
-[gd_scene load_steps=61 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=64 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
 [ext_resource type="Texture2D" uid="uid://cqcukjavk7r4f" path="res://Resources/images/arrowscroll.png" id="2_vjksw"]
+[ext_resource type="Shader" uid="uid://6e7ytffb061j" path="res://shaders/song_select_blur.gdshader" id="2_w6vh0"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
-[ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://code/arrowscroll.gd" id="3_xtfyt"]
-[ext_resource type="Script" uid="uid://b1ex1pqtrap4" path="res://scenes/label.gd" id="4_smsft"]
+[ext_resource type="Script" uid="uid://bgvg7v1ly47la" path="res://code/blur_overlay.gd" id="3_iamcd"]
+[ext_resource type="Script" path="res://code/arrowscroll.gd" id="3_xtfyt"]
+[ext_resource type="Script" path="res://scenes/label.gd" id="4_smsft"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
 [ext_resource type="AudioStream" uid="uid://bjmfaqahsmtfw" path="res://Resources/audio/Guess_Preview.mp3" id="7_63rwx"]
@@ -22,9 +24,15 @@
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
 [ext_resource type="Texture2D" uid="uid://dbvdvdprloe8v" path="res://Resources/images/UNO.png" id="20_hqaag"]
-[ext_resource type="Script" uid="uid://ti0a5kjhs3i2" path="res://scenes/uno.gd" id="21_6k20e"]
-[ext_resource type="Script" uid="uid://dbp6gil3p5l15" path="res://scenes/arrowscroll_2.gd" id="21_xtfyt"]
+[ext_resource type="Script" path="res://scenes/uno.gd" id="21_6k20e"]
+[ext_resource type="Script" path="res://scenes/arrowscroll_2.gd" id="21_xtfyt"]
 [ext_resource type="AudioStream" uid="uid://clempgmmxxc1f" path="res://Resources/audio/UNO_Preview.mp3" id="22_6k20e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
+shader = ExtResource("2_w6vh0")
+shader_parameter/blur_radius = 0.0
+shader_parameter/sample_count = 2
+shader_parameter/darken = 0.3
 
 [sub_resource type="Animation" id="Animation_8upbw"]
 length = 0.001
@@ -504,38 +512,6 @@ _data = {
 &"hover_out": SubResource("Animation_3be14")
 }
 
-[sub_resource type="Animation" id="Animation_vcser"]
-resource_name = "hover_in"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
-}
-
-[sub_resource type="Animation" id="Animation_0crvl"]
-resource_name = "hover_out"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_fsj8r"]
 resource_name = "Center_On_Press"
 length = 0.3
@@ -591,6 +567,38 @@ tracks/1/keys = {
 "values": [Vector2(575, 90)]
 }
 
+[sub_resource type="Animation" id="Animation_vcser"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_0crvl"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g5mca"]
 _data = {
 &"Center_On_Press": SubResource("Animation_fsj8r"),
@@ -637,6 +645,19 @@ _data = {
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_il4ce")
+
+[node name="BlurOverlay" type="ColorRect" parent="."]
+z_index = 99
+z_as_relative = false
+material = SubResource("ShaderMaterial_w6vh0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_iamcd")
 
 [node name="Arrowscroll2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.14117648)

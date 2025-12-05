@@ -9,6 +9,13 @@ var required_keys = {
 	KEY_O: false,
 }
 
+func _ready() -> void:
+
+	if has_node("BlurOverlay"):
+		var blur := $BlurOverlay
+		blur.visible = false
+		blur.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 func _input(event: InputEvent):
 	if event is InputEventKey:
 		if event.keycode in required_keys:
@@ -24,6 +31,7 @@ func _all_keys_pressed() -> bool:
 
 func _on_Pou_Pressed_connect() -> void:
 	$Blocker.visible = true
+	$BlurOverlay.visible = true
 	
 	$Pou.z_index = 100
 	await get_tree().create_timer(1.0).timeout
@@ -31,6 +39,7 @@ func _on_Pou_Pressed_connect() -> void:
 
 func _on_GE_Pressed_connect() -> void:
 	$Blocker.visible = true
+	$BlurOverlay.visible = true
 	
 	$GIVEN_ENOUGH.z_index = 100
 	await get_tree().create_timer(1.0).timeout
@@ -38,6 +47,7 @@ func _on_GE_Pressed_connect() -> void:
 
 func _on_Limbo_Pressed_connect() -> void:
 	$Blocker.visible = true
+	$BlurOverlay.visible = true
 	
 	$Isolation.z_index = 100
 	await get_tree().create_timer(1.0).timeout
@@ -45,6 +55,8 @@ func _on_Limbo_Pressed_connect() -> void:
 	
 func _on_UNO_Pressed_connect() -> void:
 	$Blocker.visible = true
+	$BlurOverlay.visible = true
+	
 	$UNO.z_index = 100
 	await get_tree().create_timer(1.0).timeout
 	$Fade_All.play("Fade_All")

@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kukqi"]
 shader = ExtResource("2_myx47")
 shader_parameter/blur_radius = 4.0
-shader_parameter/sample_count = 4
+shader_parameter/sample_count = 2
 shader_parameter/darken = 0.6
 
 [node name="PauseMenu" type="Control"]
