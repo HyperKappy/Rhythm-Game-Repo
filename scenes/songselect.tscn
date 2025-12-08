@@ -1,13 +1,13 @@
-[gd_scene load_steps=64 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=68 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
 [ext_resource type="Texture2D" uid="uid://cqcukjavk7r4f" path="res://Resources/images/arrowscroll.png" id="2_vjksw"]
-[ext_resource type="Shader" path="res://shaders/song_select_blur.gdshader" id="2_w6vh0"]
+[ext_resource type="Shader" uid="uid://6e7ytffb061j" path="res://shaders/song_select_blur.gdshader" id="2_w6vh0"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
-[ext_resource type="Script" path="res://code/blur_overlay.gd" id="3_iamcd"]
-[ext_resource type="Script" path="res://code/arrowscroll.gd" id="3_xtfyt"]
-[ext_resource type="Script" path="res://scenes/label.gd" id="4_smsft"]
+[ext_resource type="Script" uid="uid://bgvg7v1ly47la" path="res://code/blur_overlay.gd" id="3_iamcd"]
+[ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://code/arrowscroll.gd" id="3_xtfyt"]
+[ext_resource type="Script" uid="uid://b1ex1pqtrap4" path="res://scenes/label.gd" id="4_smsft"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
 [ext_resource type="AudioStream" uid="uid://bjmfaqahsmtfw" path="res://Resources/audio/Guess_Preview.mp3" id="7_63rwx"]
@@ -24,9 +24,10 @@
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
 [ext_resource type="Texture2D" uid="uid://dbvdvdprloe8v" path="res://Resources/images/UNO.png" id="20_hqaag"]
-[ext_resource type="Script" path="res://scenes/uno.gd" id="21_6k20e"]
-[ext_resource type="Script" path="res://scenes/arrowscroll_2.gd" id="21_xtfyt"]
+[ext_resource type="Script" uid="uid://ti0a5kjhs3i2" path="res://scenes/uno.gd" id="21_6k20e"]
+[ext_resource type="Script" uid="uid://dbp6gil3p5l15" path="res://scenes/arrowscroll_2.gd" id="21_xtfyt"]
 [ext_resource type="AudioStream" uid="uid://clempgmmxxc1f" path="res://Resources/audio/UNO_Preview.mp3" id="22_6k20e"]
+[ext_resource type="Script" uid="uid://bdu0luujjvvov" path="res://scenes/pingpong.gd" id="27_iamcd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
 shader = ExtResource("2_w6vh0")
@@ -234,104 +235,13 @@ _data = {
 &"hover_out": SubResource("Animation_ra5o5")
 }
 
-[sub_resource type="Animation" id="Animation_63rwx"]
-resource_name = "Center_On_Press"
-length = 2.5
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pou:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(165, 90), Vector2(840, 420)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Pou:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6), Vector2(1.6, 1.6)]
-}
-
-[sub_resource type="Animation" id="Animation_il4ce"]
-resource_name = "Fade_Out"
-length = 0.5
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pou:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_glc18"]
-resource_name = "Fade_Out_Background"
-length = 0.5
-step = 0.2
-
-[sub_resource type="Animation" id="Animation_6h55s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pou:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Pou:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(165, 90)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Pou:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_jjpsb"]
+[sub_resource type="Animation" id="Animation_wt4aa"]
 resource_name = "hover_in"
 length = 0.1
-step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pou:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -341,31 +251,83 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.1, 1.1)]
 }
 
-[sub_resource type="Animation" id="Animation_f7er5"]
+[sub_resource type="Animation" id="Animation_2wgce"]
 resource_name = "hover_out"
-length = 0.2
-step = 0.2
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pou:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f7er5"]
+[sub_resource type="Animation" id="Animation_vn468"]
+resource_name = "Center_On_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(985, 90), Vector2(840, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_jumsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(985, 90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oofei"]
 _data = {
-&"Center_On_Press": SubResource("Animation_63rwx"),
-&"Fade_Out": SubResource("Animation_il4ce"),
-&"Fade_Out_Background": SubResource("Animation_glc18"),
-&"RESET": SubResource("Animation_6h55s"),
-&"hover_in": SubResource("Animation_jjpsb"),
-&"hover_out": SubResource("Animation_f7er5")
+&"Center_On_Press": SubResource("Animation_vn468"),
+&"RESET": SubResource("Animation_jumsn"),
+&"hover_in": SubResource("Animation_wt4aa"),
+&"hover_out": SubResource("Animation_2wgce")
 }
 
 [sub_resource type="Animation" id="Animation_fmtfg"]
@@ -537,7 +499,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(575, 90), Vector2(840, 410)]
+"values": [Vector2(575, 90), Vector2(840, 420)]
 }
 
 [sub_resource type="Animation" id="Animation_86o6b"]
@@ -641,6 +603,101 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_6k20e"),
 &"Schuiven": SubResource("Animation_hqaag")
+}
+
+[sub_resource type="Animation" id="Animation_g5mca"]
+resource_name = "Center_On_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pingpong:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(165, 90), Vector2(840, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pingpong:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_rhvqn"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pingpong:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_gt0wy"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pingpong:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xifk4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pingpong:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pingpong:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(165, 90)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wt4aa"]
+_data = {
+&"Center_On_Press": SubResource("Animation_g5mca"),
+&"RESET": SubResource("Animation_xifk4"),
+&"hover_in": SubResource("Animation_rhvqn"),
+&"hover_out": SubResource("Animation_gt0wy")
 }
 
 [node name="Node2D" type="Node2D"]
@@ -784,15 +841,15 @@ libraries = {
 }
 
 [node name="Pou" type="TextureButton" parent="."]
-offset_left = 165.0
+offset_left = 985.0
 offset_top = 90.0
-offset_right = 405.0
+offset_right = 1225.0
 offset_bottom = 330.0
 pivot_offset = Vector2(120, 120)
 texture_normal = ExtResource("9_vjksw")
 script = ExtResource("5_6h55s")
 
-[node name="Song_Name_1" type="Label" parent="Pou"]
+[node name="Song_Name_3" type="Label" parent="Pou"]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 250.0
@@ -811,9 +868,8 @@ stream = ExtResource("7_63rwx")
 volume_db = -15.0
 
 [node name="Low_Taper_Fade_GU" type="AnimationPlayer" parent="Pou"]
-root_node = NodePath("../..")
 libraries = {
-&"": SubResource("AnimationLibrary_f7er5")
+&"": SubResource("AnimationLibrary_oofei")
 }
 
 [node name="Fade_All" type="AnimationPlayer" parent="."]
@@ -904,6 +960,35 @@ libraries = {
 &"": SubResource("AnimationLibrary_dpfpd")
 }
 
+[node name="Pingpong" type="TextureButton" parent="."]
+offset_left = 165.0
+offset_top = 90.0
+offset_right = 405.0
+offset_bottom = 330.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(120, 120)
+script = ExtResource("27_iamcd")
+
+[node name="Song_Name_1" type="Label" parent="Pingpong"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 250.0
+offset_right = 219.0
+offset_bottom = 278.0
+pivot_offset = Vector2(100, 15)
+theme_override_font_sizes/font_size = 20
+text = "Ping Pong - Nintendo"
+
+[node name="Select_Sound" type="AudioStreamPlayer" parent="Pingpong"]
+stream = ExtResource("7_14uf1")
+volume_db = -20.0
+
+[node name="Low_Taper_Fade_PP" type="AnimationPlayer" parent="Pingpong"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_wt4aa")
+}
+
 [node name="Blocker" type="Control" parent="."]
 visible = false
 z_index = 4096
@@ -951,3 +1036,6 @@ script = ExtResource("18_fmtfg")
 [connection signal="pressed" from="UNO" to="UNO" method="_on_UNO_Pressed"]
 [connection signal="finished" from="UNO/UNO_Preview" to="UNO" method="_on_uno_preview_finished"]
 [connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]
+[connection signal="mouse_entered" from="Pingpong" to="Pingpong" method="_on_Pingpong_Button_Hovered"]
+[connection signal="mouse_exited" from="Pingpong" to="Pingpong" method="_on_Pingpong_Button_Exited"]
+[connection signal="pressed" from="Pingpong" to="Pingpong" method="_on_Pingpong_Pressed"]
