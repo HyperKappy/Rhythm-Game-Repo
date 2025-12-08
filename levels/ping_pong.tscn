@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://fgio8k2c3fi4"]
+
+[ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_bcqot"]
+[ext_resource type="AudioStream" uid="uid://rloic1embyy7" path="res://Resources/audio/ping_pong.mp3" id="2_bcqot"]
+[ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_ol27k"]
+[ext_resource type="Texture2D" uid="uid://c7qsh43d3g5t8" path="res://Resources/art/uno.jpg" id="4_qg605"]
+
+[node name="SongPlayer" type="Node"]
+script = ExtResource("1_bcqot")
+chart_path = "res://charts/ping_pong.json"
+spawn_ahead_ms = 1057.0
+use_chart_audio_path = false
+audio_stream = ExtResource("2_bcqot")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="GameLevel" parent="." instance=ExtResource("3_ol27k")]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(10.666523, -6.000024)
+scale = Vector2(0.7819445, 0.7819444)
+texture = ExtResource("4_qg605")
