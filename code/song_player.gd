@@ -22,7 +22,6 @@ var warn_shown: bool = false
 
 @onready var warning_flash := $GameLevel/WarningFlash
 
-
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer as AudioStreamPlayer
 @onready var spawner: Node = $GameLevel/falling_key_spawner
 @onready var judgement = $GameLevel/Judgement
@@ -32,6 +31,10 @@ var results_scene: PackedScene = preload("res://levels/results_screen.tscn")
 
 @export var use_chart_audio_path: bool = true
 @export var audio_stream: AudioStream = null
+
+const INTRO_DURATION_MS := 1600.0
+var intro_running: bool = false
+var intro_elapsed_ms: float = 0.0
 
 
 func _ready() -> void:
@@ -49,16 +52,20 @@ func _process(delta: float) -> void:
 	if !level_started:
 		return
 
-	if audio_player == null or not audio_player.playing:
-		return
+	var song_time_ms: float
 
-	var song_time_ms: float = audio_player.get_playback_position() * 1000.0
+	if intro_running:
+		intro_elapsed_ms += delta * 1000.0
+		song_time_ms = intro_elapsed_ms - INTRO_DURATION_MS
+	else:
+		if audio_player == null or not audio_player.playing:
+			return
+		song_time_ms = audio_player.get_playback_position() * 1000.0
 
 	if warn_shown and note_index == 0 and first_note_time >= 0.0:
 		if song_time_ms >= first_note_time - spawn_ahead_ms:
 			warning_flash.stop_flashing()
 			warn_shown = false
-
 
 	if not notes.is_empty():
 		while note_index < notes.size():
@@ -67,7 +74,7 @@ func _process(delta: float) -> void:
 
 			if note_time_ms <= song_time_ms + spawn_ahead_ms:
 				var lane_1_based: int = int(note_data.get("lane", 1))
-				var lane_index: int = lane_1_based - 1  # 1..4 -> 0..3
+				var lane_index: int = lane_1_based - 1
 
 				if note_data.has("end_time"):
 					var end_time_ms: float = float(note_data.get("end_time", note_time_ms))
@@ -80,7 +87,6 @@ func _process(delta: float) -> void:
 			else:
 				break
 
-
 	if not mines.is_empty():
 		while mine_index < mines.size():
 			var mine_data: Dictionary = mines[mine_index]
@@ -88,7 +94,7 @@ func _process(delta: float) -> void:
 
 			if mine_time_ms <= song_time_ms + spawn_ahead_ms:
 				var lane_1_based_mine: int = int(mine_data.get("lane", 1))
-				var mine_lane_index: int = lane_1_based_mine - 1  # 1..4 -> 0..3
+				var mine_lane_index: int = lane_1_based_mine - 1
 
 				if spawner.has_method("spawn_mine_in_lane"):
 					spawner.spawn_mine_in_lane(mine_lane_index)
@@ -124,7 +130,6 @@ func _load_chart() -> void:
 		else:
 			push_warning("Kon audio niet laden uit chart: " + audio_path)
 			
-	# eerste note time bepalen
 	if notes.size() > 0:
 		notes.sort_custom(func(a, b): return a["time"] < b["time"])
 		first_note_time = float(notes[0]["time"])
@@ -170,7 +175,6 @@ func _setup_audio() -> void:
 
 
 func _on_audio_finished() -> void:
-
 	var timer := get_tree().create_timer(0.5)
 	timer.timeout.connect(_show_results_screen)
 
@@ -184,9 +188,7 @@ func _show_results_screen() -> void:
 	var screen := results_scene.instantiate()
 	add_child(screen)
 
-
 	if screen.has_method("set_level_name"):
-
 		var short_name := chart_path
 		var slash_idx := chart_path.rfind("/")
 		if slash_idx != -1 and slash_idx + 1 < chart_path.length():
@@ -197,18 +199,14 @@ func _show_results_screen() -> void:
 
 		screen.set_level_name(short_name)
 
-
 	if judgement != null and judgement.has_method("set_ui_visible"):
 		judgement.set_ui_visible(false)
-
 
 	if judgement != null and screen.has_method("set_results_from_judgement"):
 		screen.set_results_from_judgement(judgement)
 
 
-
 func _show_ready_go_intro() -> void:
-
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	if ui_layer == null:
@@ -232,7 +230,6 @@ func _show_ready_go_intro() -> void:
 
 	ui_layer.add_child(intro_overlay)
 
-
 	intro_label = Label.new()
 	intro_label.text = "READY"
 	intro_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -252,8 +249,11 @@ func _show_ready_go_intro() -> void:
 
 	intro_overlay.add_child(intro_label)
 
-	var tween := create_tween()
+	intro_running = true
+	intro_elapsed_ms = 0.0
+	level_started = true
 
+	var tween := create_tween()
 	tween.tween_property(intro_label, "modulate:a", 1.0, 0.2)
 	tween.tween_interval(0.3)
 	tween.tween_property(intro_label, "modulate:a", 0.0, 0.5)
@@ -276,7 +276,7 @@ func _show_go_text() -> void:
 
 
 func _on_intro_finished() -> void:
-	level_started = true
+	intro_running = false
 	_start_level()
 
 	if intro_overlay != null:
@@ -288,6 +288,7 @@ func _on_intro_finished() -> void:
 func _start_level() -> void:
 	audio_player.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 
 var pause_menu_instance: Control = null
 
@@ -321,14 +322,14 @@ func _show_pause_menu() -> void:
 	root.add_child(pause_menu_instance)
 	root.move_child(pause_menu_instance, root.get_child_count() - 1)
 
+
 func _start_warning_timer():
 	if first_note_time < 0:
 		return
 
-	var warning_start_ms = first_note_time - spawn_ahead_ms - 500
+	var warning_start_ms = first_note_time - spawn_ahead_ms - 500.0 + INTRO_DURATION_MS
 
-	if warning_start_ms <= 0:
-		# te vroeg? direct starten
+	if warning_start_ms <= 0.0:
 		warning_flash.start_flashing()
 		warn_shown = true
 		return
