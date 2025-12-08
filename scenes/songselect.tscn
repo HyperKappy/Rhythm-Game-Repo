@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=70 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
 [ext_resource type="Script" uid="uid://bgvg7v1ly47la" path="res://code/blur_overlay.gd" id="3_iamcd"]
 [ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://code/arrowscroll.gd" id="3_xtfyt"]
-[ext_resource type="Script" uid="uid://b1ex1pqtrap4" path="res://scenes/label.gd" id="4_smsft"]
+[ext_resource type="Script" uid="uid://b1ex1pqtrap4" path="res://code/label.gd" id="4_smsft"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
 [ext_resource type="AudioStream" uid="uid://bjmfaqahsmtfw" path="res://Resources/audio/Guess_Preview.mp3" id="7_63rwx"]
@@ -24,10 +24,12 @@
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
 [ext_resource type="Texture2D" uid="uid://dbvdvdprloe8v" path="res://Resources/images/UNO.png" id="20_hqaag"]
-[ext_resource type="Script" uid="uid://ti0a5kjhs3i2" path="res://scenes/uno.gd" id="21_6k20e"]
-[ext_resource type="Script" uid="uid://dbp6gil3p5l15" path="res://scenes/arrowscroll_2.gd" id="21_xtfyt"]
+[ext_resource type="Script" uid="uid://ti0a5kjhs3i2" path="res://code/uno.gd" id="21_6k20e"]
+[ext_resource type="Script" uid="uid://dbp6gil3p5l15" path="res://code/arrowscroll_2.gd" id="21_xtfyt"]
 [ext_resource type="AudioStream" uid="uid://clempgmmxxc1f" path="res://Resources/audio/UNO_Preview.mp3" id="22_6k20e"]
-[ext_resource type="Script" uid="uid://bdu0luujjvvov" path="res://scenes/pingpong.gd" id="27_iamcd"]
+[ext_resource type="Texture2D" uid="uid://bulfgntk6rqga" path="res://Resources/images/ping_pong.jpg" id="27_8upbw"]
+[ext_resource type="Script" uid="uid://bdu0luujjvvov" path="res://code/pingpong.gd" id="27_iamcd"]
+[ext_resource type="AudioStream" uid="uid://7vd3gjs2j6ni" path="res://Resources/audio/Pingpong_Preview.mp3" id="29_vcser"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
 shader = ExtResource("2_w6vh0")
@@ -235,38 +237,6 @@ _data = {
 &"hover_out": SubResource("Animation_ra5o5")
 }
 
-[sub_resource type="Animation" id="Animation_wt4aa"]
-resource_name = "hover_in"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
-}
-
-[sub_resource type="Animation" id="Animation_2wgce"]
-resource_name = "hover_out"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_vn468"]
 resource_name = "Center_On_Press"
 length = 0.3
@@ -320,6 +290,38 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wt4aa"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_2wgce"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oofei"]
@@ -633,6 +635,33 @@ tracks/1/keys = {
 "values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
 }
 
+[sub_resource type="Animation" id="Animation_xifk4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pingpong:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pingpong:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(165, 90)]
+}
+
 [sub_resource type="Animation" id="Animation_rhvqn"]
 resource_name = "hover_in"
 length = 0.1
@@ -663,33 +692,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_xifk4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pingpong:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.1, 1.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Pingpong:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(165, 90)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wt4aa"]
@@ -965,9 +967,13 @@ offset_left = 165.0
 offset_top = 90.0
 offset_right = 405.0
 offset_bottom = 330.0
-scale = Vector2(1.1, 1.1)
 pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("27_8upbw")
 script = ExtResource("27_iamcd")
+
+[node name="Pingpong_Preview" type="AudioStreamPlayer" parent="Pingpong"]
+stream = ExtResource("29_vcser")
+volume_db = -15.0
 
 [node name="Song_Name_1" type="Label" parent="Pingpong"]
 layout_mode = 0
@@ -1038,4 +1044,6 @@ script = ExtResource("18_fmtfg")
 [connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]
 [connection signal="mouse_entered" from="Pingpong" to="Pingpong" method="_on_Pingpong_Button_Hovered"]
 [connection signal="mouse_exited" from="Pingpong" to="Pingpong" method="_on_Pingpong_Button_Exited"]
+[connection signal="pressed" from="Pingpong" to="." method="_on_Pingpong_Pressed_connect"]
 [connection signal="pressed" from="Pingpong" to="Pingpong" method="_on_Pingpong_Pressed"]
+[connection signal="finished" from="Pingpong/Pingpong_Preview" to="Pingpong" method="_on_Pingpong_preview_finished"]

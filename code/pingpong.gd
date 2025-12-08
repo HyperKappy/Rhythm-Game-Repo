@@ -20,7 +20,7 @@ func _on_Pingpong_Button_Hovered():
 
 func _on_Pingpong_Button_Exited():
 	if pressed_state == false:
-		$Low_Taper_Fade_UNO.play("hover_out")
+		$Low_Taper_Fade_PP.play("hover_out")
 		$Pingpong_Preview.stop()
 
 
