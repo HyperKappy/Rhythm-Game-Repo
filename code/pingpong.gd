@@ -9,7 +9,7 @@ func _on_Pingpong_Pressed():
 	$Pingpong_Preview.stop()
 	pressed_state = true
 	await get_tree().create_timer(1.49).timeout
-	get_tree().change_scene_to_file("res://levels/pingpong.tscn")
+	get_tree().change_scene_to_file("res://levels/ping_pong.tscn")
 
 func _on_Pingpong_Button_Hovered():
 	if pressed_state == false:
