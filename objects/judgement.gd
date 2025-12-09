@@ -37,9 +37,12 @@ var lane_hit_y: Array[float] = []
 # actieve long notes per lane
 var lane_hold_notes: Array[Sprite2D] = []
 
+@onready var spawner: Node = $"../falling_key_spawner"
+
 @onready var judgement_label: Label = $JudgementLabel
 @onready var accuracy_label: Label = $AccuracyLabel
 @onready var combo_label: Label = $ComboLabel
+
 
 @onready var timing_label: Label = null
 
@@ -226,7 +229,11 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 				lane_hold_notes[lane_idx] = note
 			_set_hold_visual_for_lane(lane_idx, note)
 		else:
-			note.queue_free()
+			if spawner != null and spawner.has_method("recycle_note"):
+				spawner.recycle_note(note)
+			else:
+				note.queue_free()
+
 
 	print("Judgement lane", lane_idx, "→", result, " time_diff=", time_diff)
 	return true
@@ -377,7 +384,10 @@ func _check_auto_misses() -> void:
 		if note.is_in_group("long_notes") and note.has_method("mark_head_result"):
 			note.mark_head_result("MISS")
 		else:
-			note.queue_free()
+			if spawner != null and spawner.has_method("recycle_note"):
+				spawner.recycle_note(note)
+			else:
+				note.queue_free()
 
 		show_accuracy()
 		show_judgement(result)

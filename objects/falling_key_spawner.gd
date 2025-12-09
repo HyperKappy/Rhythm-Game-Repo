@@ -33,12 +33,17 @@ var spawn_y: float = 0.0
 var auto_spawn_enabled: bool = false
 var auto_spawn_timer: Timer
 
+@export var short_note_pool_initial_size: int = 0
+var short_note_pool: Array[Sprite2D] = []
+var short_note_free: Array[Sprite2D] = []
+
 
 func _ready() -> void:
 	randomize()
 	_calculate_spawn_y()
 	_init_lane_data()
 	_init_auto_spawn_timer()
+	_prewarm_short_note_pool()
 
 
 func _calculate_spawn_y() -> void:
@@ -129,16 +134,22 @@ func spawn_random_note() -> void:
 func spawn_note_in_lane(lane_index: int) -> Node:
 	if falling_key_scene == null:
 		push_warning("falling_key_scene niet ingesteld!")
-		return
+		return null
 
 	if lane_index < 0 or lane_index >= lane_x_positions.size():
 		push_warning("Ongeldige lane_index: " + str(lane_index))
-		return
+		return null
 
-	var note := falling_key_scene.instantiate() as Sprite2D
+	var note := _get_pooled_short_note()
 	if note == null:
-		push_warning("falling_key_scene is geen Sprite2D.")
-		return
+		return null
+
+	if not note.is_in_group("notes"):
+		note.add_to_group("notes")
+
+	note.set_process(true)
+	note.visible = true
+	note.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 	var x: float = lane_x_positions[lane_index]
 
@@ -152,10 +163,8 @@ func spawn_note_in_lane(lane_index: int) -> Node:
 	note.scroll_velocity = scroll_velocity
 	note.lane_index = lane_index
 
-	get_parent().add_child(note)
-
 	print("Note gespawned in lane", lane_index, "op x =", x, "y =", spawn_y)
-	
+
 	return note
 
 
@@ -220,3 +229,64 @@ func spawn_mine_in_lane(lane_index: int) -> Node:
 	get_parent().add_child(mine)
 	
 	return mine
+
+func _prewarm_short_note_pool() -> void:
+	if short_note_pool_initial_size <= 0:
+		return
+
+	if falling_key_scene == null:
+		push_warning("falling_key_scene niet ingesteld voor pooling!")
+		return
+
+	for i in range(short_note_pool_initial_size):
+		var note := falling_key_scene.instantiate() as Sprite2D
+		if note == null:
+			continue
+
+		short_note_pool.append(note)
+		short_note_free.append(note)
+
+
+
+func _get_pooled_short_note() -> Sprite2D:
+	var note: Sprite2D
+
+	if not short_note_free.is_empty():
+		note = short_note_free.pop_back()
+	else:
+		if falling_key_scene == null:
+			push_warning("falling_key_scene niet ingesteld voor pooling!")
+			return null
+		note = falling_key_scene.instantiate() as Sprite2D
+		if note == null:
+			push_warning("falling_key_scene is geen Sprite2D.")
+			return null
+		short_note_pool.append(note)
+
+	if note.get_parent() == null:
+		get_parent().add_child(note)
+
+	return note
+
+
+
+func recycle_note(note: Node) -> void:
+	if note == null:
+		return
+
+	if not (note is Sprite2D):
+		return
+
+	var sprite := note as Sprite2D
+
+	if sprite.is_in_group("notes"):
+		sprite.remove_from_group("notes")
+
+	sprite.set_process(false)
+
+	sprite.visible = false
+	sprite.modulate = Color(sprite.modulate.r, sprite.modulate.g, sprite.modulate.b, 0.0)
+
+	sprite.global_position = Vector2(-10000.0, -10000.0)
+
+	short_note_free.append(sprite)
