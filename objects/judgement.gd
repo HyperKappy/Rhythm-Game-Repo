@@ -184,7 +184,6 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 		result = "MISS"
 		miss_count += 1
 		_on_miss()
-		print("Judgement lane", lane_idx, "→ MISS (lane buiten bereik)")
 		return true
 
 	var note := _find_closest_note_in_lane(lane_idx)
@@ -192,7 +191,6 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 		result = "MISS"
 		miss_count += 1
 		_on_miss()
-		print("Judgement lane", lane_idx, "→ MISS (geen note in lane)")
 		return true
 
 	var hit_y: float = lane_hit_y[lane_idx]
@@ -200,7 +198,6 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 	if scroll_velocity <= 0.0:
 		result = "MISS"
 		_on_miss()
-		print("Judgement lane", lane_idx, "→ MISS (scroll_velocity <= 0)")
 		return true
 
 	var signed_time_diff: float = (note.global_position.y - hit_y) / scroll_velocity
@@ -234,8 +231,6 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 			else:
 				note.queue_free()
 
-
-	print("Judgement lane", lane_idx, "→", result, " time_diff=", time_diff)
 	return true
 
 
@@ -288,7 +283,6 @@ func _handle_release_for_lane(lane_idx: int) -> void:
 			max_combo = combo
 		_show_combo()
 
-	print("Tail release lane", lane_idx, "→", tail_result, " time_diff=", time_diff)
 	show_accuracy()
 	show_judgement(tail_result)
 	_show_timing_label(tail_result)
@@ -391,7 +385,6 @@ func _check_auto_misses() -> void:
 
 		show_accuracy()
 		show_judgement(result)
-		print("Auto-MISS voor lane", note.get("lane_index"))
 
 
 func _on_miss() -> void:
@@ -617,7 +610,6 @@ func _get_hold_overlay_for_lane(lane_idx: int) -> Sprite2D:
 func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
 	var receptor := _get_receptor_for_lane(lane_idx)
 	if receptor == null:
-		print("Geen receptor gevonden voor lane ", lane_idx)
 		return
 
 	if lane_idx >= 0 and lane_idx < lane_hold_active.size():
@@ -633,13 +625,11 @@ func _set_hold_visual_for_lane(lane_idx: int, note: Sprite2D) -> void:
 	if overlay != null:
 		overlay.visible = true
 		cutoff_y = overlay.global_position.y
-		print("HoldOverlay AAN voor lane ", lane_idx, " cutoff_y = ", cutoff_y)
 	else:
 		if lane_idx >= 0 and lane_idx < lane_hit_y.size():
 			cutoff_y = lane_hit_y[lane_idx]
 		else:
 			cutoff_y = 1000000.0
-		print("GEEN HoldOverlay, gebruik hitlijn voor lane ", lane_idx)
 
 	note.texture = null
 

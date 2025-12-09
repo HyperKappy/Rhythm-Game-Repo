@@ -56,9 +56,6 @@ func _calculate_spawn_y() -> void:
 	else:
 		spawn_y = -200.0
 
-	print("Spawn Y ingesteld op:", spawn_y)
-
-
 func _init_lane_data() -> void:
 	lane_x_positions.clear()
 	lane_rotations.clear()
@@ -96,10 +93,8 @@ func _toggle_auto_spawn() -> void:
 	auto_spawn_enabled = !auto_spawn_enabled
 
 	if auto_spawn_enabled:
-		print("Auto-spawn: AAN")
 		_start_auto_spawn_cycle()
 	else:
-		print("Auto-spawn: UIT")
 		if auto_spawn_timer:
 			auto_spawn_timer.stop()
 
@@ -111,7 +106,6 @@ func _start_auto_spawn_cycle() -> void:
 	var interval := randf_range(auto_spawn_min_interval, auto_spawn_max_interval)
 	auto_spawn_timer.wait_time = interval
 	auto_spawn_timer.start()
-	print("Volgende auto-spawn over", interval, "seconden")
 
 
 func _on_auto_spawn_timer_timeout() -> void:
@@ -162,8 +156,6 @@ func spawn_note_in_lane(lane_index: int) -> Node:
 
 	note.scroll_velocity = scroll_velocity
 	note.lane_index = lane_index
-
-	print("Note gespawned in lane", lane_index, "op x =", x, "y =", spawn_y)
 
 	return note
 
