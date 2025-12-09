@@ -126,7 +126,7 @@ func spawn_random_note() -> void:
 	spawn_note_in_lane(lane_index)
 
 
-func spawn_note_in_lane(lane_index: int) -> void:
+func spawn_note_in_lane(lane_index: int) -> Node:
 	if falling_key_scene == null:
 		push_warning("falling_key_scene niet ingesteld!")
 		return
@@ -155,10 +155,11 @@ func spawn_note_in_lane(lane_index: int) -> void:
 	get_parent().add_child(note)
 
 	print("Note gespawned in lane", lane_index, "op x =", x, "y =", spawn_y)
+	
+	return note
 
 
-
-func spawn_long_note(lane_index: int, duration_ms: float) -> void:
+func spawn_long_note(lane_index: int, duration_ms: float) -> Node:
 	if long_note_scene == null:
 		return
 	
@@ -183,8 +184,10 @@ func spawn_long_note(lane_index: int, duration_ms: float) -> void:
 		note.setup(duration_ms)
 	
 	get_parent().add_child(note)
+	
+	return note
 
-func spawn_mine_in_lane(lane_index: int) -> void:
+func spawn_mine_in_lane(lane_index: int) -> Node:
 	if mine_scene == null:
 		push_warning("mine_scene niet ingesteld!")
 		return
@@ -215,3 +218,5 @@ func spawn_mine_in_lane(lane_index: int) -> void:
 		mine.rotation = 0.0
 
 	get_parent().add_child(mine)
+	
+	return mine
