@@ -41,6 +41,8 @@ func _ready() -> void:
 	_load_chart()
 	_load_mines_chart()
 	_setup_audio()
+	
+	_warmup_note()
 
 	_show_ready_go_intro()
 	_start_warning_timer()
@@ -339,3 +341,22 @@ func _start_warning_timer():
 		warning_flash.start_flashing()
 		warn_shown = true
 	)
+
+func _warmup_note() -> void:
+	if spawner == null:
+		return
+
+	if spawner.has_method("spawn_note_in_lane"):
+		var dummy: Node = spawner.spawn_note_in_lane(0)
+		if dummy != null:
+			dummy.queue_free()
+
+	if spawner.has_method("spawn_long_note"):
+		var dummy_long: Node = spawner.spawn_long_note(0, 0.01)
+		if dummy_long != null:
+			dummy_long.queue_free()
+
+	if spawner.has_method("spawn_mine_in_lane"):
+		var dummy_mine: Node = spawner.spawn_mine_in_lane(0)
+		if dummy_mine != null:
+			dummy_mine.queue_free()

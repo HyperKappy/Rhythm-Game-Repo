@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://6e7ytffb061j" path="res://shaders/song_select_blur.gdshader" id="2_w6vh0"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
 [ext_resource type="Script" uid="uid://bgvg7v1ly47la" path="res://code/blur_overlay.gd" id="3_iamcd"]
-[ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://code/arrowscroll.gd" id="3_xtfyt"]
+[ext_resource type="Script" path="res://code/arrowscroll.gd" id="3_xtfyt"]
 [ext_resource type="Script" uid="uid://b1ex1pqtrap4" path="res://code/label.gd" id="4_smsft"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
@@ -36,7 +36,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
 shader = ExtResource("2_w6vh0")
 shader_parameter/blur_radius = 0.0
-shader_parameter/sample_count = 2
+shader_parameter/sample_count = 1
 shader_parameter/darken = 0.3
 
 [sub_resource type="Animation" id="Animation_8upbw"]
