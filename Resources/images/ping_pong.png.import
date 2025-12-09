@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djcxmiropdt8s"
-path="res://.godot/imported/pou (1).png-516d51bb058e022982cf3822e9c1fd07.ctex"
+uid="uid://ccpmjd77upojv"
+path="res://.godot/imported/ping_pong.png-a6100f5206f1ae7eb145b58ce0f5e432.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/images/pou (1).png"
-dest_files=["res://.godot/imported/pou (1).png-516d51bb058e022982cf3822e9c1fd07.ctex"]
+source_file="res://Resources/images/ping_pong.png"
+dest_files=["res://.godot/imported/ping_pong.png-a6100f5206f1ae7eb145b58ce0f5e432.ctex"]
 
 [params]
 
