@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://ti0a5kjhs3i2" path="res://code/uno.gd" id="21_6k20e"]
 [ext_resource type="Script" uid="uid://dbp6gil3p5l15" path="res://code/arrowscroll_2.gd" id="21_xtfyt"]
 [ext_resource type="AudioStream" uid="uid://clempgmmxxc1f" path="res://Resources/audio/UNO_Preview.mp3" id="22_6k20e"]
-[ext_resource type="Texture2D" uid="uid://bulfgntk6rqga" path="res://Resources/images/ping_pong.jpg" id="27_8upbw"]
+[ext_resource type="Texture2D" uid="uid://ccpmjd77upojv" path="res://Resources/images/ping_pong.png" id="25_vcser"]
 [ext_resource type="Script" uid="uid://bdu0luujjvvov" path="res://code/pingpong.gd" id="27_iamcd"]
 [ext_resource type="AudioStream" uid="uid://7vd3gjs2j6ni" path="res://Resources/audio/Pingpong_Preview.mp3" id="29_vcser"]
 
@@ -571,42 +571,6 @@ _data = {
 &"hover_out": SubResource("Animation_0crvl")
 }
 
-[sub_resource type="Animation" id="Animation_6k20e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 997)]
-}
-
-[sub_resource type="Animation" id="Animation_hqaag"]
-resource_name = "Schuiven"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 997), Vector2(0, 588.8), Vector2(0, 331.1), Vector2(0, 152.8), Vector2(0, 40.1), Vector2(0, -29.9), Vector2(0, -67), Vector2(0, -80), Vector2(0, -82.8), Vector2(0, -83), Vector2(0, -83)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpfpd"]
-_data = {
-&"RESET": SubResource("Animation_6k20e"),
-&"Schuiven": SubResource("Animation_hqaag")
-}
-
 [sub_resource type="Animation" id="Animation_g5mca"]
 resource_name = "Center_On_Press"
 length = 0.3
@@ -700,6 +664,42 @@ _data = {
 &"RESET": SubResource("Animation_xifk4"),
 &"hover_in": SubResource("Animation_rhvqn"),
 &"hover_out": SubResource("Animation_gt0wy")
+}
+
+[sub_resource type="Animation" id="Animation_6k20e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 997)]
+}
+
+[sub_resource type="Animation" id="Animation_hqaag"]
+resource_name = "Schuiven"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 997), Vector2(0, 588.8), Vector2(0, 331.1), Vector2(0, 152.8), Vector2(0, 40.1), Vector2(0, -29.9), Vector2(0, -67), Vector2(0, -80), Vector2(0, -82.8), Vector2(0, -83), Vector2(0, -83)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpfpd"]
+_data = {
+&"RESET": SubResource("Animation_6k20e"),
+&"Schuiven": SubResource("Animation_hqaag")
 }
 
 [node name="Node2D" type="Node2D"]
@@ -950,25 +950,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_g5mca")
 }
 
-[node name="Extras" type="TextureButton" parent="."]
-offset_top = 997.0
-offset_right = 1920.0
-offset_bottom = 2160.0
-texture_normal = ExtResource("17_do18t")
-script = ExtResource("17_twyjv")
-
-[node name="Click_Animation" type="AnimationPlayer" parent="Extras"]
-libraries = {
-&"": SubResource("AnimationLibrary_dpfpd")
-}
-
 [node name="Pingpong" type="TextureButton" parent="."]
 offset_left = 165.0
 offset_top = 90.0
 offset_right = 405.0
 offset_bottom = 330.0
 pivot_offset = Vector2(120, 120)
-texture_normal = ExtResource("27_8upbw")
+texture_normal = ExtResource("25_vcser")
 script = ExtResource("27_iamcd")
 
 [node name="Pingpong_Preview" type="AudioStreamPlayer" parent="Pingpong"]
@@ -993,6 +981,18 @@ volume_db = -20.0
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_wt4aa")
+}
+
+[node name="Extras" type="TextureButton" parent="."]
+offset_top = 997.0
+offset_right = 1920.0
+offset_bottom = 2160.0
+texture_normal = ExtResource("17_do18t")
+script = ExtResource("17_twyjv")
+
+[node name="Click_Animation" type="AnimationPlayer" parent="Extras"]
+libraries = {
+&"": SubResource("AnimationLibrary_dpfpd")
 }
 
 [node name="Blocker" type="Control" parent="."]
@@ -1041,9 +1041,9 @@ script = ExtResource("18_fmtfg")
 [connection signal="pressed" from="UNO" to="." method="_on_UNO_Pressed_connect"]
 [connection signal="pressed" from="UNO" to="UNO" method="_on_UNO_Pressed"]
 [connection signal="finished" from="UNO/UNO_Preview" to="UNO" method="_on_uno_preview_finished"]
-[connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]
 [connection signal="mouse_entered" from="Pingpong" to="Pingpong" method="_on_Pingpong_Button_Hovered"]
 [connection signal="mouse_exited" from="Pingpong" to="Pingpong" method="_on_Pingpong_Button_Exited"]
 [connection signal="pressed" from="Pingpong" to="." method="_on_Pingpong_Pressed_connect"]
 [connection signal="pressed" from="Pingpong" to="Pingpong" method="_on_Pingpong_Pressed"]
 [connection signal="finished" from="Pingpong/Pingpong_Preview" to="Pingpong" method="_on_Pingpong_preview_finished"]
+[connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]
