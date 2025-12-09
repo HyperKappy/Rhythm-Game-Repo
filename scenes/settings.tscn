@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqkas2gwcow6i"]
+[gd_scene load_steps=7 format=3 uid="uid://bqkas2gwcow6i"]
 
 [ext_resource type="PackedScene" uid="uid://c2duvcd5xtvv2" path="res://scenes/Should_Never_Be_Visible.tscn" id="1_5p8wc"]
 [ext_resource type="Script" uid="uid://coaw7xptpkxkq" path="res://code/audio_slider.gd" id="1_f4mfi"]
+[ext_resource type="Script" uid="uid://ld7fmt2sixe0" path="res://code/settings_graphics.gd" id="1_gis3k"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="2_r6d6q"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="3_6wm04"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="5_es4n0"]
@@ -17,6 +18,7 @@ offset_right = 396.0
 offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gis3k")
 
 [node name="AudioSlider" type="HSlider" parent="."]
 layout_mode = 1
@@ -43,14 +45,15 @@ offset_right = 81.0
 offset_bottom = 622.0
 theme_override_constants/separation = 100
 
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
 [node name="Settings" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Settings:"
-
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 12
 
 [node name="Volume" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -72,7 +75,34 @@ action_name = "Up"
 layout_mode = 2
 action_name = "Right"
 
+[node name="GraphicsRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 585
+
+[node name="GraphicsLabel" type="Label" parent="VBoxContainer/GraphicsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Graphics Quality"
+
+[node name="GraphicsButtonRow" type="HBoxContainer" parent="VBoxContainer/GraphicsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="LowButton" type="Button" parent="VBoxContainer/GraphicsRow/GraphicsButtonRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "LOW"
+
+[node name="HighButton" type="Button" parent="VBoxContainer/GraphicsRow/GraphicsButtonRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "HIGH"
+
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 
@@ -98,4 +128,6 @@ text = "BACK"
 script = ExtResource("5_es4n0")
 
 [connection signal="value_changed" from="AudioSlider" to="AudioSlider" method="_on_value_changed"]
+[connection signal="pressed" from="VBoxContainer/GraphicsRow/GraphicsButtonRow/LowButton" to="." method="_on_low_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GraphicsRow/GraphicsButtonRow/HighButton" to="." method="_on_high_button_pressed"]
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
