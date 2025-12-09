@@ -54,6 +54,9 @@ func _process(delta: float) -> void:
 	if !level_started:
 		return
 
+	if note_index >= notes.size() and mine_index >= mines.size() and (not warn_shown or first_note_time < 0.0):
+		return
+
 	var song_time_ms: float
 
 	if intro_running:
@@ -104,6 +107,7 @@ func _process(delta: float) -> void:
 				mine_index += 1
 			else:
 				break
+
 
 
 func _load_chart() -> void:

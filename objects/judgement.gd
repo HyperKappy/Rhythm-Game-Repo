@@ -55,6 +55,9 @@ var timing_base_position: Vector2
 var last_signed_time_diff: float = 0.0
 var last_has_timing_info: bool = false
 
+var auto_miss_interval: float = 0.05
+var auto_miss_timer: float = 0.0
+
 const LANE_ACTIONS: Array[String] = [
 	"Left",	 # lane 0
 	"Down",	 # lane 1
@@ -121,7 +124,11 @@ func _init_hit_lines() -> void:
 
 
 func _process(delta: float) -> void:
-	_check_auto_misses()
+	auto_miss_timer += delta
+	if auto_miss_timer >= auto_miss_interval:
+		_check_auto_misses()
+		auto_miss_timer = 0.0
+
 	_force_hide_receptors_during_hold()
 
 
