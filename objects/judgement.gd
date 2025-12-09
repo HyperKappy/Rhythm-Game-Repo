@@ -7,6 +7,10 @@ var result: String = ""
 var accuracy_display: float = 100.0
 var accuracy_tween: Tween = null
 
+var last_accuracy_text: String = ""
+var last_combo_value: int = -1
+var last_judgement_result: String = ""
+
 var total_judgements: int = 0
 
 var perfect_count: int = 0
@@ -419,10 +423,17 @@ func _update_accuracy_value(value: float) -> void:
 
 
 func _update_accuracy_label_from_value(value: float) -> void:
+	var new_text: String
 	if abs(value - 100.0) < 0.0001:
-		accuracy_label.text = "100%"
+		new_text = "100%"
 	else:
-		accuracy_label.text = "%.2f%%" % value
+		new_text = "%.2f%%" % value
+
+	if new_text == last_accuracy_text:
+		return
+
+	last_accuracy_text = new_text
+	accuracy_label.text = new_text
 
 
 func show_judgement(judgement_result: String) -> void:
@@ -456,6 +467,8 @@ func show_judgement(judgement_result: String) -> void:
 	judgement_tween.tween_interval(0.1)
 	judgement_tween.tween_property(judgement_label, "position", target_pos, 0.5)
 	judgement_tween.parallel().tween_property(judgement_label, "modulate:a", 0.0, 0.5)
+
+
 
 
 func _show_timing_label(judgement_result: String) -> void:
@@ -555,7 +568,12 @@ func _animate_combo_reset(start_combo: int) -> void:
 
 func _update_combo_label_value(value: float) -> void:
 	var v := int(round(value))
+	if v == last_combo_value:
+		return
+
+	last_combo_value = v
 	combo_label.text = str(v)
+
 
 
 func set_ui_visible(visible: bool) -> void:
