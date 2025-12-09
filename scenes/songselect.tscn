@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=72 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://ccpmjd77upojv" path="res://Resources/images/ping_pong.png" id="25_vcser"]
 [ext_resource type="Script" uid="uid://bdu0luujjvvov" path="res://code/pingpong.gd" id="27_iamcd"]
 [ext_resource type="AudioStream" uid="uid://7vd3gjs2j6ni" path="res://Resources/audio/Pingpong_Preview.mp3" id="29_vcser"]
+[ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="31_fsj8r"]
+[ext_resource type="Script" uid="uid://73gqg6f6abv5" path="res://scenes/foreground.gd" id="32_86o6b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
 shader = ExtResource("2_w6vh0")
@@ -330,55 +332,6 @@ _data = {
 &"RESET": SubResource("Animation_jumsn"),
 &"hover_in": SubResource("Animation_wt4aa"),
 &"hover_out": SubResource("Animation_2wgce")
-}
-
-[sub_resource type="Animation" id="Animation_fmtfg"]
-resource_name = "Fade_All"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.012617188, 0.012617188, 0.012617188, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5921569)]
-}
-
-[sub_resource type="Animation" id="Animation_vjksw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_do18t"]
-_data = {
-&"Fade_All": SubResource("Animation_fmtfg"),
-&"RESET": SubResource("Animation_vjksw")
 }
 
 [sub_resource type="Animation" id="Animation_do18t"]
@@ -702,6 +655,43 @@ _data = {
 &"Schuiven": SubResource("Animation_hqaag")
 }
 
+[sub_resource type="Animation" id="Animation_oofei"]
+resource_name = "Fade_All"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bq3mm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_do18t"]
+_data = {
+&"Fade_All": SubResource("Animation_oofei"),
+&"RESET": SubResource("Animation_bq3mm")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_il4ce")
 
@@ -874,11 +864,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_oofei")
 }
 
-[node name="Fade_All" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_do18t")
-}
-
 [node name="Back" type="TextureButton" parent="."]
 visible = false
 offset_left = -45.0
@@ -1019,6 +1004,19 @@ offset_bottom = 1068.0
 theme_override_font_sizes/font_size = 80
 text = "BACK"
 script = ExtResource("18_fmtfg")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+position = Vector2(960, 540)
+texture = ExtResource("31_fsj8r")
+script = ExtResource("32_86o6b")
+
+[node name="Fade_All" type="AnimationPlayer" parent="Foreground"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_do18t")
+}
 
 [connection signal="mouse_entered" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
 [connection signal="mouse_exited" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
