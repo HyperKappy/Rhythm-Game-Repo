@@ -9,5 +9,5 @@ func _process(delta):
 
 	var mat := material as ShaderMaterial
 	var blur = mat.get_shader_parameter("blur_radius")
-	blur += 10.0 * delta
+	blur += 8.5 * delta
 	mat.set_shader_parameter("blur_radius", blur)
