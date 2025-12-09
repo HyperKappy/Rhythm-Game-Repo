@@ -1,9 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://fgio8k2c3fi4"]
+[gd_scene load_steps=10 format=3 uid="uid://fgio8k2c3fi4"]
 
 [ext_resource type="Script" uid="uid://bx3ugyj878cjg" path="res://code/song_player.gd" id="1_bcqot"]
 [ext_resource type="AudioStream" uid="uid://rloic1embyy7" path="res://Resources/audio/ping_pong.mp3" id="2_bcqot"]
 [ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_ol27k"]
 [ext_resource type="Texture2D" uid="uid://bka20oewlix1a" path="res://Resources/art/ping_pong_pang_ting_tong_bing_bong_tafel.jpg" id="4_bcqot"]
+[ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="5_ol27k"]
+[ext_resource type="Script" uid="uid://dfv228n3pxdi5" path="res://levels/foreground.gd" id="6_qg605"]
+
+[sub_resource type="Animation" id="Animation_30b2x"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_olbee"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flqtj"]
+_data = {
+&"Fade": SubResource("Animation_30b2x"),
+&"RESET": SubResource("Animation_olbee")
+}
 
 [node name="SongPlayer" type="Node"]
 script = ExtResource("1_bcqot")
@@ -22,3 +60,13 @@ z_index = -4096
 position = Vector2(1.0000458, -2)
 scale = Vector2(1.8992623, 1.8992621)
 texture = ExtResource("4_bcqot")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+z_index = 4096
+texture = ExtResource("5_ol27k")
+script = ExtResource("6_qg605")
+
+[node name="Fade" type="AnimationPlayer" parent="Foreground"]
+libraries = {
+&"": SubResource("AnimationLibrary_flqtj")
+}

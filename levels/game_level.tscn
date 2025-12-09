@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://cirfpuxgijlwp"]
+[gd_scene load_steps=18 format=3 uid="uid://cirfpuxgijlwp"]
 
-[ext_resource type="Script" path="res://code/game_level.gd" id="1_2i5ty"]
 [ext_resource type="Script" uid="uid://dh022hdm80570" path="res://objects/key_listener.gd" id="2_d65c1"]
 [ext_resource type="Texture2D" uid="uid://cdqafbpb86lsw" path="res://Resources/art/receptor-up-1.png" id="3_o8r0f"]
 [ext_resource type="Script" uid="uid://be512qqenckd2" path="res://objects/judgement.gd" id="5_2i5ty"]
@@ -29,10 +28,9 @@ variation_embolden = -0.3
 variation_transform = Transform2D(1, 0.3, 0, 0.8, 1.5, 1.5)
 
 [node name="GameLevel" type="Node2D"]
-script = ExtResource("1_2i5ty")
 
 [node name="WarningFlash" type="Control" parent="."]
-z_index = 4096
+z_index = 4095
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

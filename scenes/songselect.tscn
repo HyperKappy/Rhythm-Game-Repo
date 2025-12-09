@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=73 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://6e7ytffb061j" path="res://shaders/song_select_blur.gdshader" id="2_w6vh0"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
 [ext_resource type="Script" uid="uid://bgvg7v1ly47la" path="res://code/blur_overlay.gd" id="3_iamcd"]
-[ext_resource type="Script" path="res://code/arrowscroll.gd" id="3_xtfyt"]
+[ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://code/arrowscroll.gd" id="3_xtfyt"]
 [ext_resource type="Script" uid="uid://b1ex1pqtrap4" path="res://code/label.gd" id="4_smsft"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://7vd3gjs2j6ni" path="res://Resources/audio/Pingpong_Preview.mp3" id="29_vcser"]
 [ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="31_fsj8r"]
 [ext_resource type="Script" uid="uid://73gqg6f6abv5" path="res://scenes/foreground.gd" id="32_86o6b"]
+[ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="33_86o6b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
 shader = ExtResource("2_w6vh0")
@@ -1017,6 +1018,11 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_do18t")
 }
+
+[node name="BackBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("33_86o6b")
 
 [connection signal="mouse_entered" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
 [connection signal="mouse_exited" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Exited"]

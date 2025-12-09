@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7o4xbpoibyp5"]
+[gd_scene load_steps=9 format=3 uid="uid://c7o4xbpoibyp5"]
 
 [ext_resource type="Script" uid="uid://bto72y03guij" path="res://code/main_menu.gd" id="1_ns5u6"]
 [ext_resource type="Texture2D" uid="uid://vawuo0trrhtr" path="res://Resources/images/playplaceholder.png" id="2_j7wrs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://fyquy5ycgary" path="res://code/Settings_Button.gd" id="5_i3aa3"]
 [ext_resource type="Texture2D" uid="uid://dv04qlh2b3mg7" path="res://Resources/images/Credits.png" id="5_wca30"]
 [ext_resource type="Script" uid="uid://cf8sf0dslwiu2" path="res://code/Credits.gd" id="6_ns5u6"]
+[ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="8_tbmy8"]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_ns5u6")
@@ -47,6 +48,11 @@ offset_right = 1152.0
 offset_bottom = 619.0
 texture_normal = ExtResource("5_wca30")
 script = ExtResource("6_ns5u6")
+
+[node name="BackBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("8_tbmy8")
 
 [connection signal="pressed" from="Play_Button" to="Play_Button" method="pressed"]
 [connection signal="pressed" from="Settings_Button" to="Settings_Button" method="_on_pressed"]

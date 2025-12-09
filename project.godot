@@ -65,3 +65,7 @@ toggle_auto_spawn={
 "deadzone": 0.2,
 "events": []
 }
+
+[rendering]
+
+viewport/transparent_background=true
