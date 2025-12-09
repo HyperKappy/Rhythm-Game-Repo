@@ -10,7 +10,6 @@ var required_keys = {
 }
 
 func _ready() -> void:
-
 	if has_node("BlurOverlay"):
 		var blur := $BlurOverlay
 		blur.visible = false

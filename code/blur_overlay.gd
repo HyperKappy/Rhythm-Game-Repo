@@ -4,6 +4,10 @@ var blur_speed := 1
 var max_blur := 3
 
 func _process(delta):
+	if GraphicsSettings.current_quality == GraphicsSettings.Quality.LOW:
+		visible = false
+		return
+		
 	if !is_visible_in_tree():
 		return
 
