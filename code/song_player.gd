@@ -65,7 +65,12 @@ func _process(delta: float) -> void:
 	else:
 		if audio_player == null or not audio_player.playing:
 			return
-		song_time_ms = audio_player.get_playback_position() * 1000.0
+
+		var raw_song_time_ms: float = audio_player.get_playback_position() * 1000.0
+		var offset_ms: float = AudioSettings.get_offset_ms()
+
+		song_time_ms = raw_song_time_ms - offset_ms
+
 
 	if warn_shown and note_index == 0 and first_note_time >= 0.0:
 		if song_time_ms >= first_note_time - spawn_ahead_ms:
