@@ -8,17 +8,28 @@ var bus_index: int
 
 func _ready() -> void:
 	bus_index = AudioServer.get_bus_index(bus_name)
-	value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
+
 	min_value = 0.0
 	max_value = 1.0
 	step = 0.01
+
+	var stored_volume := AudioSettings.get_master_volume_linear()
+
+	value = stored_volume
+
+	AudioServer.set_bus_volume_db(
+		bus_index,
+		linear_to_db(stored_volume)
+	)
 
 func _process(delta: float) -> void:
 	if volume_label:
 		global_position.y = volume_label.global_position.y
 
-func _on_value_changed(value: float) -> void:
+func _on_value_changed(v: float) -> void:
 	AudioServer.set_bus_volume_db(
 		bus_index,
-		linear_to_db(value)
+		linear_to_db(v)
 	)
+
+	AudioSettings.set_master_volume_linear(v)

@@ -57,6 +57,8 @@ func rebind_action_key(event) -> void:
 
 	InputMap.action_add_event(action_name, event)
 	
+	ControlSettings.save_action(action_name)
+	
 	set_process_unhandled_key_input(false)
 	set_text_for_key()
 	set_action_name()

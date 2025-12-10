@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 GraphicsSettings="*res://code/GraphicsSettings.gd"
 AudioSettings="*res://code/AudioSettings.gd"
+ControlSettings="*res://code/ControlSettings.gd"
 
 [display]
 
