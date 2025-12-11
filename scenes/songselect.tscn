@@ -803,10 +803,10 @@ texture = ExtResource("2_vjksw")
 script = ExtResource("8_g5mca")
 
 [node name="Label" type="Label" parent="Arrowscroll3"]
-offset_left = -1264.7675
-offset_top = -1087.2854
-offset_right = 389.23254
-offset_bottom = -955.2854
+offset_left = -1114.3904
+offset_top = -1061.8156
+offset_right = 539.6096
+offset_bottom = -929.81555
 theme_override_font_sizes/font_size = 96
 text = "This animation is totally not scuffed"
 script = ExtResource("9_rhvqn")
