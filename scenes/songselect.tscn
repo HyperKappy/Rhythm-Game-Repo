@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=78 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -12,7 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
 [ext_resource type="AudioStream" uid="uid://bjmfaqahsmtfw" path="res://Resources/audio/Guess_Preview.mp3" id="7_63rwx"]
 [ext_resource type="Texture2D" uid="uid://hgcovwkulpdo" path="res://Resources/images/GIVEN_ENOUGH_cropped.png" id="7_il4ce"]
+[ext_resource type="Script" uid="uid://rn22eikc3s8g" path="res://scenes/arrowscroll_3.gd" id="8_g5mca"]
 [ext_resource type="Script" uid="uid://dn8ct6gjnwhrx" path="res://code/given_enough.gd" id="8_glc18"]
+[ext_resource type="Script" uid="uid://c6mt4mhsmpane" path="res://scenes/label.gd" id="9_rhvqn"]
 [ext_resource type="Texture2D" uid="uid://b17h2fmhxd6oh" path="res://Resources/images/pou_beter.png" id="9_vjksw"]
 [ext_resource type="AudioStream" uid="uid://dkxya64ogxo0g" path="res://Resources/audio/GIVEN_ENOUGH_Preview.mp3" id="10_glc18"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="12_gcj5u"]
@@ -114,6 +116,43 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_w6vh0"),
 &"Scroll": SubResource("Animation_dpfpd")
+}
+
+[sub_resource type="Animation" id="Animation_x4fqo"]
+resource_name = "Scroll"
+length = 5.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1000, 929), Vector2(350, 2330)]
+}
+
+[sub_resource type="Animation" id="Animation_8rip0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 1029)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocinu"]
+_data = {
+&"RESET": SubResource("Animation_8rip0"),
+&"Scroll": SubResource("Animation_x4fqo")
 }
 
 [sub_resource type="Animation" id="Animation_gcj5u"]
@@ -754,6 +793,28 @@ theme_override_font_sizes/font_size = 96
 text = "This game is fantastic, trust"
 horizontal_alignment = 1
 script = ExtResource("4_smsft")
+
+[node name="Arrowscroll3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14117648)
+position = Vector2(1000, 1029)
+rotation = 0.42062438
+skew = 0.27227128
+texture = ExtResource("2_vjksw")
+script = ExtResource("8_g5mca")
+
+[node name="Label" type="Label" parent="Arrowscroll3"]
+offset_left = -1264.7675
+offset_top = -1087.2854
+offset_right = 389.23254
+offset_bottom = -955.2854
+theme_override_font_sizes/font_size = 96
+text = "This animation is totally not scuffed"
+script = ExtResource("9_rhvqn")
+
+[node name="Scroll" type="AnimationPlayer" parent="Arrowscroll3"]
+libraries = {
+&"": SubResource("AnimationLibrary_ocinu")
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
