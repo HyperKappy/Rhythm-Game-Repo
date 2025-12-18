@@ -66,3 +66,19 @@ func _on_Pingpong_Pressed_connect():
 	$Pingpong.z_index = 100
 	await get_tree().create_timer(1.0).timeout
 	$Foreground/Fade_All.play("Fade_All")
+	
+func _on_F1_Pressed_connect() -> void:
+	$Blocker.visible = true
+	$BlurOverlay.visible = true
+	
+	$F1_MT.z_index = 100
+	await get_tree().create_timer(1.0).timeout
+	$Foreground/Fade_All.play("Fade_All")
+
+func _on_GPFC_Pressed_connect() -> void:
+	$Blocker.visible = true
+	$BlurOverlay.visible = true
+	
+	$GuineaPFC.z_index = 100
+	await get_tree().create_timer(1.0).timeout
+	$Foreground/Fade_All.play("Fade_All")

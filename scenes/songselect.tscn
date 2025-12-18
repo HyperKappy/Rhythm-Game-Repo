@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=92 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -32,9 +32,13 @@
 [ext_resource type="Texture2D" uid="uid://ccpmjd77upojv" path="res://Resources/images/ping_pong.png" id="25_vcser"]
 [ext_resource type="Script" uid="uid://bdu0luujjvvov" path="res://code/pingpong.gd" id="27_iamcd"]
 [ext_resource type="AudioStream" uid="uid://7vd3gjs2j6ni" path="res://Resources/audio/Pingpong_Preview.mp3" id="29_vcser"]
+[ext_resource type="Texture2D" uid="uid://cuky8abyc5qfl" path="res://Resources/images/F1_Main_Theme.png" id="30_2wgce"]
 [ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="31_fsj8r"]
+[ext_resource type="Script" uid="uid://ckcead3s2hle5" path="res://code/f_1_mt.gd" id="31_vn468"]
 [ext_resource type="Script" uid="uid://73gqg6f6abv5" path="res://scenes/foreground.gd" id="32_86o6b"]
 [ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="33_86o6b"]
+[ext_resource type="Script" uid="uid://dn0mw5mnqx0wo" path="res://code/guinea_pfc.gd" id="33_jumsn"]
+[ext_resource type="Texture2D" uid="uid://bhjqtt1l1ln8x" path="res://Resources/images/guinea_christmas.png" id="36_gt0wy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
 shader = ExtResource("2_w6vh0")
@@ -586,7 +590,7 @@ tracks/1/path = NodePath("Pingpong:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
@@ -657,6 +661,196 @@ _data = {
 &"RESET": SubResource("Animation_xifk4"),
 &"hover_in": SubResource("Animation_rhvqn"),
 &"hover_out": SubResource("Animation_gt0wy")
+}
+
+[sub_resource type="Animation" id="Animation_ocinu"]
+resource_name = "Center_On_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(575, 750), Vector2(840, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_jvrfv"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_6b126"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_86ysx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(575, 750)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pin2t"]
+_data = {
+&"Center_On_Press": SubResource("Animation_ocinu"),
+&"RESET": SubResource("Animation_86ysx"),
+&"hover_in": SubResource("Animation_jvrfv"),
+&"hover_out": SubResource("Animation_6b126")
+}
+
+[sub_resource type="Animation" id="Animation_vyjlg"]
+resource_name = "Center_On_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(985, 420), Vector2(840, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_gg4mn"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_jn4oi"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_osixs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmbf0"]
+_data = {
+&"Center_On_Press": SubResource("Animation_vyjlg"),
+&"RESET": SubResource("Animation_osixs"),
+&"hover_in": SubResource("Animation_gg4mn"),
+&"hover_out": SubResource("Animation_jn4oi")
 }
 
 [sub_resource type="Animation" id="Animation_6k20e"]
@@ -820,26 +1014,6 @@ libraries = {
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_do18t")
-
-[node name="Unfinished" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(285, 870)
-texture = ExtResource("2_14uf1")
-
-[node name="Unfinished2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(695, 870)
-texture = ExtResource("2_14uf1")
-
-[node name="Unfinished3" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(695, 540)
-texture = ExtResource("2_14uf1")
-
-[node name="Unfinished4" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(285, 540)
-texture = ExtResource("2_14uf1")
 
 [node name="Unfinished5" type="Sprite2D" parent="."]
 visible = false
@@ -1030,6 +1204,53 @@ libraries = {
 &"": SubResource("AnimationLibrary_wt4aa")
 }
 
+[node name="F1_MT" type="TextureButton" parent="."]
+offset_left = 575.0
+offset_top = 750.0
+offset_right = 815.0
+offset_bottom = 990.0
+pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("30_2wgce")
+script = ExtResource("31_vn468")
+
+[node name="Song_Name_8" type="Label" parent="F1_MT"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 250.0
+offset_right = 255.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 20
+text = "F1 Main theme - Brian Tyler"
+
+[node name="Low_Taper_Fade_F1" type="AnimationPlayer" parent="F1_MT"]
+libraries = {
+&"": SubResource("AnimationLibrary_pin2t")
+}
+
+[node name="GuineaPFC" type="TextureButton" parent="."]
+offset_left = 985.0
+offset_top = 420.0
+offset_right = 1225.0
+offset_bottom = 660.0
+pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("36_gt0wy")
+script = ExtResource("33_jumsn")
+
+[node name="Song_Name_6" type="Label" parent="GuineaPFC"]
+layout_mode = 0
+offset_left = -50.0
+offset_top = 255.0
+offset_right = 283.0
+offset_bottom = 281.0
+pivot_offset = Vector2(165, 12)
+theme_override_font_sizes/font_size = 18
+text = "Guinea Pig For Christmas - Parry Gripp"
+
+[node name="Low_Taper_Fade_GPFC" type="AnimationPlayer" parent="GuineaPFC"]
+libraries = {
+&"": SubResource("AnimationLibrary_bmbf0")
+}
+
 [node name="Extras" type="TextureButton" parent="."]
 offset_top = 997.0
 offset_right = 1920.0
@@ -1111,4 +1332,12 @@ texture = ExtResource("33_86o6b")
 [connection signal="pressed" from="Pingpong" to="." method="_on_Pingpong_Pressed_connect"]
 [connection signal="pressed" from="Pingpong" to="Pingpong" method="_on_Pingpong_Pressed"]
 [connection signal="finished" from="Pingpong/Pingpong_Preview" to="Pingpong" method="_on_Pingpong_preview_finished"]
+[connection signal="mouse_entered" from="F1_MT" to="F1_MT" method="_on_F1_Button_Hovered"]
+[connection signal="mouse_exited" from="F1_MT" to="F1_MT" method="_on_F1_Button_Exited"]
+[connection signal="pressed" from="F1_MT" to="." method="_on_F1_Pressed_connect"]
+[connection signal="pressed" from="F1_MT" to="F1_MT" method="_on_F1_Pressed"]
+[connection signal="mouse_entered" from="GuineaPFC" to="GuineaPFC" method="_on_GPFC_Button_Hovered"]
+[connection signal="mouse_exited" from="GuineaPFC" to="GuineaPFC" method="_on_GPFC_Button_Exited"]
+[connection signal="pressed" from="GuineaPFC" to="." method="_on_GPFC_Pressed_connect"]
+[connection signal="pressed" from="GuineaPFC" to="GuineaPFC" method="_on_GPFC_Pressed"]
 [connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]
