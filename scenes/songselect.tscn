@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=94 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -36,8 +36,10 @@
 [ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="31_fsj8r"]
 [ext_resource type="Script" uid="uid://ckcead3s2hle5" path="res://code/f_1_mt.gd" id="31_vn468"]
 [ext_resource type="Script" uid="uid://73gqg6f6abv5" path="res://scenes/foreground.gd" id="32_86o6b"]
+[ext_resource type="AudioStream" uid="uid://cperf7wr2degn" path="res://Resources/audio/F1_Preview.mp3" id="32_jumsn"]
 [ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="33_86o6b"]
 [ext_resource type="Script" uid="uid://dn0mw5mnqx0wo" path="res://code/guinea_pfc.gd" id="33_jumsn"]
+[ext_resource type="AudioStream" uid="uid://bfmiu3dhveb18" path="res://Resources/audio/GPFC_Preview.mp3" id="35_oofei"]
 [ext_resource type="Texture2D" uid="uid://bhjqtt1l1ln8x" path="res://Resources/images/guinea_christmas.png" id="36_gt0wy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
@@ -1227,6 +1229,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_pin2t")
 }
 
+[node name="Select_Sound" type="AudioStreamPlayer" parent="F1_MT"]
+stream = ExtResource("7_14uf1")
+volume_db = -20.0
+
+[node name="F1_MT_Preview" type="AudioStreamPlayer" parent="F1_MT"]
+stream = ExtResource("32_jumsn")
+
 [node name="GuineaPFC" type="TextureButton" parent="."]
 offset_left = 985.0
 offset_top = 420.0
@@ -1250,6 +1259,13 @@ text = "Guinea Pig For Christmas - Parry Gripp"
 libraries = {
 &"": SubResource("AnimationLibrary_bmbf0")
 }
+
+[node name="Select_Sound" type="AudioStreamPlayer" parent="GuineaPFC"]
+stream = ExtResource("7_14uf1")
+volume_db = -20.0
+
+[node name="GPFC_Preview" type="AudioStreamPlayer" parent="GuineaPFC"]
+stream = ExtResource("35_oofei")
 
 [node name="Extras" type="TextureButton" parent="."]
 offset_top = 997.0
