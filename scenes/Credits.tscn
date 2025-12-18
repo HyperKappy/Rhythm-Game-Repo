@@ -1,18 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bghid1bcbbpt1"]
+[gd_scene load_steps=5 format=3 uid="uid://bghid1bcbbpt1"]
 
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="1_spvsy"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="2_gw1d4"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="3_gw1d4"]
+[ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="4_y8nor"]
 
 [node name="Node2D2" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 232.0
-offset_top = 184.0
-offset_right = 1719.0
-offset_bottom = 877.0
-theme_override_font_sizes/font_size = 40
+offset_left = 223.0
+offset_top = 35.0
+offset_right = 1710.0
+offset_bottom = 872.0
+theme_override_font_sizes/font_size = 27
 text = "Credits:
+
+Ping Pong mp3 : Nintendo
+
+Ping Pong icon : Freepik.com
+
+Guinea Pig For Christmas : Parry Gripp
+
+F1 Main Theme : Brian Tyler
+
+UNO : Little Big
 
 Isolation mp3 : Nighthawk22
 
@@ -43,6 +54,11 @@ offset_bottom = 1065.0
 theme_override_font_sizes/font_size = 80
 text = "BACK"
 script = ExtResource("3_gw1d4")
+
+[node name="BackBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("4_y8nor")
 
 [connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]

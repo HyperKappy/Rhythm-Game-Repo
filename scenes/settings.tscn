@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqkas2gwcow6i"]
+[gd_scene load_steps=9 format=3 uid="uid://bqkas2gwcow6i"]
 
 [ext_resource type="PackedScene" uid="uid://c2duvcd5xtvv2" path="res://scenes/Should_Never_Be_Visible.tscn" id="1_5p8wc"]
 [ext_resource type="Script" uid="uid://coaw7xptpkxkq" path="res://code/audio_slider.gd" id="1_f4mfi"]
-[ext_resource type="Script" uid="uid://ld7fmt2sixe0" path="res://code/settings_graphics.gd" id="1_gis3k"]
-[ext_resource type="Script" uid="uid://b1ouws1e488s4" path="res://code/audio_offset_slider.gd" id="2_83j8s"]
+[ext_resource type="Script" path="res://code/settings_graphics.gd" id="1_gis3k"]
+[ext_resource type="Script" path="res://code/audio_offset_slider.gd" id="2_83j8s"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="2_r6d6q"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="3_6wm04"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="5_es4n0"]
+[ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="8_gjs24"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -136,6 +137,11 @@ offset_bottom = 789.0
 theme_override_font_sizes/font_size = 80
 text = "BACK"
 script = ExtResource("5_es4n0")
+
+[node name="BackBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(564, 264)
+texture = ExtResource("8_gjs24")
 
 [connection signal="value_changed" from="AudioSlider" to="AudioSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="OffsetSlider" to="OffsetSlider" method="_on_value_changed"]
