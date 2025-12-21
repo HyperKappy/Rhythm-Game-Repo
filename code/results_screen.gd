@@ -256,6 +256,7 @@ func set_results_from_judgement(judgement: Node) -> void:
 	var miss: int = 0
 	var max_combo: int = 0
 	var max_possible_combo: int = 0
+	var avg_time_diff: int = 0
 	
 	acc = float(judgement.accuracy)
 	perfect = int(judgement.perfect_count)
@@ -265,6 +266,7 @@ func set_results_from_judgement(judgement: Node) -> void:
 	miss = int(judgement.miss_count)
 	max_combo = int(judgement.max_combo)
 	max_possible_combo = int(judgement.max_possible_combo)
+	avg_time_diff = int(judgement.average_time_diff)
 	
 	perfect_row.get_node("Value").text = str(perfect)
 	great_row.get_node("Value").text = str(great)
