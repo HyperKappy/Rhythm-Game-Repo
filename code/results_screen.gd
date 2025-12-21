@@ -1,4 +1,5 @@
 extends Control
+var avg_time_diff = 0.0
 
 @export var level_name: String = "" # Komt vanuit SongPlayer
 
@@ -18,7 +19,9 @@ extends Control
 # Panel rechts voor beste scores:
 @onready var best_scores_list: VBoxContainer = get_node_or_null("BestScoresPanel/ScoresList")
 
-
+func _on_Ja_pressed():
+	AudioSettings.set_offset_ms(avg_time_diff)
+	
 func _ready() -> void:
 	_apply_colors()
 	_start_intro_animation()
@@ -256,7 +259,6 @@ func set_results_from_judgement(judgement: Node) -> void:
 	var miss: int = 0
 	var max_combo: int = 0
 	var max_possible_combo: int = 0
-	var avg_time_diff: int = 0
 	
 	acc = float(judgement.accuracy)
 	perfect = int(judgement.perfect_count)
