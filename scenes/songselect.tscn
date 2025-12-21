@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=87 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
 [ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://dn8ct6gjnwhrx" path="res://code/given_enough.gd" id="8_glc18"]
 [ext_resource type="Script" uid="uid://c6mt4mhsmpane" path="res://scenes/label.gd" id="9_rhvqn"]
 [ext_resource type="Texture2D" uid="uid://b17h2fmhxd6oh" path="res://Resources/images/pou_beter.png" id="9_vjksw"]
-[ext_resource type="AudioStream" uid="uid://dkxya64ogxo0g" path="res://Resources/audio/GIVEN_ENOUGH_Preview.mp3" id="10_glc18"]
 [ext_resource type="Texture2D" uid="uid://cs5vfbaink7nb" path="res://Resources/images/Back.png" id="12_gcj5u"]
 [ext_resource type="Texture2D" uid="uid://blqltsbcho20k" path="res://Resources/images/limbo_icon.jpg" id="13_gcj5u"]
 [ext_resource type="Script" uid="uid://xjyiuklcvy57" path="res://code/back.gd" id="13_ufb8k"]
@@ -41,6 +40,43 @@
 [ext_resource type="Script" uid="uid://dn0mw5mnqx0wo" path="res://code/guinea_pfc.gd" id="33_jumsn"]
 [ext_resource type="AudioStream" uid="uid://bfmiu3dhveb18" path="res://Resources/audio/GPFC_Preview.mp3" id="35_oofei"]
 [ext_resource type="Texture2D" uid="uid://bhjqtt1l1ln8x" path="res://Resources/images/guinea_christmas.png" id="36_gt0wy"]
+
+[sub_resource type="Animation" id="Animation_oofei"]
+resource_name = "Fade_All"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bq3mm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_do18t"]
+_data = {
+&"Fade_All": SubResource("Animation_oofei"),
+&"RESET": SubResource("Animation_bq3mm")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w6vh0"]
 shader = ExtResource("2_w6vh0")
@@ -124,6 +160,21 @@ _data = {
 &"Scroll": SubResource("Animation_dpfpd")
 }
 
+[sub_resource type="Animation" id="Animation_8rip0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 1029)]
+}
+
 [sub_resource type="Animation" id="Animation_x4fqo"]
 resource_name = "Scroll"
 length = 5.1
@@ -140,149 +191,10 @@ tracks/0/keys = {
 "values": [Vector2(1000, 929), Vector2(350, 2330)]
 }
 
-[sub_resource type="Animation" id="Animation_8rip0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1000, 1029)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ocinu"]
 _data = {
 &"RESET": SubResource("Animation_8rip0"),
 &"Scroll": SubResource("Animation_x4fqo")
-}
-
-[sub_resource type="Animation" id="Animation_gcj5u"]
-resource_name = "Center_On_Press"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(985, 750), Vector2(840, 420)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
-}
-
-[sub_resource type="Animation" id="Animation_twyjv"]
-resource_name = "Fade_Out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ufb8k"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(985, 750)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_efvnr"]
-resource_name = "hover_in"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
-}
-
-[sub_resource type="Animation" id="Animation_ra5o5"]
-resource_name = "hover_out"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmtfg"]
-_data = {
-&"Center_On_Press": SubResource("Animation_gcj5u"),
-&"Fade_Out": SubResource("Animation_twyjv"),
-&"RESET": SubResource("Animation_ufb8k"),
-&"hover_in": SubResource("Animation_efvnr"),
-&"hover_out": SubResource("Animation_ra5o5")
 }
 
 [sub_resource type="Animation" id="Animation_vn468"]
@@ -693,6 +605,33 @@ tracks/1/keys = {
 "values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
 }
 
+[sub_resource type="Animation" id="Animation_86ysx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(575, 750)]
+}
+
 [sub_resource type="Animation" id="Animation_jvrfv"]
 resource_name = "hover_in"
 length = 0.1
@@ -723,33 +662,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_86ysx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(575, 750)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pin2t"]
@@ -788,6 +700,33 @@ tracks/1/keys = {
 "values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
 }
 
+[sub_resource type="Animation" id="Animation_osixs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_gg4mn"]
 resource_name = "hover_in"
 length = 0.1
@@ -818,33 +757,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_osixs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bmbf0"]
@@ -891,45 +803,26 @@ _data = {
 &"Schuiven": SubResource("Animation_hqaag")
 }
 
-[sub_resource type="Animation" id="Animation_oofei"]
-resource_name = "Fade_All"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Foreground:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_bq3mm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Foreground:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_do18t"]
-_data = {
-&"Fade_All": SubResource("Animation_oofei"),
-&"RESET": SubResource("Animation_bq3mm")
-}
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_il4ce")
+
+[node name="BackBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("33_86o6b")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+position = Vector2(960, 540)
+texture = ExtResource("31_fsj8r")
+script = ExtResource("32_86o6b")
+
+[node name="Fade_All" type="AnimationPlayer" parent="Foreground"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_do18t")
+}
 
 [node name="BlurOverlay" type="ColorRect" parent="."]
 z_index = 99
@@ -1037,38 +930,6 @@ visible = false
 position = Vector2(1587, 529)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("2_14uf1")
-
-[node name="GIVEN_ENOUGH" type="TextureButton" parent="."]
-offset_left = 985.0
-offset_top = 750.0
-offset_right = 1225.0
-offset_bottom = 990.0
-pivot_offset = Vector2(120, 120)
-texture_normal = ExtResource("7_il4ce")
-script = ExtResource("8_glc18")
-
-[node name="Song_Name_9" type="Label" parent="GIVEN_ENOUGH"]
-layout_mode = 0
-offset_left = -24.0
-offset_top = 250.0
-offset_right = 263.0
-offset_bottom = 277.0
-pivot_offset = Vector2(143.5, 13.5)
-theme_override_font_sizes/font_size = 19
-text = "GIVEN ENOUGH - Nessa Barrett"
-
-[node name="Select_Sound" type="AudioStreamPlayer" parent="GIVEN_ENOUGH"]
-stream = ExtResource("7_14uf1")
-volume_db = -20.0
-
-[node name="GIVEN_ENOUGH_Preview" type="AudioStreamPlayer" parent="GIVEN_ENOUGH"]
-stream = ExtResource("10_glc18")
-volume_db = -15.0
-
-[node name="Low_Taper_Fade_GE" type="AnimationPlayer" parent="GIVEN_ENOUGH"]
-libraries = {
-&"": SubResource("AnimationLibrary_fmtfg")
-}
 
 [node name="Pou" type="TextureButton" parent="."]
 offset_left = 985.0
@@ -1235,6 +1096,7 @@ volume_db = -20.0
 
 [node name="F1_MT_Preview" type="AudioStreamPlayer" parent="F1_MT"]
 stream = ExtResource("32_jumsn")
+volume_db = -15.0
 
 [node name="GuineaPFC" type="TextureButton" parent="."]
 offset_left = 985.0
@@ -1266,6 +1128,7 @@ volume_db = -20.0
 
 [node name="GPFC_Preview" type="AudioStreamPlayer" parent="GuineaPFC"]
 stream = ExtResource("35_oofei")
+volume_db = -15.0
 
 [node name="Extras" type="TextureButton" parent="."]
 offset_top = 997.0
@@ -1278,6 +1141,43 @@ script = ExtResource("17_twyjv")
 libraries = {
 &"": SubResource("AnimationLibrary_dpfpd")
 }
+
+[node name="GIVEN_ENOUGH" type="TextureButton" parent="Extras"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = 165.0
+offset_top = 93.0
+offset_right = 405.0
+offset_bottom = 333.0
+pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("7_il4ce")
+script = ExtResource("8_glc18")
+
+[node name="Song_Name_9" type="Label" parent="Extras/GIVEN_ENOUGH"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 250.0
+offset_right = 263.0
+offset_bottom = 277.0
+pivot_offset = Vector2(143.5, 13.5)
+theme_override_font_sizes/font_size = 19
+text = "GIVEN ENOUGH - Nessa Barrett"
+
+[node name="Label2" type="Label" parent="Extras"]
+modulate = Color(1, 1, 1, 0.4)
+z_index = 5
+layout_mode = 0
+offset_left = 214.0
+offset_top = 111.0
+offset_right = 1854.0
+offset_bottom = 464.0
+rotation = 0.3926991
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 128
+text = "DIT IS NIET DEEL VAN PWS.
+DIT IS VOOR DE LOL"
+horizontal_alignment = 1
 
 [node name="Blocker" type="Control" parent="."]
 visible = false
@@ -1304,29 +1204,6 @@ theme_override_font_sizes/font_size = 80
 text = "BACK"
 script = ExtResource("18_fmtfg")
 
-[node name="Foreground" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-z_index = 4096
-position = Vector2(960, 540)
-texture = ExtResource("31_fsj8r")
-script = ExtResource("32_86o6b")
-
-[node name="Fade_All" type="AnimationPlayer" parent="Foreground"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_do18t")
-}
-
-[node name="BackBackground" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(960, 540)
-texture = ExtResource("33_86o6b")
-
-[connection signal="mouse_entered" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
-[connection signal="mouse_exited" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
-[connection signal="pressed" from="GIVEN_ENOUGH" to="." method="_on_GE_Pressed_connect"]
-[connection signal="pressed" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_pressed"]
-[connection signal="finished" from="GIVEN_ENOUGH/GIVEN_ENOUGH_Preview" to="GIVEN_ENOUGH" method="_on_given_enough_preview_finished"]
 [connection signal="mouse_entered" from="Pou" to="Pou" method="_on_Pou_Button_Hovered"]
 [connection signal="mouse_exited" from="Pou" to="Pou" method="_on_Pou_Button_Exited"]
 [connection signal="pressed" from="Pou" to="." method="_on_Pou_Pressed_connect"]
@@ -1359,3 +1236,7 @@ texture = ExtResource("33_86o6b")
 [connection signal="pressed" from="GuineaPFC" to="GuineaPFC" method="_on_GPFC_Pressed"]
 [connection signal="finished" from="GuineaPFC/GPFC_Preview" to="GuineaPFC" method="_on_GPFC_preview_finished"]
 [connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]
+[connection signal="mouse_entered" from="Extras/GIVEN_ENOUGH" to="Extras/GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
+[connection signal="mouse_exited" from="Extras/GIVEN_ENOUGH" to="Extras/GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
+[connection signal="pressed" from="Extras/GIVEN_ENOUGH" to="." method="_on_GE_Pressed_connect"]
+[connection signal="pressed" from="Extras/GIVEN_ENOUGH" to="Extras/GIVEN_ENOUGH" method="_on_GE_pressed"]

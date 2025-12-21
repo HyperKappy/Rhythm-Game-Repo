@@ -1,9 +1,177 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuqmcytn8x13b"]
+[gd_scene load_steps=18 format=3 uid="uid://cuqmcytn8x13b"]
 
+[ext_resource type="Script" uid="uid://btmqjxkw27iky" path="res://scenes/extras_scene.gd" id="1_800g5"]
 [ext_resource type="Texture2D" uid="uid://bat87ptx7ueql" path="res://Resources/images/Extras_Menu.png" id="1_y1bbp"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="2_yobot"]
+[ext_resource type="Texture2D" uid="uid://hgcovwkulpdo" path="res://Resources/images/GIVEN_ENOUGH_cropped.png" id="3_pj6qr"]
+[ext_resource type="Script" uid="uid://xioqurn71h03" path="res://scenes/given_enough_extras.gd" id="4_pj6qr"]
+[ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="5_800g5"]
+[ext_resource type="AudioStream" uid="uid://dkxya64ogxo0g" path="res://Resources/audio/GIVEN_ENOUGH_Preview.mp3" id="6_sj47i"]
+[ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="7_800g5"]
+
+[sub_resource type="Animation" id="Animation_gcj5u"]
+resource_name = "Center_On_Press"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(165, 93), Vector2(840, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_twyjv"]
+resource_name = "Fade_Out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ufb8k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(165, 93)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efvnr"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_ra5o5"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmtfg"]
+_data = {
+&"Center_On_Press": SubResource("Animation_gcj5u"),
+&"Fade_Out": SubResource("Animation_twyjv"),
+&"RESET": SubResource("Animation_ufb8k"),
+&"hover_in": SubResource("Animation_efvnr"),
+&"hover_out": SubResource("Animation_ra5o5")
+}
+
+[sub_resource type="Animation" id="Animation_oofei"]
+resource_name = "Fade_All"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bq3mm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_do18t"]
+_data = {
+&"Fade_All": SubResource("Animation_oofei"),
+&"RESET": SubResource("Animation_bq3mm")
+}
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_800g5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_top = -1.0
@@ -20,3 +188,78 @@ offset_bottom = 1068.0
 theme_override_font_sizes/font_size = 80
 text = "BACK"
 script = ExtResource("2_yobot")
+
+[node name="GIVEN_ENOUGH" type="TextureButton" parent="."]
+z_index = 2
+anchors_preset = -1
+offset_left = 165.0
+offset_top = 93.0
+offset_right = 405.0
+offset_bottom = 333.0
+pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("3_pj6qr")
+script = ExtResource("4_pj6qr")
+
+[node name="Song_Name_9" type="Label" parent="GIVEN_ENOUGH"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 250.0
+offset_right = 263.0
+offset_bottom = 277.0
+pivot_offset = Vector2(143.5, 13.5)
+theme_override_font_sizes/font_size = 19
+text = "GIVEN ENOUGH - Nessa Barrett"
+
+[node name="Select_Sound" type="AudioStreamPlayer" parent="GIVEN_ENOUGH"]
+stream = ExtResource("5_800g5")
+volume_db = -20.0
+
+[node name="GIVEN_ENOUGH_Preview" type="AudioStreamPlayer" parent="GIVEN_ENOUGH"]
+stream = ExtResource("6_sj47i")
+volume_db = -15.0
+
+[node name="Low_Taper_Fade_GE" type="AnimationPlayer" parent="GIVEN_ENOUGH"]
+libraries = {
+&"": SubResource("AnimationLibrary_fmtfg")
+}
+
+[node name="Foreground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+position = Vector2(960, 540)
+texture = ExtResource("7_800g5")
+
+[node name="Fade_All" type="AnimationPlayer" parent="Foreground"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_do18t")
+}
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = 198.0
+offset_top = 15.0
+offset_right = 358.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 32
+text = "SCRAPPED"
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+z_index = 5
+offset_left = 214.0
+offset_top = 28.0
+offset_right = 1854.0
+offset_bottom = 381.0
+rotation = 0.3926991
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 128
+text = "DIT IS NIET DEEL VAN PWS.
+DIT IS VOOR DE LOL"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
+[connection signal="mouse_exited" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
+[connection signal="pressed" from="GIVEN_ENOUGH" to="." method="_on_GE_Pressed_connect"]
+[connection signal="pressed" from="GIVEN_ENOUGH" to="GIVEN_ENOUGH" method="_on_GE_pressed"]
+[connection signal="finished" from="GIVEN_ENOUGH/GIVEN_ENOUGH_Preview" to="GIVEN_ENOUGH" method="_on_given_enough_preview_finished"]
