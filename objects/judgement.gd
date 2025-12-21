@@ -1,4 +1,7 @@
 extends Sprite2D
+var current_scene := get_tree().current_scene
+var total_time_diff = 0.0
+var average_time_diff = 0.0
 
 var accuracy: float = 0.0
 var hits: int = 0
@@ -202,6 +205,11 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 
 	var signed_time_diff: float = (note.global_position.y - hit_y) / scroll_velocity
 	var time_diff: float = abs(signed_time_diff)
+	
+	# calculate average judgement ONLY in tester scene
+	if current_scene.scene_file_path == "res://levels/tester.tscn":
+		total_time_diff += signed_time_diff
+		average_time_diff = total_time_diff / total_judgements
 
 	result = _apply_time_diff_and_update_stats(time_diff)
 
@@ -443,7 +451,6 @@ func show_judgement(judgement_result: String) -> void:
 	if judgement_tween != null and judgement_tween.is_running():
 		judgement_tween.kill()
 		judgement_tween = null
-
 	judgement_label.text = judgement_result
 
 	match judgement_result:
