@@ -9,7 +9,7 @@ func _on_F1_Pressed():
 	$F1_MT_Preview.stop()
 	pressed_state = true
 	await get_tree().create_timer(1.49).timeout
-	get_tree().change_scene_to_file("res://levels/f1_mt.tscn")
+	get_tree().change_scene_to_file("res://levels/f1.tscn")
 
 func _on_F1_Button_Hovered():
 	if pressed_state == false:
