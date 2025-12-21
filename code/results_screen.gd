@@ -1,5 +1,4 @@
 extends Control
-var avg_time_diff = 0.0
 
 @export var level_name: String = "" # Komt vanuit SongPlayer
 
@@ -12,15 +11,24 @@ var avg_time_diff = 0.0
 @onready var combo_row: HBoxContainer = $Panel/VBoxContainer/ComboRow
 @onready var accuracy_label: Label = $AccuracyLabel
 @onready var grade_image: TextureRect = $GradeImage
+@onready var OffsetPanel: Panel = $OffsetPanel
 
 @onready var retry_button: Button = $RetryButton
 @onready var back_button: Button = $BackButton
+@onready var Ja_button: Button = $OffsetPanel/Ja_button
+
+var avg_time_diff: int = 0
+var new_offset: int = 0
+var old_offset: int = 0
 
 # Panel rechts voor beste scores:
 @onready var best_scores_list: VBoxContainer = get_node_or_null("BestScoresPanel/ScoresList")
 
 func _on_Ja_pressed():
-	AudioSettings.set_offset_ms(avg_time_diff)
+	old_offset = AudioSettings.get_offset_ms()
+	new_offset = old_offset + avg_time_diff
+	AudioSettings.set_offset_ms(new_offset)
+	Ja_button.visible = false;
 	
 func _ready() -> void:
 	_apply_colors()
@@ -28,7 +36,10 @@ func _ready() -> void:
 	
 	retry_button.pressed.connect(_on_retry_pressed)
 	back_button.pressed.connect(_on_back_pressed)
-
+	
+	if level_name != "tester":
+		OffsetPanel.visible == false
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
@@ -276,6 +287,7 @@ func set_results_from_judgement(judgement: Node) -> void:
 	ok_row.get_node("Value").text = str(ok)
 	miss_row.get_node("Value").text = str(miss)
 	combo_row.get_node("Value").text = "%d / %d" % [max_combo, max_possible_combo]
+	OffsetPanel.get_node("Label").text = "You were %s ms off on average, do you want to change your offset?" % [str(round(avg_time_diff))]
 	
 	accuracy_label.text = "%.2f%%" % acc
 

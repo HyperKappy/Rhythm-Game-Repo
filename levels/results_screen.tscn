@@ -262,3 +262,33 @@ theme_override_font_sizes/font_size = 32
 text = "Personal bests"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="OffsetPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 28.0
+offset_right = 1410.0
+offset_bottom = 231.58243
+
+[node name="Ja_button" type="Button" parent="OffsetPanel"]
+z_index = 6
+layout_mode = 0
+offset_left = 22.999985
+offset_top = 65.0
+offset_right = 218.99998
+offset_bottom = 189.0
+theme_override_font_sizes/font_size = 85
+text = "YES"
+
+[node name="Label" type="Label" parent="OffsetPanel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 247.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 24
+text = "You were // ms off on average, do you want to change your offset?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="OffsetPanel/Ja_button" to="." method="_on_Ja_pressed"]

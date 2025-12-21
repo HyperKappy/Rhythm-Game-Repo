@@ -1,7 +1,7 @@
 extends Sprite2D
-var current_scene := get_tree().current_scene
-var total_time_diff = 0.0
-var average_time_diff = 0.0
+
+var total_time_diff: float = 0.0
+var average_time_diff: float = 0.0
 
 var accuracy: float = 0.0
 var hits: int = 0
@@ -207,9 +207,8 @@ func handle_hit_for_lane(lane_idx: int) -> bool:
 	var time_diff: float = abs(signed_time_diff)
 	
 	# calculate average judgement ONLY in tester scene
-	if current_scene.scene_file_path == "res://levels/tester.tscn":
-		total_time_diff += signed_time_diff
-		average_time_diff = total_time_diff / total_judgements
+	total_time_diff += signed_time_diff * 1000
+	average_time_diff = total_time_diff / total_judgements
 
 	result = _apply_time_diff_and_update_stats(time_diff)
 
