@@ -56,6 +56,7 @@ func _calculate_spawn_y() -> void:
 	else:
 		spawn_y = -200.0
 
+
 func _init_lane_data() -> void:
 	lane_x_positions.clear()
 	lane_rotations.clear()
@@ -84,7 +85,7 @@ func _init_auto_spawn_timer() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_note"):
 		spawn_random_note()
-		
+
 	if event.is_action_pressed("toggle_auto_spawn"):
 		_toggle_auto_spawn()
 
@@ -125,6 +126,15 @@ func spawn_random_note() -> void:
 	spawn_note_in_lane(lane_index)
 
 
+func _apply_scroll_velocity_to(obj: Node) -> void:
+	if obj == null:
+		return
+	if obj.has_method("set_scroll_velocity"):
+		obj.call("set_scroll_velocity", scroll_velocity)
+	elif "scroll_velocity" in obj:
+		obj.set("scroll_velocity", scroll_velocity)
+
+
 func spawn_note_in_lane(lane_index: int) -> Node:
 	if falling_key_scene == null:
 		push_warning("falling_key_scene niet ingesteld!")
@@ -154,53 +164,52 @@ func spawn_note_in_lane(lane_index: int) -> Node:
 	if lane_index < lane_note_textures.size() and lane_note_textures[lane_index] != null:
 		note.texture = lane_note_textures[lane_index]
 
-	note.scroll_velocity = scroll_velocity
 	note.lane_index = lane_index
+	_apply_scroll_velocity_to(note)
 
 	return note
 
 
 func spawn_long_note(lane_index: int, duration_ms: float) -> Node:
 	if long_note_scene == null:
-		return
-	
+		return null
+
 	if lane_index < 0 or lane_index >= lane_x_positions.size():
-		return
-	
+		return null
+
 	var note := long_note_scene.instantiate() as Sprite2D
 	if note == null:
-		return
-	
+		return null
+
 	var x: float = lane_x_positions[lane_index]
-	
+
 	note.global_position = Vector2(x, spawn_y)
 	note.scale = note_scale
 	note.rotation = 0.0
-	
-	note.scroll_velocity = scroll_velocity
-	
+
 	note.lane_index = lane_index
-	
+	_apply_scroll_velocity_to(note)
+
 	if note.has_method("setup"):
-		note.setup(duration_ms)
-	
+		note.call("setup", duration_ms)
+
 	get_parent().add_child(note)
-	
 	return note
+
 
 func spawn_mine_in_lane(lane_index: int) -> Node:
 	if mine_scene == null:
 		push_warning("mine_scene niet ingesteld!")
-		return
+		return null
 
 	if lane_index < 0 or lane_index >= lane_x_positions.size():
 		push_warning("Ongeldige lane_index voor mine: " + str(lane_index))
-		return
+		return null
 
 	var mine := mine_scene.instantiate() as Sprite2D
 	if mine == null:
 		push_warning("mine_scene is geen Sprite2D.")
-		return
+		return null
 
 	var base_x: float = lane_x_positions[lane_index]
 	var x_offset := 0.0
@@ -218,9 +227,11 @@ func spawn_mine_in_lane(lane_index: int) -> Node:
 	else:
 		mine.rotation = 0.0
 
+	_apply_scroll_velocity_to(mine)
+
 	get_parent().add_child(mine)
-	
 	return mine
+
 
 func _prewarm_short_note_pool() -> void:
 	if short_note_pool_initial_size <= 0:
@@ -237,7 +248,6 @@ func _prewarm_short_note_pool() -> void:
 
 		short_note_pool.append(note)
 		short_note_free.append(note)
-
 
 
 func _get_pooled_short_note() -> Sprite2D:
@@ -261,7 +271,6 @@ func _get_pooled_short_note() -> Sprite2D:
 	return note
 
 
-
 func recycle_note(note: Node) -> void:
 	if note == null:
 		return
@@ -282,6 +291,7 @@ func recycle_note(note: Node) -> void:
 	sprite.global_position = Vector2(-10000.0, -10000.0)
 
 	short_note_free.append(sprite)
+
 
 func set_scroll_velocity(v: float) -> void:
 	scroll_velocity = v

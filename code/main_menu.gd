@@ -1,10 +1,10 @@
 extends Node2D
 
 
-#func _input(event: InputEvent) -> void:
-#	if event is InputEventKey and event.pressed and not event.echo:
-#		if event.keycode == KEY_1:
-#			_start_temp1()
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_1:
+			_start_temp1()
 #		if event.keycode == KEY_2:
 #			_start_temp2()
 #		if event.keycode == KEY_3:
@@ -14,7 +14,7 @@ extends Node2D
 
 
 func _start_temp1() -> void:
-	get_tree().change_scene_to_file("res://levels/tester.tscn")
+	get_tree().change_scene_to_file("res://levels/jane.tscn")
 	
 func _start_temp2() -> void:
 	get_tree().change_scene_to_file("res://levels/temp2.tscn")

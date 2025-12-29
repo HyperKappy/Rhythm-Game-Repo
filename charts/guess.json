@@ -1,4 +1,5 @@
 {
+	"scroll_velocity": 1100,
   "notes": [
 	{ "time": 1057, "lane": 4 },
 	{ "time": 1485, "lane": 4 },
