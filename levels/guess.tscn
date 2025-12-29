@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cirfpuxgijlwp" path="res://levels/game_level.tscn" id="3_vbbpw"]
 [ext_resource type="Texture2D" uid="uid://c5x2ojl5yw75p" path="res://Resources/art/Guess_Background.png" id="4_afw1l"]
 [ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="5_76i87"]
-[ext_resource type="Script" uid="uid://dfv228n3pxdi5" path="res://levels/foreground.gd" id="6_cr8ff"]
+[ext_resource type="Script" uid="uid://dfv228n3pxdi5" path="res://code/foreground.gd" id="6_cr8ff"]
 
 [sub_resource type="Animation" id="Animation_30b2x"]
 resource_name = "Fade"

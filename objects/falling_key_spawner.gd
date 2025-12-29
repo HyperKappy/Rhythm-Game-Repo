@@ -282,3 +282,6 @@ func recycle_note(note: Node) -> void:
 	sprite.global_position = Vector2(-10000.0, -10000.0)
 
 	short_note_free.append(sprite)
+
+func set_scroll_velocity(v: float) -> void:
+	scroll_velocity = v

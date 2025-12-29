@@ -38,6 +38,10 @@ var intro_elapsed_ms: float = 0.0
 
 const LOG_FILE_NAME := "results_log.txt"
 
+var chart_scroll_velocity: int = -1 # -1 = niet ingesteld in chart
+
+const BASE_SCROLL_VELOCITY := 1000.0
+const BASE_SPAWN_AHEAD_MS := 1057.0
 
 func _ready() -> void:
 	_increment_play_counter_for_level(_get_level_short_name())
@@ -132,10 +136,36 @@ func _load_chart() -> void:
 		return
 
 	var data: Dictionary = data_var as Dictionary
-	notes = data.get("notes", [])
+
+	# Scroll velocity per map (optioneel)
+	if data.has("scroll_velocity"):
+		chart_scroll_velocity = int(data.get("scroll_velocity", -1))
+		# Doorsturen naar spawner (als die het ondersteunt)
+		if spawner != null:
+			if spawner.has_method("set_scroll_velocity"):
+				spawner.set_scroll_velocity(chart_scroll_velocity)
+			elif "scroll_velocity" in spawner:
+				spawner.scroll_velocity = chart_scroll_velocity
+			else:
+				push_warning("Spawner heeft geen set_scroll_velocity en geen scroll_velocity property.")
+	else:
+		chart_scroll_velocity = -1
+
+	var scroll_v: float = BASE_SCROLL_VELOCITY
+	if data.has("scroll_velocity"):
+		scroll_v = float(data.get("scroll_velocity", BASE_SCROLL_VELOCITY))
+
+		spawn_ahead_ms = BASE_SPAWN_AHEAD_MS * (BASE_SCROLL_VELOCITY / scroll_v)
+
+		print("Chart scroll_velocity=", scroll_v, " -> spawn_ahead_ms=", spawn_ahead_ms)
+	else:
+		spawn_ahead_ms = BASE_SPAWN_AHEAD_MS
+
 	
+	notes = data.get("notes", [])
+
 	if judgement != null and notes != null:
-		judgement.max_possible_combo = notes.size()	
+		judgement.max_possible_combo = notes.size()
 
 	if use_chart_audio_path and data.has("audio_file"):
 		var audio_path: String = String(data["audio_file"])
@@ -144,10 +174,11 @@ func _load_chart() -> void:
 			audio_stream = stream
 		else:
 			push_warning("Kon audio niet laden uit chart: " + audio_path)
-			
+
 	if notes.size() > 0:
 		notes.sort_custom(func(a, b): return a["time"] < b["time"])
 		first_note_time = float(notes[0]["time"])
+
 
 
 func _load_mines_chart() -> void:
