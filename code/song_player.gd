@@ -36,17 +36,21 @@ const INTRO_DURATION_MS := 1600.0
 var intro_running: bool = false
 var intro_elapsed_ms: float = 0.0
 
+const LOG_FILE_NAME := "results_log.txt"
+
 
 func _ready() -> void:
+	_increment_play_counter_for_level(_get_level_short_name())
+
 	_load_chart()
 	_load_mines_chart()
 	_setup_audio()
-	
+
 	_warmup_note()
 
 	_show_ready_go_intro()
 	_start_warning_timer()
-	
+
 	audio_player.finished.connect(_on_audio_finished)
 
 
@@ -369,3 +373,98 @@ func _warmup_note() -> void:
 		var dummy_mine: Node = spawner.spawn_mine_in_lane(0)
 		if dummy_mine != null:
 			dummy_mine.queue_free()
+
+
+func _get_level_short_name() -> String:
+	var short_name := chart_path
+	var slash_idx := chart_path.rfind("/")
+	if slash_idx != -1 and slash_idx + 1 < chart_path.length():
+		short_name = chart_path.substr(slash_idx + 1, chart_path.length() - slash_idx - 1)
+
+	if short_name.ends_with(".json"):
+		short_name = short_name.substr(0, short_name.length() - 5)
+
+	if short_name.strip_edges() == "":
+		short_name = "UnknownLevel"
+	return short_name
+
+
+func _get_log_file_path() -> String:
+	var exe_dir: String = OS.get_executable_path().get_base_dir()
+	var logs_dir_path: String = exe_dir.path_join("logs")
+
+	var err: int = DirAccess.make_dir_recursive_absolute(logs_dir_path)
+	if err != OK and err != ERR_ALREADY_EXISTS:
+		push_error("Kon logs directory niet aanmaken: %s" % err)
+
+	return logs_dir_path.path_join(LOG_FILE_NAME)
+
+
+func _increment_play_counter_for_level(level: String) -> void:
+	var log_path := _get_log_file_path()
+	if log_path == "":
+		return
+
+	# Lees bestaande inhoud (als bestaat)
+	var existing: String = ""
+	if FileAccess.file_exists(log_path):
+		var rf := FileAccess.open(log_path, FileAccess.READ)
+		if rf != null:
+			existing = rf.get_as_text()
+			rf.close()
+
+	# Parse header blok
+	var start_tag := "### PLAY COUNTS ###\n"
+	var end_tag := "### END PLAY COUNTS ###\n"
+
+	var header_start := existing.find(start_tag)
+	var header_end := existing.find(end_tag)
+
+	var counts: Dictionary = {}
+
+	# Als header bestaat, parse die
+	if header_start != -1 and header_end != -1 and header_end > header_start:
+		var header_body := existing.substr(header_start + start_tag.length(), header_end - (header_start + start_tag.length()))
+		for line in header_body.split("\n"):
+			var l := line.strip_edges()
+			if l == "":
+				continue
+			
+			var eq := l.find("=")
+			if eq == -1:
+				continue
+			var k := l.substr(0, eq).strip_edges()
+			var v := l.substr(eq + 1).strip_edges()
+			if k != "":
+				counts[k] = int(v)
+
+	# verhoog teller
+	var cur := int(counts.get(level, 0))
+	counts[level] = cur + 1
+
+	# Bouw nieuwe header text
+	var header_text := start_tag
+	# sorteer keys voor consistentie
+	var keys := counts.keys()
+	keys.sort()
+	for k in keys:
+		header_text += "%s=%d\n" % [String(k), int(counts[k])]
+	header_text += end_tag
+	header_text += "\n"
+
+	# Verwijder oude header uit existing (als die er was)
+	var body := existing
+	if header_start != -1 and header_end != -1 and header_end > header_start:
+		var after := existing.substr(header_end + end_tag.length(), existing.length() - (header_end + end_tag.length()))
+		# ook eventuele extra newline direct na header meenemen laten zoals in after
+		body = after
+	# Trim geen logs weg
+	var new_content := header_text + body.lstrip("\n")
+
+	# Schrijf terug
+	var wf := FileAccess.open(log_path, FileAccess.WRITE)
+	if wf == null:
+		push_error("Kon logbestand niet schrijven: " + log_path)
+		return
+	wf.store_string(new_content)
+	wf.close()

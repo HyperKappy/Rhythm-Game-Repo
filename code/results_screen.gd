@@ -304,7 +304,6 @@ func set_results_from_judgement(judgement: Node) -> void:
 		max_possible_combo
 	)
 
-	# Na loggen: beste scores inlezen en tonen
 	_load_best_scores_panel()
 
 
@@ -323,14 +322,9 @@ func _log_results_to_file(
 	var lvl: String = level_name
 	if lvl == "":
 		var root: Node = get_tree().current_scene
-		if root != null:
-			lvl = root.name
-		else:
-			lvl = "UnknownLevel"
+		lvl = root.name if root != null else "UnknownLevel"
 
-	var timestamp: String = Time.get_datetime_string_from_system(false, true)
-	var safe_timestamp: String = timestamp.replace(":", "-")
-
+	var timestamp: String = Time.get_datetime_string_from_system(false, true) # bv "2025-12-29 13:05:12"
 	var exe_dir: String = OS.get_executable_path().get_base_dir()
 	var logs_dir_path: String = exe_dir.path_join("logs")
 
@@ -339,20 +333,23 @@ func _log_results_to_file(
 		push_error("Kon logs directory niet aanmaken: %s" % err)
 		return
 
-	var filename: String = "result_%s_%s.txt" % [lvl, safe_timestamp]
-	filename = filename.replace(" ", "_")
-	var full_path: String = logs_dir_path.path_join(filename)
+	var full_path: String = logs_dir_path.path_join("results_log.txt")
 
-	var file: FileAccess = FileAccess.open(full_path, FileAccess.WRITE)
+	var file: FileAccess = FileAccess.open(full_path, FileAccess.READ_WRITE)
 	if file == null:
-		push_error("Kon logbestand niet schrijven: " + full_path)
-		return
+		# fallback: probeer aan te maken
+		file = FileAccess.open(full_path, FileAccess.WRITE)
+		if file == null:
+			push_error("Kon logbestand niet openen/schrijven: " + full_path)
+			return
+
+	file.seek_end()
 
 	var content: String = ""
-	content += "Level: %s\n" % lvl
+	content += "=== RUN START ===\n"
 	content += "Timestamp: %s\n" % timestamp
+	content += "Level: %s\n" % lvl
 	content += "Grade: %s\n" % grade_letter
-	content += "\n"
 	content += "Perfect: %d\n" % perfect
 	content += "Great: %d\n" % great
 	content += "Good: %d\n" % good
@@ -360,11 +357,13 @@ func _log_results_to_file(
 	content += "Miss: %d\n" % miss
 	content += "Max Combo: %d / %d\n" % [max_combo, max_possible_combo]
 	content += "Accuracy: %.2f%%\n" % acc
+	content += "=== RUN END ===\n\n"
 
 	file.store_string(content)
 	file.close()
 
-	print("Result log saved to: ", full_path)
+	print("Result appended to: ", full_path)
+
 
 
 func _load_best_scores_panel() -> void:
@@ -380,43 +379,26 @@ func _load_best_scores_panel() -> void:
 	# logs-map naast de .exe
 	var exe_dir: String = OS.get_executable_path().get_base_dir()
 	var logs_dir_path: String = exe_dir.path_join("logs")
-	var dir: DirAccess = DirAccess.open(logs_dir_path)
-	if dir == null:
+	var log_path: String = logs_dir_path.path_join("results_log.txt")
+
+	if not FileAccess.file_exists(log_path):
 		return
 
-	var entries: Array = []
+	var entries: Array = _parse_single_log_file(log_path)
 
-	dir.list_dir_begin()
-	while true:
-		var f: String = dir.get_next()
-		if f == "":
-			break
-		if dir.current_is_dir():
-			continue
-		if not f.ends_with(".txt"):
-			continue
-		if not f.begins_with("result_"):
-			continue
-
-		var full_path: String = logs_dir_path.path_join(f)
-		var parsed: Dictionary = _parse_log_file(full_path)
-		if parsed.is_empty():
-			continue
-
-		# filter op level_name als die bekend is
-		if level_name != "" and parsed.has("level") and parsed["level"] != level_name:
-			continue
-
-		entries.append(parsed)
-	dir.list_dir_end()
+	# filter op level_name als die bekend is
+	if level_name != "":
+		entries = entries.filter(func(e):
+			return String(e.get("level", "")) == level_name
+		)
 
 	if entries.is_empty():
 		return
 
-	# sorteer op accuracy
+	# sorteer op accuracy (hoog naar laag)
 	entries.sort_custom(func(a, b) -> bool:
-		var acc_a: float = float(a["accuracy"])
-		var acc_b: float = float(b["accuracy"])
+		var acc_a: float = float(a.get("accuracy", 0.0))
+		var acc_b: float = float(b.get("accuracy", 0.0))
 		return acc_a > acc_b
 	)
 
@@ -436,14 +418,12 @@ func _load_best_scores_panel() -> void:
 		if ts.contains(" "):
 			date_text = ts.split(" ")[0]
 
-		
 		var row: HBoxContainer = HBoxContainer.new()
 		row.custom_minimum_size = Vector2(0, 100)
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.alignment = BoxContainer.ALIGNMENT_BEGIN
 		row.add_theme_constant_override("separation", 20)
 
-		
 		var text_box: VBoxContainer = VBoxContainer.new()
 		text_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		text_box.add_theme_constant_override("separation", 2)
@@ -482,36 +462,49 @@ func _load_best_scores_panel() -> void:
 
 
 
-func _parse_log_file(path: String) -> Dictionary:
+
+func _parse_single_log_file(path: String) -> Array:
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		return {}
+		return []
 
-	var result: Dictionary = {}
+	var entries: Array = []
+	var current: Dictionary = {}
+	var in_block: bool = false
 
 	while file.get_position() < file.get_length():
 		var line: String = file.get_line().strip_edges()
 
+		if line == "=== RUN START ===":
+			current = {}
+			in_block = true
+			continue
+
+		if line == "=== RUN END ===":
+			if in_block and current.has("accuracy"):
+				entries.append(current)
+			current = {}
+			in_block = false
+			continue
+
+		if not in_block:
+			continue
+
 		if line.begins_with("Level:"):
-			result["level"] = line.substr(7).strip_edges()
+			current["level"] = line.substr(6).strip_edges()
 		elif line.begins_with("Timestamp:"):
-			result["timestamp"] = line.substr(10).strip_edges()
+			current["timestamp"] = line.substr(10).strip_edges()
 		elif line.begins_with("Grade:"):
-			result["grade"] = line.substr(7).strip_edges()
+			current["grade"] = line.substr(6).strip_edges()
 		elif line.begins_with("Miss:"):
-			var miss_str: String = line.substr(5).strip_edges()
-			result["miss"] = int(miss_str)
+			current["miss"] = int(line.substr(5).strip_edges())
 		elif line.begins_with("Accuracy:"):
-			var acc_str: String = line.substr(9).strip_edges()
-			acc_str = acc_str.replace("%", "")
-			result["accuracy"] = float(acc_str)
+			var acc_str: String = line.substr(9).strip_edges().replace("%", "")
+			current["accuracy"] = float(acc_str)
 
 	file.close()
+	return entries
 
-	if not result.has("accuracy"):
-		return {}
-
-	return result
 
 
 
