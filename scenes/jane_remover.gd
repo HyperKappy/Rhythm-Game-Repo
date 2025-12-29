@@ -6,7 +6,7 @@ func _on_JR_Pressed():
 	$Select_Sound.play()
 	$Low_Taper_Fade_JR.stop(true)
 	$Low_Taper_Fade_JR.play("Center_On_Press")
-	$GPFC_Preview.stop()
+	$JR_Preview.stop()
 	pressed_state = true
 	await get_tree().create_timer(1.49).timeout
 	get_tree().change_scene_to_file("res://levels/jane.tscn")

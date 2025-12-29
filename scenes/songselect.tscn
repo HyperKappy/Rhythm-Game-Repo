@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://6e7ytffb061j" path="res://shaders/song_select_blur.gdshader" id="2_w6vh0"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
 [ext_resource type="Script" uid="uid://bgvg7v1ly47la" path="res://code/blur_overlay.gd" id="3_iamcd"]
-[ext_resource type="Script" uid="uid://c2mubj45ernfy" path="res://code/arrowscroll.gd" id="3_xtfyt"]
+[ext_resource type="Script" path="res://code/arrowscroll.gd" id="3_xtfyt"]
 [ext_resource type="Script" uid="uid://b1ex1pqtrap4" path="res://code/label.gd" id="4_smsft"]
 [ext_resource type="Script" uid="uid://d3imj2b85ac48" path="res://code/To_Guess.gd" id="5_6h55s"]
 [ext_resource type="AudioStream" uid="uid://dqhy51ikrsdiu" path="res://Resources/audio/Sound Effect 1.mp3" id="7_14uf1"]
@@ -24,8 +24,8 @@
 [ext_resource type="Script" uid="uid://bct74rdt2cmq4" path="res://code/extras.gd" id="17_twyjv"]
 [ext_resource type="Script" uid="uid://ctdhpi6sn00ny" path="res://code/back_button.gd" id="18_fmtfg"]
 [ext_resource type="Texture2D" uid="uid://dbvdvdprloe8v" path="res://Resources/images/UNO.png" id="20_hqaag"]
-[ext_resource type="Script" uid="uid://ti0a5kjhs3i2" path="res://code/uno.gd" id="21_6k20e"]
-[ext_resource type="Script" uid="uid://dbp6gil3p5l15" path="res://code/arrowscroll_2.gd" id="21_xtfyt"]
+[ext_resource type="Script" path="res://code/uno.gd" id="21_6k20e"]
+[ext_resource type="Script" path="res://code/arrowscroll_2.gd" id="21_xtfyt"]
 [ext_resource type="AudioStream" uid="uid://clempgmmxxc1f" path="res://Resources/audio/UNO_Preview.mp3" id="22_6k20e"]
 [ext_resource type="Texture2D" uid="uid://ccpmjd77upojv" path="res://Resources/images/ping_pong.png" id="25_vcser"]
 [ext_resource type="Script" uid="uid://bdu0luujjvvov" path="res://code/pingpong.gd" id="27_iamcd"]
@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://cuky8abyc5qfl" path="res://Resources/images/F1_Main_Theme.png" id="30_2wgce"]
 [ext_resource type="Texture2D" uid="uid://beywiafx6muxy" path="res://Resources/images/Foreground.png" id="31_fsj8r"]
 [ext_resource type="Script" uid="uid://ckcead3s2hle5" path="res://code/f_1_mt.gd" id="31_vn468"]
-[ext_resource type="Script" uid="uid://73gqg6f6abv5" path="res://scenes/foreground.gd" id="32_86o6b"]
+[ext_resource type="Script" path="res://scenes/foreground.gd" id="32_86o6b"]
 [ext_resource type="AudioStream" uid="uid://cperf7wr2degn" path="res://Resources/audio/F1_Preview.mp3" id="32_jumsn"]
 [ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="33_86o6b"]
 [ext_resource type="Script" uid="uid://dn0mw5mnqx0wo" path="res://code/guinea_pfc.gd" id="33_jumsn"]
@@ -42,7 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://bfmiu3dhveb18" path="res://Resources/audio/GPFC_Preview.mp3" id="35_oofei"]
 [ext_resource type="Texture2D" uid="uid://bhjqtt1l1ln8x" path="res://Resources/images/guinea_christmas.png" id="36_gt0wy"]
 [ext_resource type="Script" uid="uid://dk65xdn0kmhli" path="res://scenes/jane_remover.gd" id="36_ocinu"]
-[ext_resource type="Script" uid="uid://d22a8f11gyeg" path="res://scenes/melkige_weg.gd" id="36_oofei"]
+[ext_resource type="Script" path="res://scenes/melkige_weg.gd" id="36_oofei"]
 [ext_resource type="AudioStream" uid="uid://mosaatera7y5" path="res://Resources/audio/JR_Preview.mp3" id="37_jvrfv"]
 [ext_resource type="AudioStream" uid="uid://oy32md1h26kc" path="res://Resources/audio/MW_Preview.mp3" id="37_oofei"]
 
@@ -895,6 +895,33 @@ tracks/1/keys = {
 "values": [Vector2(985, 745), Vector2(840, 420)]
 }
 
+[sub_resource type="Animation" id="Animation_0vkmu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(985, 750)]
+}
+
 [sub_resource type="Animation" id="Animation_bmbf0"]
 resource_name = "hover_in"
 length = 0.1
@@ -925,33 +952,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_0vkmu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(985, 750)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_drt0q"]
@@ -1329,9 +1329,9 @@ libraries = {
 [node name="Label" type="Label" parent="Jane_Remover"]
 layout_mode = 0
 offset_left = 26.363632
-offset_top = 353.63635
+offset_top = 365.63635
 offset_right = 335.36365
-offset_bottom = 381.63635
+offset_bottom = 393.63635
 theme_override_font_sizes/font_size = 20
 text = "TURN UP OR DIE - Jane Remover"
 
