@@ -84,5 +84,19 @@ func _on_GPFC_Pressed_connect() -> void:
 	$Foreground/Fade_All.play("Fade_All")
 
 
-func _on_GPFC_preview_finished() -> void:
-	pass # Replace with function body.
+func _on_MW_Pressed_connect() -> void:
+	$Blocker.visible = true
+	$BlurOverlay.visible = true
+	
+	$Melkige_Weg.z_index = 100
+	await get_tree().create_timer(1.0).timeout
+	$Foreground/Fade_All.play("Fade_All")
+
+
+func _on_JR_Pressed_connect() -> void:
+	$Blocker.visible = true
+	$BlurOverlay.visible = true
+	
+	$Jane_Remover.z_index = 100
+	await get_tree().create_timer(1.0).timeout
+	$Foreground/Fade_All.play("Fade_All")

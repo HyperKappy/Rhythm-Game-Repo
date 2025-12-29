@@ -1,7 +1,6 @@
-[gd_scene load_steps=87 format=3 uid="uid://cy7n7cr0j0ldu"]
+[gd_scene load_steps=102 format=3 uid="uid://cy7n7cr0j0ldu"]
 
 [ext_resource type="Script" uid="uid://crfrr130qpjbs" path="res://code/Compatibility_Script (Song Select).gd" id="1_il4ce"]
-[ext_resource type="Texture2D" uid="uid://qsgg2v1g4s57" path="res://Resources/images/Unfinished.png" id="2_14uf1"]
 [ext_resource type="Texture2D" uid="uid://cqcukjavk7r4f" path="res://Resources/images/arrowscroll.png" id="2_vjksw"]
 [ext_resource type="Shader" uid="uid://6e7ytffb061j" path="res://shaders/song_select_blur.gdshader" id="2_w6vh0"]
 [ext_resource type="Texture2D" uid="uid://bd7i1pmfh5mlk" path="res://Resources/images/backgroundredesign.png" id="3_do18t"]
@@ -38,8 +37,14 @@
 [ext_resource type="AudioStream" uid="uid://cperf7wr2degn" path="res://Resources/audio/F1_Preview.mp3" id="32_jumsn"]
 [ext_resource type="Texture2D" uid="uid://7yr2ucu4ehb7" path="res://Resources/images/back_background.png" id="33_86o6b"]
 [ext_resource type="Script" uid="uid://dn0mw5mnqx0wo" path="res://code/guinea_pfc.gd" id="33_jumsn"]
+[ext_resource type="Texture2D" uid="uid://cfeys76tbmmwp" path="res://Resources/images/jane_remover_pictogram.png" id="35_8rip0"]
+[ext_resource type="Texture2D" uid="uid://dwuscpahnieit" path="res://Resources/images/milky_ways.png" id="35_jumsn"]
 [ext_resource type="AudioStream" uid="uid://bfmiu3dhveb18" path="res://Resources/audio/GPFC_Preview.mp3" id="35_oofei"]
 [ext_resource type="Texture2D" uid="uid://bhjqtt1l1ln8x" path="res://Resources/images/guinea_christmas.png" id="36_gt0wy"]
+[ext_resource type="Script" uid="uid://dk65xdn0kmhli" path="res://scenes/jane_remover.gd" id="36_ocinu"]
+[ext_resource type="Script" uid="uid://d22a8f11gyeg" path="res://scenes/melkige_weg.gd" id="36_oofei"]
+[ext_resource type="AudioStream" uid="uid://mosaatera7y5" path="res://Resources/audio/JR_Preview.mp3" id="37_jvrfv"]
+[ext_resource type="AudioStream" uid="uid://oy32md1h26kc" path="res://Resources/audio/MW_Preview.mp3" id="37_oofei"]
 
 [sub_resource type="Animation" id="Animation_oofei"]
 resource_name = "Fade_All"
@@ -767,6 +772,196 @@ _data = {
 &"hover_out": SubResource("Animation_jn4oi")
 }
 
+[sub_resource type="Animation" id="Animation_drt0q"]
+resource_name = "Center_On_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1410, 350), Vector2(840, 420)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_n54k1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1410, 350)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cqx1h"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_ub8og"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dep3i"]
+_data = {
+&"Center_On_Press": SubResource("Animation_drt0q"),
+&"RESET": SubResource("Animation_n54k1"),
+&"hover_in": SubResource("Animation_cqx1h"),
+&"hover_out": SubResource("Animation_ub8og")
+}
+
+[sub_resource type="Animation" id="Animation_pin2t"]
+resource_name = "Center_On_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.6, 1.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(985, 745), Vector2(840, 420)]
+}
+
+[sub_resource type="Animation" id="Animation_bmbf0"]
+resource_name = "hover_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_kibcd"]
+resource_name = "hover_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0vkmu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(985, 750)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_drt0q"]
+_data = {
+&"Center_On_Press": SubResource("Animation_pin2t"),
+&"RESET": SubResource("Animation_0vkmu"),
+&"hover_in": SubResource("Animation_bmbf0"),
+&"hover_out": SubResource("Animation_kibcd")
+}
+
 [sub_resource type="Animation" id="Animation_6k20e"]
 length = 0.001
 tracks/0/type = "value"
@@ -909,27 +1104,6 @@ libraries = {
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_do18t")
-
-[node name="Unfinished5" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(695, 210)
-texture = ExtResource("2_14uf1")
-
-[node name="Unfinished6" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1105, 540)
-texture = ExtResource("2_14uf1")
-
-[node name="Unfinished7" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1106, 210)
-texture = ExtResource("2_14uf1")
-
-[node name="Unfinished8" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1587, 529)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("2_14uf1")
 
 [node name="Pou" type="TextureButton" parent="."]
 offset_left = 985.0
@@ -1109,12 +1283,12 @@ script = ExtResource("33_jumsn")
 
 [node name="Song_Name_6" type="Label" parent="GuineaPFC"]
 layout_mode = 0
-offset_left = -50.0
-offset_top = 255.0
-offset_right = 283.0
-offset_bottom = 281.0
+offset_left = -20.909092
+offset_top = 241.81818
+offset_right = 312.0909
+offset_bottom = 267.81818
 pivot_offset = Vector2(165, 12)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Guinea Pig For Christmas - Parry Gripp"
 
 [node name="Low_Taper_Fade_GPFC" type="AnimationPlayer" parent="GuineaPFC"]
@@ -1129,6 +1303,68 @@ volume_db = -20.0
 [node name="GPFC_Preview" type="AudioStreamPlayer" parent="GuineaPFC"]
 stream = ExtResource("35_oofei")
 volume_db = -15.0
+
+[node name="Jane_Remover" type="TextureButton" parent="."]
+offset_left = 1410.0
+offset_top = 350.0
+offset_right = 1770.0
+offset_bottom = 710.0
+pivot_offset = Vector2(180, 180)
+texture_normal = ExtResource("35_8rip0")
+script = ExtResource("36_ocinu")
+
+[node name="JR_Preview" type="AudioStreamPlayer" parent="Jane_Remover"]
+stream = ExtResource("37_jvrfv")
+volume_db = -15.0
+
+[node name="Select_Sound" type="AudioStreamPlayer" parent="Jane_Remover"]
+stream = ExtResource("7_14uf1")
+volume_db = -20.0
+
+[node name="Low_Taper_Fade_JR" type="AnimationPlayer" parent="Jane_Remover"]
+libraries = {
+&"": SubResource("AnimationLibrary_dep3i")
+}
+
+[node name="Label" type="Label" parent="Jane_Remover"]
+layout_mode = 0
+offset_left = 26.363632
+offset_top = 353.63635
+offset_right = 335.36365
+offset_bottom = 381.63635
+theme_override_font_sizes/font_size = 20
+text = "TURN UP OR DIE - Jane Remover"
+
+[node name="Melkige_Weg" type="TextureButton" parent="."]
+offset_left = 985.0
+offset_top = 750.0
+offset_right = 1225.0
+offset_bottom = 990.0
+pivot_offset = Vector2(120, 120)
+texture_normal = ExtResource("35_jumsn")
+script = ExtResource("36_oofei")
+
+[node name="MW_Preview" type="AudioStreamPlayer" parent="Melkige_Weg"]
+stream = ExtResource("37_oofei")
+volume_db = -15.0
+
+[node name="Song_Name_9" type="Label" parent="Melkige_Weg"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 252.0
+offset_right = 237.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 20
+text = "Milky Ways - BOSSFIGHT"
+
+[node name="Select_Sound" type="AudioStreamPlayer" parent="Melkige_Weg"]
+stream = ExtResource("7_14uf1")
+volume_db = -20.0
+
+[node name="Low_Taper_Fade_MW" type="AnimationPlayer" parent="Melkige_Weg"]
+libraries = {
+&"": SubResource("AnimationLibrary_drt0q")
+}
 
 [node name="Extras" type="TextureButton" parent="."]
 offset_top = 997.0
@@ -1235,6 +1471,16 @@ script = ExtResource("18_fmtfg")
 [connection signal="pressed" from="GuineaPFC" to="." method="_on_GPFC_Pressed_connect"]
 [connection signal="pressed" from="GuineaPFC" to="GuineaPFC" method="_on_GPFC_Pressed"]
 [connection signal="finished" from="GuineaPFC/GPFC_Preview" to="GuineaPFC" method="_on_GPFC_preview_finished"]
+[connection signal="mouse_entered" from="Jane_Remover" to="Jane_Remover" method="_on_JR_Button_Hovered"]
+[connection signal="mouse_exited" from="Jane_Remover" to="Jane_Remover" method="_on_JR_Button_Exited"]
+[connection signal="pressed" from="Jane_Remover" to="." method="_on_JR_Pressed_connect"]
+[connection signal="pressed" from="Jane_Remover" to="Jane_Remover" method="_on_JR_Pressed"]
+[connection signal="finished" from="Jane_Remover/JR_Preview" to="Jane_Remover" method="_on_JR_preview_finished"]
+[connection signal="mouse_entered" from="Melkige_Weg" to="Melkige_Weg" method="_on_MW_Button_Hovered"]
+[connection signal="mouse_exited" from="Melkige_Weg" to="Melkige_Weg" method="_on_MW_Button_Exited"]
+[connection signal="pressed" from="Melkige_Weg" to="." method="_on_MW_Pressed_connect"]
+[connection signal="pressed" from="Melkige_Weg" to="Melkige_Weg" method="_on_MW_Pressed"]
+[connection signal="finished" from="Melkige_Weg/MW_Preview" to="Melkige_Weg" method="_on_MW_preview_finished"]
 [connection signal="pressed" from="Extras" to="Extras" method="_on_pressed"]
 [connection signal="mouse_entered" from="Extras/GIVEN_ENOUGH" to="Extras/GIVEN_ENOUGH" method="_on_GE_Button_Hovered"]
 [connection signal="mouse_exited" from="Extras/GIVEN_ENOUGH" to="Extras/GIVEN_ENOUGH" method="_on_GE_Button_Exited"]
